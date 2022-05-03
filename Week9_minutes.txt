@@ -1,0 +1,146 @@
+Week 9 Minutes
+
+Group Members:
+Emily
+Tom 
+Luke O
+Luke L
+
+Agenda:
+Make overall plan of major project
+
+
+
+
+Notes:
+Planning project:
+
+attaches to shopping trolley, scans what is in trolley
+1 for each person
+
+stock take
+
+automatic self checkout
+calculate cost of items in trolley
+
+helps customer calculate costs and at same time does stock take - checks for empty shelves
+
+more customers in store - more stock take being done
+
+
+like google maps, tesla - using customers to improve store functioning
+each product has magnetic barcode
+
+preset grocery store - can compare 
+markings on floor - when certain distance away - ping shelf then stock take and check if distance is correct (using servo motor)
+
+how to know in trolley? 
+
+
+
+Detect other nearby trolleys - if too many in same aisle sends alert to staff to come help in this aisle
+If this happens multiple times could send alert to manager for store redesign.
+
+
+Tasks:
+calculating cost of items in trolley
+	keep data of commonly bought items
+checking for empty shelves/stock take
+	if shelves empty will alert
+nearby trolley traffic
+	if too many will alert staff
+	if many times - redesign store alert
+
+could also check for stolen items - know what is in trolley, and what on shelves - disparity = stolen
+
+
+how to store data?
+
+how to know where in store?
+	accelerometer - know when stopped
+	press button when in aisle
+
+click and collect
+
+stock take sucks in general - would help a lot
+
+consider shop with 4 aisles - bot on rail in warehouse
+easily check for restock
+behind shelves? - in between shelves slides along back and forth and detects stock - could tell when empty
+just angled shelves (soup cans!) so that can detect when back is getting further away
+
+at checkout
+calculates cost of items without having to take them out of trolley
+or attached to trolley calculates cost as items are placed in
+
+Use LEDs as placeholders
+LCD?
+
+Different strength magnets for different scanning
+rail on the side of trolley - slides down at approximte same speed
+3 different magents
+can assume trolley still while sliding
+
+
+
+IMU accelerometer etc used for stock take
+magnometer used for scanning
+
+
+people stop generally
+also
+
+if stop then do stock take
+only take measurements when perfectly facing shelf
+
+know what bay up to
+metal strip in bay encodes what bay at
+
+press button to switch modes
+
+software
+	text file - write items in trolley to file for customer (python)
+	manager commonly sold items file - end of day 
+
+
+
+
+
+	
+
+Final idea:
+1. Customer mode
+   Attached to trolley - rail down the side of trolley, detects which item has been placed and calculates cost
+	cost lights up on LCD
+	uses magnometer - consider 3 different items, 3 different sized magnetic 'barcodes' (just different sized magnets) to determine which item
+	Once finished shopping press another button and will send finalised file as 'receipt' with all items
+
+2. Stock take mode
+   Slides along rails behind shelves (angled downwards so items are always at the front)
+	uses IMU to determine what bay at
+	Lidar and angling to know if shelf is empty
+	store report to manager at end of day
+	sends alert (LED) if empty shelf
+	model for empty and full shelf to demonstrate
+
+	
+button will switch between modes
+
+
+All above was discussed with the group during lab
+
+Breaking down stock take mode:
+	getting servo motor to move to different locations in code warrior 
+
+interrelation - check if anything has been stolen by comparing stock take and customer purchase
+
+
+
+
+Action items:
+Learn matlab
+Try running stewart's code/breaking stuff into modules
+
+
+
+Minutes taken by Emily
