@@ -30,6 +30,7 @@ void PWMinitialise(void){
 void setServoPose(int azimuth, int elevation){  
     //PWMDTY45 = (int)(ZERO_ELEVATION_DUTY + elevation);  // Sets elevation to duty cycle using PWM 45
     PWMDTY67 = (int)(ZERO_AZIMUTH_DUTY + azimuth);   // Sets azimuth to duty cycle using PWM 67
+    //printf("%i", PWMDTY67);
 }
 
 
@@ -64,12 +65,12 @@ __interrupt void TC6_ISR(void) {
   else
     iterator_counter--;
   
-  if (iterator_counter > 700) {
+  if (iterator_counter > 2100) {
     toggle = 1;
   } else if (iterator_counter < -700) {
     toggle = 0;
   }
   
- // setServoPose(50 + iterator_counter, 50 + iterator_counter);    
+  setServoPose(50 + iterator_counter, 50 + iterator_counter);    
 }
 
