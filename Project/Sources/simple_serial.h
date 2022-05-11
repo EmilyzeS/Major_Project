@@ -15,6 +15,33 @@ typedef struct SerialPort {
 } SerialPort;
 
 
+//
+struct MSG_HEADER{
+  int sentinel;
+  char msg_type[8];
+  unsigned int msg_size;
+  unsigned int header_time;
+  int end_sentinel;
+};
+
+//
+struct MSG_GYRO{
+  int sentinel;
+  int rotation_x;
+  int rotation_y;
+  int rotation_z;
+  unsigned int last_sample_time;
+};
+
+//
+struct MSG_BUTTONS{
+  int sentinel;
+  unsigned char button_states;
+  unsigned int last_press_time;
+};
+
+
+
 // make two instances of the serial port (they are extern because
 //   they are fixed values)
 extern SerialPort SCI0, SCI1;
@@ -42,7 +69,17 @@ void SerialOutputChar(char, SerialPort *serial_port);
 
 // SerialOutputString - output a NULL TERMINATED string to the serial port
 // Input: pointer to a NULL-TERMINATED string (if not null terminated, there will be problems)
-void SerialOutputString(char *pt, SerialPort *serial_port); 
+void SerialOutputString(char *pt, SerialPort *serial_port);
+
+
+// SerialOutputString - output a set of bytes to the serial port
+// Input: pointer to a char sized buffer, the size must be correct
+void SerialOutputBytes(char *pt, int size, SerialPort *serial_port); 
+
+
+void SendGyroMsg(int rot_x, int rot_y, int rot_z);
+void SendButtonsMsg();
+void SendTextMsg(char* text_message); 
  
  
 #endif

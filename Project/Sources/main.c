@@ -108,6 +108,9 @@ void main(void) {
 
   Init_TC6();
   
+  //TSCR1_TEN = 1;  
+  //TSCR2_PR = 0b111;
+  
 	EnableInterrupts;
   //COPCTL = 7;
   _DISABLE_COP();
@@ -153,8 +156,13 @@ void main(void) {
     // format the string of the sensor data to go the the serial    
     sprintf(buffer, "%lu, %d, %d, %d, %0.2f, %0.2f, %0.2f, %d, %d, %d, %i \r\n", singleSample, read_gyro.x, read_gyro.y, read_gyro.z, scaled_accel.x, scaled_accel.y, scaled_accel.z, read_magnet.x, read_magnet.y, read_magnet.z, PWMDTY67);
     
+    //DisableInterrupts;
+    //SerialInitialise(BAUD_115200, &SCI1);
+    SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.y);
+    //EnableInterrupts;
     // output the data to serial
     SerialOutputString(buffer, &SCI1);
+    
     
     
     //_FEED_COP(); /* feeds the dog */
