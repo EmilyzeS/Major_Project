@@ -22,7 +22,7 @@ def read_packet(f):
     #checksum on the header sentinels
     if(header_data[0] + header_data[4] != 100487):
         #print(str(header_data[0]) + "," + str(header_data[4])) 
-        #print("Header Sentinels Do not add up.")
+        print("Header Sentinels Do not add up.")
         return True
 
 
@@ -66,7 +66,7 @@ def read_packet(f):
         g.close()
     elif message_type == b"lidar":
         lidar_bytes = f.read(header_data[2])
-        lidar_data = struct.unpack(">hhH", lidar_bytes)
+        lidar_data = struct.unpack(">hIH", lidar_bytes)
 
         g = open('Desktop\Major_Project\Reading_Serial_python\lidar.txt', 'a')
         g.writelines(str(lidar_data[1]) + "\n")
