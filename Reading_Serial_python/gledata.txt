@@ -1,300 +1,220 @@
-azimuth: 3886 elevation: 4600
-azimuth: 3864 elevation: 4600
-azimuth: 3841 elevation: 4600
-azimuth: 3819 elevation: 4600
-azimuth: 3797 elevation: 4600
-azimuth: 3774 elevation: 4600
-azimuth: 3752 elevation: 4600
-azimuth: 3730 elevation: 4600
-azimuth: 3707 elevation: 4600
-azimuth: 3685 elevation: 4600
-azimuth: 3663 elevation: 4600
-azimuth: 3640 elevation: 4600
-azimuth: 3618 elevation: 4600
-azimuth: 3596 elevation: 4600
-azimuth: 3573 elevation: 4600
-azimuth: 3551 elevation: 4600
-azimuth: 3530 elevation: 4600
-azimuth: 3507 elevation: 4600
-azimuth: 3485 elevation: 4600
-azimuth: 3463 elevation: 4600
-azimuth: 3440 elevation: 4600
-azimuth: 3418 elevation: 4600
-azimuth: 3396 elevation: 4600
-azimuth: 3374 elevation: 4600
-azimuth: 3352 elevation: 4600
-azimuth: 3330 elevation: 4600
-azimuth: 3307 elevation: 4600
-azimuth: 3285 elevation: 4600
-azimuth: 3263 elevation: 4600
-azimuth: 3240 elevation: 4600
-azimuth: 3218 elevation: 4600
-azimuth: 3196 elevation: 4600
-azimuth: 3173 elevation: 4600
-azimuth: 3151 elevation: 4600
-azimuth: 3128 elevation: 4600
-azimuth: 3106 elevation: 4600
-azimuth: 3085 elevation: 4600
-azimuth: 3063 elevation: 4600
-azimuth: 3040 elevation: 4600
-azimuth: 3018 elevation: 4600
-azimuth: 2996 elevation: 4600
-azimuth: 2973 elevation: 4600
-azimuth: 2951 elevation: 4600
-azimuth: 2928 elevation: 4600
-azimuth: 2906 elevation: 4600
-azimuth: 2884 elevation: 4600
-azimuth: 2861 elevation: 4600
-azimuth: 2839 elevation: 4600
-azimuth: 2817 elevation: 4600
-azimuth: 2794 elevation: 4600
-azimuth: 2772 elevation: 4600
-azimuth: 2750 elevation: 4600
-azimuth: 2727 elevation: 4600
-azimuth: 2705 elevation: 4600
-azimuth: 2683 elevation: 4600
-azimuth: 2660 elevation: 4600
-azimuth: 2638 elevation: 4600
-azimuth: 2616 elevation: 4600
-azimuth: 2593 elevation: 4600
-azimuth: 2571 elevation: 4600
-azimuth: 2549 elevation: 4600
-azimuth: 2526 elevation: 4600
-azimuth: 2504 elevation: 4600
-azimuth: 2482 elevation: 4600
-azimuth: 2459 elevation: 4600
-azimuth: 2437 elevation: 4600
-azimuth: 2415 elevation: 4600
-azimuth: 2392 elevation: 4600
-azimuth: 2370 elevation: 4600
-azimuth: 2348 elevation: 4600
-azimuth: 2325 elevation: 4600
-azimuth: 2303 elevation: 4600
-azimuth: 2281 elevation: 4600
-azimuth: 2258 elevation: 4600
-azimuth: 2237 elevation: 4600
-azimuth: 2215 elevation: 4600
-azimuth: 2192 elevation: 4600
-azimuth: 2170 elevation: 4600
-azimuth: 2148 elevation: 4600
-azimuth: 2125 elevation: 4600
-azimuth: 2103 elevation: 4600
-azimuth: 2081 elevation: 4600
-azimuth: 2058 elevation: 4600
-azimuth: 2036 elevation: 4600
-azimuth: 2015 elevation: 4600
-azimuth: 1992 elevation: 4600
-azimuth: 1970 elevation: 4600
-azimuth: 1950 elevation: 4600
-azimuth: 1973 elevation: 4600
-azimuth: 1994 elevation: 4600
-azimuth: 2016 elevation: 4600
-azimuth: 2039 elevation: 4600
-azimuth: 2061 elevation: 4600
-azimuth: 2083 elevation: 4600
-azimuth: 2106 elevation: 4600
-azimuth: 2128 elevation: 4600
-azimuth: 2150 elevation: 4600
-azimuth: 2173 elevation: 4600
-azimuth: 2195 elevation: 4600
-azimuth: 2216 elevation: 4600
-azimuth: 2239 elevation: 4600
-azimuth: 2261 elevation: 4600
-azimuth: 2283 elevation: 4600
-azimuth: 2305 elevation: 4600
-azimuth: 2327 elevation: 4600
-azimuth: 2349 elevation: 4600
-azimuth: 2372 elevation: 4600
-azimuth: 2394 elevation: 4600
-azimuth: 2416 elevation: 4600
-azimuth: 2439 elevation: 4600
-azimuth: 2461 elevation: 4600
-azimuth: 2483 elevation: 4600
-azimuth: 2506 elevation: 4600
-azimuth: 2528 elevation: 4600
-azimuth: 2550 elevation: 4600
-azimuth: 2573 elevation: 4600
-azimuth: 2595 elevation: 4600
-azimuth: 2617 elevation: 4600
-azimuth: 2640 elevation: 4600
-azimuth: 2662 elevation: 4600
-azimuth: 2684 elevation: 4600
-azimuth: 2707 elevation: 4600
-azimuth: 2729 elevation: 4600
-azimuth: 2751 elevation: 4600
-azimuth: 2774 elevation: 4600
-azimuth: 2796 elevation: 4600
-azimuth: 2818 elevation: 4600
-azimuth: 2841 elevation: 4600
-azimuth: 2863 elevation: 4600
-azimuth: 2885 elevation: 4600
-azimuth: 2908 elevation: 4600
-azimuth: 2930 elevation: 4600
-azimuth: 2952 elevation: 4600
-azimuth: 2975 elevation: 4600
-azimuth: 2997 elevation: 4600
-azimuth: 3019 elevation: 4600
-azimuth: 3042 elevation: 4600
-azimuth: 3064 elevation: 4600
-azimuth: 3086 elevation: 4600
-azimuth: 3109 elevation: 4600
-azimuth: 3131 elevation: 4600
-azimuth: 3153 elevation: 4600
-azimuth: 3176 elevation: 4600
-azimuth: 3198 elevation: 4600
-azimuth: 3220 elevation: 4600
-azimuth: 3243 elevation: 4600
-azimuth: 3265 elevation: 4600
-azimuth: 3287 elevation: 4600
-azimuth: 3310 elevation: 4600
-azimuth: 3332 elevation: 4600
-azimuth: 3354 elevation: 4600
-azimuth: 3377 elevation: 4600
-azimuth: 3399 elevation: 4600
-azimuth: 3421 elevation: 4600
-azimuth: 3444 elevation: 4600
-azimuth: 3466 elevation: 4600
-azimuth: 3488 elevation: 4600
-azimuth: 3511 elevation: 4600
-azimuth: 3533 elevation: 4600
-azimuth: 3555 elevation: 4600
-azimuth: 3578 elevation: 4600
-azimuth: 3600 elevation: 4600
-azimuth: 3622 elevation: 4600
-azimuth: 3644 elevation: 4600
-azimuth: 3666 elevation: 4600
-azimuth: 3688 elevation: 4600
-azimuth: 3711 elevation: 4600
-azimuth: 3733 elevation: 4600
-azimuth: 3755 elevation: 4600
-azimuth: 3778 elevation: 4600
-azimuth: 3800 elevation: 4600
-azimuth: 3822 elevation: 4600
-azimuth: 3845 elevation: 4600
-azimuth: 3866 elevation: 4600
-azimuth: 3888 elevation: 4600
-azimuth: 3911 elevation: 4600
-azimuth: 3933 elevation: 4600
-azimuth: 3955 elevation: 4600
-azimuth: 3978 elevation: 4600
-azimuth: 4000 elevation: 4600
-azimuth: 4021 elevation: 4600
-azimuth: 4044 elevation: 4600
-azimuth: 4066 elevation: 4600
-azimuth: 4088 elevation: 4600
-azimuth: 4111 elevation: 4600
-azimuth: 4133 elevation: 4600
-azimuth: 4147 elevation: 4600
-azimuth: 4124 elevation: 4600
-azimuth: 4102 elevation: 4600
-azimuth: 4080 elevation: 4600
-azimuth: 4057 elevation: 4600
-azimuth: 4035 elevation: 4600
-azimuth: 4013 elevation: 4600
-azimuth: 3990 elevation: 4600
-azimuth: 3968 elevation: 4600
-azimuth: 3946 elevation: 4600
-azimuth: 3923 elevation: 4600
-azimuth: 3901 elevation: 4600
-azimuth: 3879 elevation: 4600
-azimuth: 3856 elevation: 4600
-azimuth: 3834 elevation: 4600
-azimuth: 3813 elevation: 4600
-azimuth: 3790 elevation: 4600
-azimuth: 3768 elevation: 4600
-azimuth: 3746 elevation: 4600
-azimuth: 3723 elevation: 4600
-azimuth: 3702 elevation: 4600
-azimuth: 3680 elevation: 4600
-azimuth: 3657 elevation: 4600
-azimuth: 3636 elevation: 4600
-azimuth: 3614 elevation: 4600
-azimuth: 3591 elevation: 4600
-azimuth: 3569 elevation: 4600
-azimuth: 3547 elevation: 4600
-azimuth: 3524 elevation: 4600
-azimuth: 3503 elevation: 4600
-azimuth: 3481 elevation: 4600
-azimuth: 3458 elevation: 4600
-azimuth: 3436 elevation: 4600
-azimuth: 3414 elevation: 4600
-azimuth: 3391 elevation: 4600
-azimuth: 3369 elevation: 4600
-azimuth: 3347 elevation: 4600
-azimuth: 3324 elevation: 4600
-azimuth: 3302 elevation: 4600
-azimuth: 3280 elevation: 4600
-azimuth: 3257 elevation: 4600
-azimuth: 3235 elevation: 4600
-azimuth: 3213 elevation: 4600
-azimuth: 3191 elevation: 4600
-azimuth: 3169 elevation: 4600
-azimuth: 3147 elevation: 4600
-azimuth: 3124 elevation: 4600
-azimuth: 3102 elevation: 4600
-azimuth: 3080 elevation: 4600
-azimuth: 3057 elevation: 4600
-azimuth: 3035 elevation: 4600
-azimuth: 3013 elevation: 4600
-azimuth: 2990 elevation: 4600
-azimuth: 2969 elevation: 4600
-azimuth: 2947 elevation: 4600
-azimuth: 2924 elevation: 4600
-azimuth: 2902 elevation: 4600
-azimuth: 2880 elevation: 4600
-azimuth: 2857 elevation: 4600
-azimuth: 2835 elevation: 4600
-azimuth: 2813 elevation: 4600
-azimuth: 2790 elevation: 4600
-azimuth: 2768 elevation: 4600
-azimuth: 2746 elevation: 4600
-azimuth: 2723 elevation: 4600
-azimuth: 2701 elevation: 4600
-azimuth: 2679 elevation: 4600
-azimuth: 2656 elevation: 4600
-azimuth: 2635 elevation: 4600
-azimuth: 2613 elevation: 4600
-azimuth: 2590 elevation: 4600
-azimuth: 2568 elevation: 4600
-azimuth: 2546 elevation: 4600
-azimuth: 2523 elevation: 4600
-azimuth: 2501 elevation: 4600
-azimuth: 2479 elevation: 4600
-azimuth: 2456 elevation: 4600
-azimuth: 2434 elevation: 4600
-azimuth: 2412 elevation: 4600
-azimuth: 2389 elevation: 4600
-azimuth: 2367 elevation: 4600
-azimuth: 2345 elevation: 4600
-azimuth: 2322 elevation: 4600
-azimuth: 2300 elevation: 4600
-azimuth: 2278 elevation: 4600
-azimuth: 2255 elevation: 4600
-azimuth: 2233 elevation: 4600
-azimuth: 2211 elevation: 4600
-azimuth: 2189 elevation: 4600
-azimuth: 2167 elevation: 4600
-azimuth: 2145 elevation: 4600
-azimuth: 2122 elevation: 4600
-azimuth: 2100 elevation: 4600
-azimuth: 2078 elevation: 4600
-azimuth: 2055 elevation: 4600
-azimuth: 2033 elevation: 4600
-azimuth: 2011 elevation: 4600
-azimuth: 1988 elevation: 4600
-azimuth: 1966 elevation: 4600
-azimuth: 1954 elevation: 4600
-azimuth: 1977 elevation: 4600
-azimuth: 1999 elevation: 4600
-azimuth: 2020 elevation: 4600
-azimuth: 2043 elevation: 4600
-azimuth: 2065 elevation: 4600
-azimuth: 2087 elevation: 4600
-azimuth: 2110 elevation: 4600
-azimuth: 2132 elevation: 4600
-azimuth: 2154 elevation: 4600
-azimuth: 2177 elevation: 4600
-azimuth: 2199 elevation: 4600
-azimuth: 2221 elevation: 4600
-azimuth: 2244 elevation: 4600
-azimuth: 2266 elevation: 4600
+2292
+2269
+2247
+2225
+2202
+2180
+2158
+2135
+2113
+2091
+2068
+2046
+2024
+2001
+1979
+1957
+1964
+1986
+2008
+2031
+2053
+2075
+2098
+2120
+2142
+2165
+2187
+2208
+2231
+2253
+2275
+2297
+2319
+2341
+2364
+2386
+2407
+2430
+2451
+2473
+2496
+2518
+2540
+2563
+2585
+2606
+2629
+2651
+2673
+2696
+2717
+2739
+2761
+2783
+2805
+2828
+2850
+2872
+2895
+2917
+2939
+2962
+2984
+3006
+3029
+3051
+3073
+3096
+3118
+3140
+3163
+3185
+3207
+3230
+3252
+3274
+3296
+3318
+3340
+3363
+3385
+3405
+3428
+3450
+3472
+3495
+3517
+3538
+3561
+3583
+3605
+3627
+3649
+3671
+3694
+3716
+3738
+3761
+3783
+3805
+3827
+3849
+3871
+3894
+3916
+3938
+3961
+3983
+4005
+4028
+4050
+4071
+4094
+4116
+4138
+4141
+4119
+4097
+4074
+4052
+4030
+4007
+3985
+3963
+3940
+3918
+3896
+3873
+3851
+3829
+3806
+3785
+3763
+3740
+3718
+3696
+3673
+3651
+3629
+3606
+3584
+3562
+3539
+3517
+3496
+3473
+3451
+3429
+3406
+3384
+3362
+3339
+3317
+3295
+3272
+3250
+3228
+3205
+3183
+3161
+3138
+3116
+3094
+3071
+3049
+3028
+3005
+2983
+2961
+2939
+2918
+2896
+2874
+2852
+2830
+2807
+2785
+2763
+2740
+2718
+2697
+2674
+2652
+2630
+2607
+2585
+2564
+2541
+2519
+2497
+2475
+2453
+2431
+2408
+2386
+2365
+2342
+2320
+2298
+2276
+2254
+2232
+2209
+2188
+2166
+2143
+2121
+2099
+2077
+2055
+2033
+2010
+1988
+1966
+1955
+1977
+1999
+2022
+2044
+2066

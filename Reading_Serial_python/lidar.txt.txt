@@ -1,301 +1,220 @@
-lidar: -26033
-lidar: -25674
-lidar: -27399
-lidar: -27386
-lidar: -26441
-lidar: -28280
-lidar: -28101
-lidar: -28764
-lidar: -28665
-lidar: -31462
-lidar: 29613
-lidar: 31543
-lidar: 31626
-lidar: 2170
-lidar: 1942
-lidar: 2808
-lidar: 3079
-lidar: 3681
-lidar: 3351
-lidar: 3074
-lidar: 3291
-lidar: 3146
-lidar: 3200
-lidar: 2895
-lidar: 3195
-lidar: 2951
-lidar: 2789
-lidar: 2933
-lidar: -5466
-lidar: 2656
-lidar: 2964
-lidar: 2681
-lidar: 2822
-lidar: 26158
-lidar: -233
-lidar: -15013
-lidar: 3191
-lidar: 3478
-lidar: 14874
-lidar: 3312
-lidar: 3309
-lidar: 3428
-lidar: 3931
-lidar: 4217
-lidar: 4084
-lidar: 4624
-lidar: 5207
-lidar: 5220
-lidar: 5279
-lidar: 5632
-lidar: 5592
-lidar: 6260
-lidar: 7222
-lidar: 6905
-lidar: 7070
-lidar: 5782
-lidar: 3471
-lidar: 917
-lidar: -866
-lidar: -2460
-lidar: -4275
-lidar: -6152
-lidar: -7488
-lidar: -9139
-lidar: -10915
-lidar: -11991
-lidar: -13102
-lidar: -14124
-lidar: -14760
-lidar: -16073
-lidar: -16694
-lidar: -17614
-lidar: -18756
-lidar: -19657
-lidar: -20597
-lidar: 15191
-lidar: -5998
-lidar: -22407
-lidar: 27466
-lidar: -24294
-lidar: -25078
-lidar: -25132
-lidar: -25416
-lidar: -26899
-lidar: -27224
-lidar: 2325
-lidar: -28292
-lidar: 4899
-lidar: -29048
-lidar: -29160
-lidar: -29014
-lidar: -28850
-lidar: -28870
-lidar: -28523
-lidar: -28112
-lidar: -27523
-lidar: -27080
-lidar: -26366
-lidar: -26193
-lidar: -25109
-lidar: -24531
-lidar: -23847
-lidar: -23622
-lidar: -22846
-lidar: -21662
-lidar: -21383
-lidar: -20347
-lidar: -19826
-lidar: -18708
-lidar: -17933
-lidar: -17075
-lidar: -16166
-lidar: -14297
-lidar: -13667
-lidar: -12353
-lidar: -11267
-lidar: -10573
-lidar: -9208
-lidar: -7116
-lidar: -6035
-lidar: -4756
-lidar: -3060
-lidar: 32647
-lidar: -30661
-lidar: 2640
-lidar: 5051
-lidar: -28708
-lidar: 6662
-lidar: 6285
-lidar: 5823
-lidar: 5968
-lidar: 27480
-lidar: 5234
-lidar: 1466
-lidar: 4809
-lidar: 4370
-lidar: 17884
-lidar: 4237
-lidar: 4209
-lidar: 3487
-lidar: 3692
-lidar: 3673
-lidar: 3662
-lidar: 3633
-lidar: 3561
-lidar: 3763
-lidar: 3100
-lidar: 3182
-lidar: 2962
-lidar: 2988
-lidar: 2870
-lidar: 2799
-lidar: 2594
-lidar: 3015
-lidar: 2765
-lidar: 2927
-lidar: 2618
-lidar: 2525
-lidar: 3086
-lidar: 3113
-lidar: 2901
-lidar: 3062
-lidar: 3084
-lidar: 3429
-lidar: 3719
-lidar: 2146
-lidar: 28478
-lidar: 12616
-lidar: 31060
-lidar: 13549
-lidar: 18215
-lidar: 3492
-lidar: 27362
-lidar: 28009
-lidar: 12659
-lidar: -32539
-lidar: -26418
-lidar: -26527
-lidar: 8059
-lidar: -26223
-lidar: -26004
-lidar: -25255
-lidar: -23975
-lidar: -25475
-lidar: 155
-lidar: 59
-lidar: 23588
-lidar: 19689
-lidar: 24999
-lidar: 18605
-lidar: 23819
-lidar: 173
-lidar: 133
-lidar: 57
-lidar: -28502
-lidar: -26127
-lidar: -24913
-lidar: -25991
-lidar: -25295
-lidar: -25673
-lidar: -26154
-lidar: -27070
-lidar: -28005
-lidar: -27977
-lidar: -28483
-lidar: -28634
-lidar: -30062
-lidar: 31386
-lidar: -5073
-lidar: 31372
-lidar: 26302
-lidar: 1737
-lidar: 1887
-lidar: 3001
-lidar: 3887
-lidar: 17249
-lidar: 3257
-lidar: 3683
-lidar: 3264
-lidar: 2866
-lidar: 2977
-lidar: 3173
-lidar: -32661
-lidar: 2918
-lidar: 3003
-lidar: 21463
-lidar: 14249
-lidar: 3006
-lidar: 21479
-lidar: 30673
-lidar: 16541
-lidar: 3359
-lidar: 3230
-lidar: 3645
-lidar: 3232
-lidar: 3458
-lidar: 3472
-lidar: 3340
-lidar: 3367
-lidar: 3508
-lidar: 4247
-lidar: 4060
-lidar: 4472
-lidar: 4648
-lidar: 4891
-lidar: 5078
-lidar: 4791
-lidar: 5766
-lidar: 6026
-lidar: 6463
-lidar: 6652
-lidar: 7049
-lidar: 7205
-lidar: 6069
-lidar: 3572
-lidar: 508
-lidar: -758
-lidar: -2921
-lidar: -4557
-lidar: -6170
-lidar: -7693
-lidar: -8902
-lidar: -10860
-lidar: -12214
-lidar: -12866
-lidar: -14230
-lidar: -14969
-lidar: -16325
-lidar: -17263
-lidar: -31920
-lidar: -18724
-lidar: -19638
-lidar: 20093
-lidar: -21035
-lidar: -22045
-lidar: -22524
-lidar: -23241
-lidar: -24171
-lidar: -24704
-lidar: -25418
-lidar: -26055
-lidar: -27017
-lidar: -27714
-lidar: -28138
-lidar: -28330
-lidar: -28597
-lidar: -28898
-lidar: -29087
-lidar: -28986
-lidar: -29043
-lidar: -28473
-lidar: -28520
-lidar: -27861
-lidar: -27503
-lidar: 18651
-lidar: -26142
-lidar: -26003
-lidar: -25151
-lidar: -24405
-lidar: -23658
-lidar: -23329
+12876
+1941
+12358
+12948
+12994
+12913
+14889
+14370
+13161
+14173
+15480
+16163
+15411
+16281
+114
+-7938
+67
+9239
+172
+18287
+61
+120
+-22839
+207
+20987
+15433
+15228
+14571
+13520
+11986
+14124
+14327
+12797
+12871
+12805
+13139
+12340
+12468
+12226
+11796
+12518
+11833
+11762
+11860
+11925
+11303
+10935
+10622
+10247
+11249
+11348
+10662
+11015
+10545
+10686
+10710
+9823
+10228
+10162
+9904
+10135
+9182
+9048
+9109
+10183
+9297
+9337
+9706
+9747
+10616
+8950
+10439
+11985
+9695
+9719
+10085
+10546
+9735
+10139
+10378
+10543
+10586
+10675
+11001
+11001
+11623
+11980
+11591
+10499
+11166
+12203
+11850
+11497
+10522
+10700
+11707
+10949
+10560
+9738
+11513
+10328
+10092
+10229
+9706
+12403
+12869
+11647
+11963
+11609
+10755
+10993
+11001
+10636
+9885
+9746
+10274
+10805
+10125
+10730
+10759
+10185
+9871
+10393
+10780
+11142
+11001
+11113
+11086
+12157
+12114
+11396
+10834
+10384
+10313
+10595
+10498
+10762
+10687
+11040
+10715
+10646
+11775
+11874
+12507
+12337
+13210
+10430
+10549
+11750
+12235
+11522
+11743
+10638
+10694
+10355
+10081
+10417
+9956
+10416
+9735
+10541
+11166
+10957
+11784
+9731
+10782
+10840
+10199
+10024
+9622
+9714
+9087
+10466
+9618
+10003
+9501
+9338
+10048
+10137
+10084
+10611
+10637
+10774
+10659
+10252
+10627
+10381
+11057
+11002
+11154
+10615
+1051
+5462
+11844
+11992
+11721
+12448
+12632
+12283
+12249
+12176
+13763
+12470
+12943
+14347
+13781
+14752
+13685
+13962
+15188
+16194
+13962
+-22947
+146
+212
+16175
+22197
+12073
+14405
+192
