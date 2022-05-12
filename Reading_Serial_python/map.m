@@ -64,6 +64,6 @@ ranges=time_intervals .* c / (10^13);
 x = ranges .* cosd(azimuth);
 
 %convert the range and angle to the y coordinate via r*sin(t)
-y = ranges .* sind(aimuth);
+y = ranges .* sind(azimuth);
 
 scatter(x,y,"*")
