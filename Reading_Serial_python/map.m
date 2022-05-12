@@ -19,7 +19,7 @@ time_intervals = csvread('lidar.csv');
 [num_angle_readings, ~] = size(angles);
 [number_lidar_readings, ~] = size(time_intervals);
 
-%deletes uneven data was sent if was cut before the recieving
+%deletes uneven data was sent if it was cut before the recieving last bits
 while(num_angle_readings ~= number_lidar_readings)
     
     [num_angle_readings, ~] = size(angles);
@@ -61,10 +61,9 @@ ranges=time_intervals .* c / (10^13);
 
 
 %convert the range and angle to the x coordinate via r*cos(t)
-x= ranges .* cosd(azimuth);
+x = ranges .* cosd(azimuth);
 
 %convert the range and angle to the y coordinate via r*sin(t)
-y=ranges .* sind(azimuth);
-
+y = ranges .* sind(aimuth);
 
 scatter(x,y,"*")
