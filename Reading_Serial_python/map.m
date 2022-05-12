@@ -13,23 +13,34 @@ clear
 
 %load and store the data 'radar_202.csv' in raw_data
 %be in form distance, angle
-raw_data=csvread('dataeg.csv');
+%raw_data = csvread('Sample1.csv');
+
+%raw_data = importfile('Sample.csv');
 
 %establish the number of angles and ranges in the data
-[number_of_data_sets, number_of_measurements]=size(raw_data);
+file = fopen('gledata.txt', 'r');
+
+
+angles = fscanf(file, '%i');
+fclose(file);
+
+file = fopen('lidar.txt', 'r');
+
+time_intervals = fscanf(file, '%i');
+
+fclose(file);
+
+number_of_data_sets = size(angles);
 
 
 %create the  zero matrix of the same size of raw_data
-time_intervals = raw_data(:,1);
+%time_intervals = raw_data(:,1);
 
 ranges = zeros(size(number_of_data_sets));
-
-angles = raw_data(:,2);
 
 maxvalue=max(angles);
 minvalue=min(angles);
 difference=maxvalue-minvalue;
-
 
 
 angles = angles - minvalue;
