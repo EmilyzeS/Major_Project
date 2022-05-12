@@ -30,13 +30,31 @@ time_intervals = fscanf(file, '%i');
 
 fclose(file);
 
-number_of_data_sets = size(angles);
+%number_of_data_sets = size(angles);
 
 
 %create the  zero matrix of the same size of raw_data
 %time_intervals = raw_data(:,1);
 
-ranges = zeros(size(number_of_data_sets));
+[num_angle_readings, ~] = size(angles);
+[number_lidar_readings, ~] = size(time_intervals);
+
+while(num_angle_readings ~= number_lidar_readings)
+    
+    [num_angle_readings, ~] = size(angles);
+    [number_lidar_readings, ~] = size(time_intervals);
+    
+    if(num_angle_readings > number_lidar_readings)
+       angles = angles(1:end-1); 
+    elseif (num_angle_readings < number_lidar_readings)
+        time_intervals = time_intervals(1:end-1);      
+    end
+    
+    
+    
+    
+end
+    
 
 maxvalue=max(angles);
 minvalue=min(angles);
@@ -57,7 +75,7 @@ c=299792458;
 
 %calculate the ranges by using the prior equation, multiplying time x
 %speed, dividing by two and 10^9 to convert to metres
-ranges=time_intervals .* c / (10^13);
+ranges= time_intervals .* c / (10^13);
 
 
 %convert the range and angle to the x coordinate via r*cos(t)
