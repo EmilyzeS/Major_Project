@@ -4,6 +4,7 @@ import time
 import serial
 import struct
 import traceback
+import csv
 
 MSG_HEADER_SIZE = 16
 
@@ -23,7 +24,7 @@ def read_packet(f):
     if(header_data[0] + header_data[4] != 100487):
         #print(str(header_data[0]) + "," + str(header_data[4])) 
         print("Header Sentinels Do not add up.")
-        return True
+        return False
 
 
 
@@ -43,10 +44,10 @@ def read_packet(f):
         gyro_bytes = f.read(header_data[2])
         gyro_data = struct.unpack(">hhhhH", gyro_bytes)
         
-        # if(header_data[2] > 10) or (gyro_data[0] != 39030):
-        #     # print(str(gyro_data[4]) +","+ str(header_data[4]))
-        #     print("Gyro data corrupted")
-        #     return True
+        if(header_data[2] > 10) or (gyro_data[0] != 39030):
+            # print(str(gyro_data[4]) +","+ str(header_data[4]))
+            print("Gyro data corrupted")
+            return False
 
         g = open('Desktop\Major_Project\Reading_Serial_python\gyrodata.txt', 'a')
         g.writelines("gyro message: " + str(gyro_data[1]) + ", " + str(gyro_data[2]) + ", " + str(gyro_data[3]) + ", time=" + str(gyro_data[4]) + "\n")
@@ -58,18 +59,36 @@ def read_packet(f):
         angle_bytes = f.read(header_data[2])
         angle_data = struct.unpack(">hhhH", angle_bytes)
 
-        g = open('Desktop\Major_Project\Reading_Serial_python\\angledata.txt', 'a')
+        if(angle_data[0] != 22136):
+            print("Angle data corrupted")
+            return False
+
+        g = open('Desktop\Major_Project\Reading_Serial_python\\angledata.csv', 'a')
         
-        #printing just the azimuth
-        g.writelines(str(angle_data[1]) + "\n")
-        #str(angle_data[2]) for elavation
+        writer = csv.writer(g)
+
+        info = [int(angle_data[1]), angle_data[2]]
+
+
+        writer.writerow(info)
+
+
         g.close()
     elif message_type == b"lidar":
         lidar_bytes = f.read(header_data[2])
         lidar_data = struct.unpack(">hIH", lidar_bytes)
 
-        g = open('Desktop\Major_Project\Reading_Serial_python\lidar.txt', 'a')
-        g.writelines(str(lidar_data[1]) + "\n")
+        if(lidar_data[0] != 4660):
+            print("Lidar data corrupted")
+            return False
+
+        g = open('Desktop\Major_Project\Reading_Serial_python\lidar.csv', 'a')
+        writer = csv.writer(g)
+
+        info = [lidar_data[1]]
+
+        writer.writerow(info)
+
         g.close()
 
 
