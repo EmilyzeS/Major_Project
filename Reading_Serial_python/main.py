@@ -58,7 +58,7 @@ def read_packet(f):
         angle_bytes = f.read(header_data[2])
         angle_data = struct.unpack(">hhhH", angle_bytes)
 
-        g = open('Desktop\Major_Project\Reading_Serial_python\gledata.txt', 'a')
+        g = open('Desktop\Major_Project\Reading_Serial_python\\angledata.txt', 'a')
         
         #printing just the azimuth
         g.writelines(str(angle_data[1]) + "\n")
