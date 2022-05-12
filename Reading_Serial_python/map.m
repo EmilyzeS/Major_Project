@@ -18,7 +18,7 @@ clear
 %raw_data = importfile('Sample.csv');
 
 %establish the number of angles and ranges in the data
-file = fopen('gledata.txt', 'r');
+file = fopen('angledata.txt', 'r');
 
 
 angles = fscanf(file, '%i');
