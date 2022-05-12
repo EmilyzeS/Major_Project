@@ -36,24 +36,7 @@ fclose(file);
 %create the  zero matrix of the same size of raw_data
 %time_intervals = raw_data(:,1);
 
-[num_angle_readings, ~] = size(angles);
-[number_lidar_readings, ~] = size(time_intervals);
-
-while(num_angle_readings ~= number_lidar_readings)
-    
-    [num_angle_readings, ~] = size(angles);
-    [number_lidar_readings, ~] = size(time_intervals);
-    
-    if(num_angle_readings > number_lidar_readings)
-       angles = angles(1:end-1); 
-    elseif (num_angle_readings < number_lidar_readings)
-        time_intervals = time_intervals(1:end-1);      
-    end
-    
-    
-    
-    
-end
+if(size(angles) != size(time_intervals))
     
 
 maxvalue=max(angles);
