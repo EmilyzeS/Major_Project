@@ -152,6 +152,3 @@ IIC_ERRORS magnet_init(void)
 }
 
 
-void getMod(MagRaw * raw_mag){
- raw_mag->mod = sqrt(raw_mag->x * raw_mag->x+ raw_mag->y*raw_mag->y + raw_mag->z*raw_mag->z); 
-}

@@ -14,33 +14,62 @@ def read_packet(f):
         # must be out of messages
         return False
 
-    g = open('Desktop\Major_Project\Reading_Serial_python\gyrodata.txt', 'a')
 
 
     header_data = struct.unpack(">H8sHHH", header_bytes)
+    
 
-    #g.writelines("header sentinels: " + str(hex(header_data[0])) + ", " + str(hex(header_data[4])))
-    #g.write("\n")
+    #checksum on the header sentinels
+    if(header_data[0] + header_data[4] != 100487):
+        #print(str(header_data[0]) + "," + str(header_data[4])) 
+        #print("Header Sentinels Do not add up.")
+        return True
+
+
+
+
+
+    #print("header sentinels: " + str(hex(header_data[0])) + ", " + str(hex(header_data[4])))
 
     message_type = header_data[1].split(b'\0', 1)[0]  # remove the null characters from the string
     print(message_type)
-    #g.writelines("message size: " + str(header_data[2]))
-    #g.write("\n")
+    #print("message size: " + str(header_data[2]))
 
     if message_type == b"text":
         text_bytes = f.read(header_data[2])
         print("text message: " + str(text_bytes))
     elif message_type == b"gyro":
+
         gyro_bytes = f.read(header_data[2])
         gyro_data = struct.unpack(">hhhhH", gyro_bytes)
+        
+        # if(header_data[2] > 10) or (gyro_data[0] != 39030):
+        #     # print(str(gyro_data[4]) +","+ str(header_data[4]))
+        #     print("Gyro data corrupted")
+        #     return True
+
+        g = open('Desktop\Major_Project\Reading_Serial_python\gyrodata.txt', 'a')
         g.writelines("gyro message: " + str(gyro_data[1]) + ", " + str(gyro_data[2]) + ", " + str(gyro_data[3]) + ", time=" + str(gyro_data[4]) + "\n")
+        g.close()
     elif message_type == b"buttons":
         buttons_bytes = f.read(header_data[2])
         print("buttons message: " + str(hex(buttons_bytes[1])) + ", time=" + str(buttons_bytes[2]))
+    elif message_type == b"angle":
+        angle_bytes = f.read(header_data[2])
+        angle_data = struct.unpack(">hhhH", angle_bytes)
 
-    #g.write("\n")
+        g = open('Desktop\Major_Project\Reading_Serial_python\gledata.txt', 'a')
+        g.writelines("azimuth: "+ str(angle_data[1])+ "elevation: " + str(angle_data[2]))
+        g.close()
+    elif message_type == b"lidar":
+        lidar_bytes = f.read(header_data[2])
+        lidar_data = struct.unpack(">hhH", lidar_bytes)
 
-    g.close()
+        g = open('Desktop\Major_Project\Reading_Serial_python\lidar.txt.txt', 'a')
+        g.writelines("lidar: " + str(lidar_data[1]))
+        g.close()
+
+
     return True
 
 
@@ -58,7 +87,7 @@ def read_file(file_name):
     
 
 def read_serial(com_port):
-    serialPort = serial.Serial(port=com_port, baudrate=115200, bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
+    serialPort = serial.Serial(port=com_port, baudrate=9600, bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
     serialString = ""  # Used to hold data coming over UART
 
     while True:

@@ -40,6 +40,29 @@ struct MSG_BUTTONS{
   unsigned int last_press_time;
 };
 
+struct MSG_LIDAR{
+  int sentinel;
+  int laserSample;
+  unsigned int last_sample_time;
+  
+};
+
+struct MSG_ANGLE{
+  int sentinel;
+  int azimuth;
+  int elevation;
+  unsigned int time; 
+};
+ 
+//used for magnetic reading AND accelerometer
+//struct MSG_IMU{
+  //int sentinel;
+  //int x;
+  //int y;
+  //int z;
+  //int last_sample_time;  
+//}
+
 
 
 // make two instances of the serial port (they are extern because
@@ -80,6 +103,9 @@ void SerialOutputBytes(char *pt, int size, SerialPort *serial_port);
 void SendGyroMsg(int rot_x, int rot_y, int rot_z);
 void SendButtonsMsg();
 void SendTextMsg(char* text_message); 
+
+void SendLidarMsg(int laser_reading); 
+void SendAngleMsg(int azimuth, int elevation);
  
  
 #endif

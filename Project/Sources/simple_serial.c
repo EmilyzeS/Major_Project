@@ -1,7 +1,9 @@
 #include <mc9s12dp256.h>        /* derivative information */
 
 #include "simple_serial.h"
-#include <hidef.h> 
+#include <hidef.h>
+#include <stdio.h> 
+#include <string.h>
 
 // instantiate the serial port parameters
 //   note: the complexity is hidden in the c file
@@ -67,12 +69,30 @@ void SerialOutputBytes(char *pt, int size, SerialPort *serial_port) {
   }            
 }
 
+void SendAngleMsg(int azimuth, int elevation){
+  struct MSG_HEADER angle_header = {0xABCD, "angle", 0, 0, 0xDCBA};
+  struct MSG_ANGLE angle_message = {0x5678, 0, 0, 0};
+  
+  angle_header.msg_size = sizeof(struct MSG_ANGLE);
+  angle_header.header_time = TCNT;
+  
+  angle_message.azimuth = azimuth;
+  angle_message.elevation = elevation;
+  angle_message.time = TCNT;
+  
+  SerialOutputBytes((char*)&angle_header, sizeof(struct MSG_HEADER), &SCI1);
+  SerialOutputBytes((char*)&angle_message, sizeof(struct MSG_ANGLE), &SCI1);  
+}
+
+
 
 void SendGyroMsg(int rot_x, int rot_y, int rot_z) {
   struct MSG_HEADER gyro_header = {0xABCD, "gyro", 0, 0, 0xDCBA};
   struct MSG_GYRO gyro_message = {0x9876, 0, 0, 0, 0};
                              
   gyro_header.msg_size = sizeof(struct MSG_GYRO);
+  
+  
   gyro_header.header_time = TCNT;
   
   gyro_message.last_sample_time = TCNT;
@@ -80,11 +100,22 @@ void SendGyroMsg(int rot_x, int rot_y, int rot_z) {
   gyro_message.rotation_y = rot_y;
   gyro_message.rotation_z = rot_z;
   
-  DisableInterrupts;
-  SerialInitialise(BAUD_115200, &SCI1);
   SerialOutputBytes((char*)&gyro_header, sizeof(struct MSG_HEADER), &SCI1);  
-  SerialOutputBytes((char*)&gyro_message, sizeof(struct MSG_GYRO), &SCI1);
-  EnableInterrupts;  
+  SerialOutputBytes((char*)&gyro_message, sizeof(struct MSG_GYRO), &SCI1); 
+}
+
+void SendLidarMSG(int laser_reading){
+  struct MSG_HEADER laser_header = {0xABCD, "lidar", 0, 0, 0xDCBA};
+  struct MSG_LIDAR laser_message = {0x1234, 0,0};
+  
+  laser_header.msg_size = sizeof(struct MSG_LIDAR);
+  laser_header.header_time = TCNT;
+  
+  
+  laser_message.last_sample_time = TCNT;
+  
+  SerialOutputBytes((char*)&laser_header, sizeof(struct MSG_HEADER), &SCI1);
+  SerialOutputBytes((char*)&laser_message, sizeof(struct MSG_LIDAR), &SCI1);
 }
 
 void SendButtonsMsg() {

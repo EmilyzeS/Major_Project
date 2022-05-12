@@ -67,7 +67,7 @@ __interrupt void TC6_ISR(void) {
   
   if (iterator_counter > 2100) {
     toggle = 1;
-  } else if (iterator_counter < -700) {
+  } else if (iterator_counter < -100) {
     toggle = 0;
   }
   
