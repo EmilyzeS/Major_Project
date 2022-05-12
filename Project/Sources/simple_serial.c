@@ -113,6 +113,7 @@ void SendLidarMSG(int laser_reading){
   
   
   laser_message.last_sample_time = TCNT;
+  laser_message.laserSample = laser_reading;
   
   SerialOutputBytes((char*)&laser_header, sizeof(struct MSG_HEADER), &SCI1);
   SerialOutputBytes((char*)&laser_message, sizeof(struct MSG_LIDAR), &SCI1);
