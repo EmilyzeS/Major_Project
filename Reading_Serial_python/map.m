@@ -19,6 +19,7 @@ time_intervals = csvread('lidar.csv');
 [num_angle_readings, ~] = size(angles);
 [number_lidar_readings, ~] = size(time_intervals);
 
+%deletes uneven data was sent if was cut before the recieving
 while(num_angle_readings ~= number_lidar_readings)
     
     [num_angle_readings, ~] = size(angles);
@@ -29,9 +30,7 @@ while(num_angle_readings ~= number_lidar_readings)
     elseif (num_angle_readings < number_lidar_readings)
         time_intervals = time_intervals(1:end-1, :);      
     end
-    
-    
-    
+   
     
 end
 
