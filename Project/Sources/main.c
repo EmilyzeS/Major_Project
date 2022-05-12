@@ -155,7 +155,7 @@ void main(void) {
     
     //SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.y);
     //SendLidarMSG(singleSample);
-    SendLidarMSG(singleSample);
+    SendLidarMsg(singleSample);
     SendAngleMsg(PWMDTY67, PWMDTY45);
     // output the data to serial
    // SerialOutputString(buffer, &SCI1);

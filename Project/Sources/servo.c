@@ -30,7 +30,6 @@ void PWMinitialise(void){
 void setServoPose(int azimuth, int elevation){  
     //PWMDTY45 = (int)(ZERO_ELEVATION_DUTY + elevation);  // Sets elevation to duty cycle using PWM 45
     PWMDTY67 = (int)(ZERO_AZIMUTH_DUTY + azimuth);   // Sets azimuth to duty cycle using PWM 67
-    //printf("%i", PWMDTY67);
 }
 
 
