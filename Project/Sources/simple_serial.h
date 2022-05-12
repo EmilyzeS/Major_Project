@@ -42,7 +42,7 @@ struct MSG_BUTTONS{
 
 struct MSG_LIDAR{
   int sentinel;
-  int laserSample;
+  unsigned long laserSample;
   unsigned int last_sample_time;
   
 };
@@ -104,7 +104,7 @@ void SendGyroMsg(int rot_x, int rot_y, int rot_z);
 void SendButtonsMsg();
 void SendTextMsg(char* text_message); 
 
-void SendLidarMsg(int laser_reading); 
+void SendLidarMsg(unsigned long laser_reading); 
 void SendAngleMsg(int azimuth, int elevation);
  
  

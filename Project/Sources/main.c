@@ -151,14 +151,13 @@ void main(void) {
       
     
     // format the string of the sensor data to go the the serial    
-   // sprintf(buffer, "%lu, %d, %d, %d, %0.2f, %0.2f, %0.2f, %d, %d, %d, %i \r\n", singleSample, read_gyro.x, read_gyro.y, read_gyro.z, scaled_accel.x, scaled_accel.y, scaled_accel.z, read_magnet.x, read_magnet.y, read_magnet.z, PWMDTY67);
+    //sprintf(buffer, "%i, %lu, %d, %d, %d, %0.2f, %0.2f, %0.2f, %d, %d, %d, %i \r\n",sizeof(unsigned long), singleSample, read_gyro.x, read_gyro.y, read_gyro.z, scaled_accel.x, scaled_accel.y, scaled_accel.z, read_magnet.x, read_magnet.y, read_magnet.z, PWMDTY67);
     
     //SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.y);
-    //SendLidarMSG(singleSample);
     SendLidarMSG(singleSample);
     SendAngleMsg(PWMDTY67, PWMDTY45);
     // output the data to serial
-   // SerialOutputString(buffer, &SCI1);
+    //SerialOutputString(buffer, &SCI1);
     
     
     

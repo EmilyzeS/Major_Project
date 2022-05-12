@@ -104,7 +104,7 @@ void SendGyroMsg(int rot_x, int rot_y, int rot_z) {
   SerialOutputBytes((char*)&gyro_message, sizeof(struct MSG_GYRO), &SCI1); 
 }
 
-void SendLidarMSG(int laser_reading){
+void SendLidarMSG(unsigned long laser_reading){
   struct MSG_HEADER laser_header = {0xABCD, "lidar", 0, 0, 0xDCBA};
   struct MSG_LIDAR laser_message = {0x1234, 0,0};
   
