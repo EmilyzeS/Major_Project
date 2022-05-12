@@ -68,7 +68,7 @@ def read_packet(f):
         lidar_bytes = f.read(header_data[2])
         lidar_data = struct.unpack(">hhH", lidar_bytes)
 
-        g = open('Desktop\Major_Project\Reading_Serial_python\lidar.txt.txt', 'a')
+        g = open('Desktop\Major_Project\Reading_Serial_python\lidar.txt', 'a')
         g.writelines(str(lidar_data[1]) + "\n")
         g.close()
 
