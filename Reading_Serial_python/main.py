@@ -59,7 +59,7 @@ def read_packet(f):
         angle_data = struct.unpack(">hhhH", angle_bytes)
 
         g = open('Desktop\Major_Project\Reading_Serial_python\gledata.txt', 'a')
-        g.writelines("azimuth: "+ str(angle_data[1])+ "elevation: " + str(angle_data[2]) + "\n")
+        g.writelines("azimuth: "+ str(angle_data[1])+ " elevation: " + str(angle_data[2]) + "\n")
         g.close()
     elif message_type == b"lidar":
         lidar_bytes = f.read(header_data[2])

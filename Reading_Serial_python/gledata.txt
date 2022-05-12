@@ -1,304 +1,300 @@
-azimuth: 2636elevation: 4600
-azimuth: 2614elevation: 4600
-azimuth: 2592elevation: 4600
-azimuth: 2569elevation: 4600
-azimuth: 2547elevation: 4600
-azimuth: 2525elevation: 4600
-azimuth: 2502elevation: 4600
-azimuth: 2480elevation: 4600
-azimuth: 2458elevation: 4600
-azimuth: 2435elevation: 4600
-azimuth: 2413elevation: 4600
-azimuth: 2391elevation: 4600
-azimuth: 2368elevation: 4600
-azimuth: 2346elevation: 4600
-azimuth: 2324elevation: 4600
-azimuth: 2302elevation: 4600
-azimuth: 2280elevation: 4600
-azimuth: 2258elevation: 4600
-azimuth: 2235elevation: 4600
-azimuth: 2213elevation: 4600
-azimuth: 2192elevation: 4600
-azimuth: 2169elevation: 4600
-azimuth: 2147elevation: 4600
-azimuth: 2125elevation: 4600
-azimuth: 2102elevation: 4600
-azimuth: 2080elevation: 4600
-azimuth: 2058elevation: 4600
-azimuth: 2035elevation: 4600
-azimuth: 2013elevation: 4600
-azimuth: 1991elevation: 4600
-azimuth: 1968elevation: 4600
-azimuth: 1952elevation: 4600
-azimuth: 1974elevation: 4600
-azimuth: 1997elevation: 4600
-azimuth: 2019elevation: 4600
-azimuth: 2041elevation: 4600
-azimuth: 2064elevation: 4600
-azimuth: 2086elevation: 4600
-azimuth: 2107elevation: 4600
-azimuth: 2130elevation: 4600
-azimuth: 2152elevation: 4600
-azimuth: 2174elevation: 4600
-azimuth: 2196elevation: 4600
-azimuth: 2218elevation: 4600
-azimuth: 2240elevation: 4600
-azimuth: 2263elevation: 4600
-azimuth: 2285elevation: 4600
-azimuth: 2307elevation: 4600
-azimuth: 2330elevation: 4600
-azimuth: 2352elevation: 4600
-azimuth: 2374elevation: 4600
-azimuth: 2397elevation: 4600
-azimuth: 2419elevation: 4600
-azimuth: 2441elevation: 4600
-azimuth: 2464elevation: 4600
-azimuth: 2486elevation: 4600
-azimuth: 2508elevation: 4600
-azimuth: 2531elevation: 4600
-azimuth: 2553elevation: 4600
-azimuth: 2575elevation: 4600
-azimuth: 2598elevation: 4600
-azimuth: 2620elevation: 4600
-azimuth: 2642elevation: 4600
-azimuth: 2665elevation: 4600
-azimuth: 2687elevation: 4600
-azimuth: 2709elevation: 4600
-azimuth: 2732elevation: 4600
-azimuth: 2753elevation: 4600
-azimuth: 2775elevation: 4600
-azimuth: 2798elevation: 4600
-azimuth: 2820elevation: 4600
-azimuth: 2842elevation: 4600
-azimuth: 2864elevation: 4600
-azimuth: 2886elevation: 4600
-azimuth: 2908elevation: 4600
-azimuth: 2931elevation: 4600
-azimuth: 2953elevation: 4600
-azimuth: 2975elevation: 4600
-azimuth: 2998elevation: 4600
-azimuth: 3020elevation: 4600
-azimuth: 3041elevation: 4600
-azimuth: 3064elevation: 4600
-azimuth: 3086elevation: 4600
-azimuth: 3108elevation: 4600
-azimuth: 3130elevation: 4600
-azimuth: 3152elevation: 4600
-azimuth: 3174elevation: 4600
-azimuth: 3197elevation: 4600
-azimuth: 3219elevation: 4600
-azimuth: 3241elevation: 4600
-azimuth: 3264elevation: 4600
-azimuth: 3286elevation: 4600
-azimuth: 3308elevation: 4600
-azimuth: 3331elevation: 4600
-azimuth: 3352elevation: 4600
-azimuth: 3374elevation: 4600
-azimuth: 3397elevation: 4600
-azimuth: 3419elevation: 4600
-azimuth: 3441elevation: 4600
-azimuth: 3464elevation: 4600
-azimuth: 3486elevation: 4600
-azimuth: 3508elevation: 4600
-azimuth: 3531elevation: 4600
-azimuth: 3553elevation: 4600
-azimuth: 3575elevation: 4600
-azimuth: 3597elevation: 4600
-azimuth: 3619elevation: 4600
-azimuth: 3641elevation: 4600
-azimuth: 3664elevation: 4600
-azimuth: 3686elevation: 4600
-azimuth: 3708elevation: 4600
-azimuth: 3730elevation: 4600
-azimuth: 3752elevation: 4600
-azimuth: 3774elevation: 4600
-azimuth: 3797elevation: 4600
-azimuth: 3818elevation: 4600
-azimuth: 3840elevation: 4600
-azimuth: 3863elevation: 4600
-azimuth: 3885elevation: 4600
-azimuth: 3907elevation: 4600
-azimuth: 3930elevation: 4600
-azimuth: 3952elevation: 4600
-azimuth: 3974elevation: 4600
-azimuth: 3997elevation: 4600
-azimuth: 4019elevation: 4600
-azimuth: 4041elevation: 4600
-azimuth: 4064elevation: 4600
-azimuth: 4086elevation: 4600
-azimuth: 4108elevation: 4600
-azimuth: 4131elevation: 4600
-azimuth: 4149elevation: 4600
-azimuth: 4127elevation: 4600
-azimuth: 4104elevation: 4600
-azimuth: 4082elevation: 4600
-azimuth: 4060elevation: 4600
-azimuth: 4037elevation: 4600
-azimuth: 4015elevation: 4600
-azimuth: 3993elevation: 4600
-azimuth: 3970elevation: 4600
-azimuth: 3948elevation: 4600
-azimuth: 3926elevation: 4600
-azimuth: 3903elevation: 4600
-azimuth: 3881elevation: 4600
-azimuth: 3860elevation: 4600
-azimuth: 3837elevation: 4600
-azimuth: 3816elevation: 4600
-azimuth: 3794elevation: 4600
-azimuth: 3771elevation: 4600
-azimuth: 3749elevation: 4600
-azimuth: 3727elevation: 4600
-azimuth: 3704elevation: 4600
-azimuth: 3682elevation: 4600
-azimuth: 3661elevation: 4600
-azimuth: 3638elevation: 4600
-azimuth: 3616elevation: 4600
-azimuth: 3594elevation: 4600
-azimuth: 3571elevation: 4600
-azimuth: 3549elevation: 4600
-azimuth: 3527elevation: 4600
-azimuth: 3504elevation: 4600
-azimuth: 3482elevation: 4600
-azimuth: 3460elevation: 4600
-azimuth: 3437elevation: 4600
-azimuth: 3415elevation: 4600
-azimuth: 3393elevation: 4600
-azimuth: 3370elevation: 4600
-azimuth: 3348elevation: 4600
-azimuth: 3326elevation: 4600
-azimuth: 3304elevation: 4600
-azimuth: 3282elevation: 4600
-azimuth: 3260elevation: 4600
-azimuth: 3237elevation: 4600
-azimuth: 3216elevation: 4600
-azimuth: 3194elevation: 4600
-azimuth: 3171elevation: 4600
-azimuth: 3149elevation: 4600
-azimuth: 3128elevation: 4600
-azimuth: 3105elevation: 4600
-azimuth: 3083elevation: 4600
-azimuth: 3061elevation: 4600
-azimuth: 3038elevation: 4600
-azimuth: 3017elevation: 4600
-azimuth: 2995elevation: 4600
-azimuth: 2972elevation: 4600
-azimuth: 2950elevation: 4600
-azimuth: 2929elevation: 4600
-azimuth: 2906elevation: 4600
-azimuth: 2884elevation: 4600
-azimuth: 2862elevation: 4600
-azimuth: 2839elevation: 4600
-azimuth: 2818elevation: 4600
-azimuth: 2796elevation: 4600
-azimuth: 2773elevation: 4600
-azimuth: 2751elevation: 4600
-azimuth: 2729elevation: 4600
-azimuth: 2707elevation: 4600
-azimuth: 2685elevation: 4600
-azimuth: 2663elevation: 4600
-azimuth: 2640elevation: 4600
-azimuth: 2618elevation: 4600
-azimuth: 2597elevation: 4600
-azimuth: 2574elevation: 4600
-azimuth: 2552elevation: 4600
-azimuth: 2530elevation: 4600
-azimuth: 2508elevation: 4600
-azimuth: 2486elevation: 4600
-azimuth: 2464elevation: 4600
-azimuth: 2441elevation: 4600
-azimuth: 2419elevation: 4600
-azimuth: 2398elevation: 4600
-azimuth: 2375elevation: 4600
-azimuth: 2353elevation: 4600
-azimuth: 2331elevation: 4600
-azimuth: 2309elevation: 4600
-azimuth: 2287elevation: 4600
-azimuth: 2265elevation: 4600
-azimuth: 2242elevation: 4600
-azimuth: 2221elevation: 4600
-azimuth: 2199elevation: 4600
-azimuth: 2176elevation: 4600
-azimuth: 2154elevation: 4600
-azimuth: 2132elevation: 4600
-azimuth: 2109elevation: 4600
-azimuth: 2087elevation: 4600
-azimuth: 2065elevation: 4600
-azimuth: 2042elevation: 4600
-azimuth: 2020elevation: 4600
-azimuth: 1998elevation: 4600
-azimuth: 1975elevation: 4600
-azimuth: 1953elevation: 4600
-azimuth: 1966elevation: 4600
-azimuth: 1989elevation: 4600
-azimuth: 2011elevation: 4600
-azimuth: 2033elevation: 4600
-azimuth: 2056elevation: 4600
-azimuth: 2078elevation: 4600
-azimuth: 2100elevation: 4600
-azimuth: 2123elevation: 4600
-azimuth: 2145elevation: 4600
-azimuth: 2167elevation: 4600
-azimuth: 2190elevation: 4600
-azimuth: 2212elevation: 4600
-azimuth: 2234elevation: 4600
-azimuth: 2257elevation: 4600
-azimuth: 2279elevation: 4600
-azimuth: 2301elevation: 4600
-azimuth: 2324elevation: 4600
-azimuth: 2346elevation: 4600
-azimuth: 2367elevation: 4600
-azimuth: 2390elevation: 4600
-azimuth: 2412elevation: 4600
-azimuth: 2434elevation: 4600
-azimuth: 2457elevation: 4600
-azimuth: 2479elevation: 4600
-azimuth: 2501elevation: 4600
-azimuth: 2523elevation: 4600
-azimuth: 2545elevation: 4600
-azimuth: 2567elevation: 4600
-azimuth: 2590elevation: 4600
-azimuth: 2612elevation: 4600
-azimuth: 2634elevation: 4600
-azimuth: 2656elevation: 4600
-azimuth: 2678elevation: 4600
-azimuth: 2700elevation: 4600
-azimuth: 2723elevation: 4600
-azimuth: 2745elevation: 4600
-azimuth: 2767elevation: 4600
-azimuth: 2790elevation: 4600
-azimuth: 2812elevation: 4600
-azimuth: 2834elevation: 4600
-azimuth: 2857elevation: 4600
-azimuth: 2879elevation: 4600
-azimuth: 2901elevation: 4600
-azimuth: 2924elevation: 4600
-azimuth: 2946elevation: 4600
-azimuth: 2968elevation: 4600
-azimuth: 2991elevation: 4600
-azimuth: 3013elevation: 4600
-azimuth: 3035elevation: 4600
-azimuth: 3058elevation: 4600
-azimuth: 3080elevation: 4600
-azimuth: 3102elevation: 4600
-azimuth: 3125elevation: 4600
-azimuth: 3147elevation: 4600
-azimuth: 3169elevation: 4600
-azimuth: 3192elevation: 4600
-azimuth: 3214elevation: 4600
-azimuth: 3236elevation: 4600
-azimuth: 3259elevation: 4600
-azimuth: 3281elevation: 4600
-azimuth: 3303elevation: 4600
-azimuth: 3326elevation: 4600
-azimuth: 3348elevation: 4600
-azimuth: 3370elevation: 4600
-azimuth: 3393elevation: 4600
-azimuth: 3415elevation: 4600
-azimuth: 3437elevation: 4600
-azimuth: 3460elevation: 4600
-azimuth: 3482elevation: 4600
-azimuth: 3504elevation: 4600
-azimuth: 3527elevation: 4600
-azimuth: 3549elevation: 4600
-azimuth: 3571elevation: 4600
-azimuth: 3594elevation: 4600
+azimuth: 3886 elevation: 4600
+azimuth: 3864 elevation: 4600
+azimuth: 3841 elevation: 4600
+azimuth: 3819 elevation: 4600
+azimuth: 3797 elevation: 4600
+azimuth: 3774 elevation: 4600
+azimuth: 3752 elevation: 4600
+azimuth: 3730 elevation: 4600
+azimuth: 3707 elevation: 4600
+azimuth: 3685 elevation: 4600
+azimuth: 3663 elevation: 4600
+azimuth: 3640 elevation: 4600
+azimuth: 3618 elevation: 4600
+azimuth: 3596 elevation: 4600
+azimuth: 3573 elevation: 4600
+azimuth: 3551 elevation: 4600
+azimuth: 3530 elevation: 4600
+azimuth: 3507 elevation: 4600
+azimuth: 3485 elevation: 4600
+azimuth: 3463 elevation: 4600
+azimuth: 3440 elevation: 4600
+azimuth: 3418 elevation: 4600
+azimuth: 3396 elevation: 4600
+azimuth: 3374 elevation: 4600
+azimuth: 3352 elevation: 4600
+azimuth: 3330 elevation: 4600
+azimuth: 3307 elevation: 4600
+azimuth: 3285 elevation: 4600
+azimuth: 3263 elevation: 4600
+azimuth: 3240 elevation: 4600
+azimuth: 3218 elevation: 4600
+azimuth: 3196 elevation: 4600
+azimuth: 3173 elevation: 4600
+azimuth: 3151 elevation: 4600
+azimuth: 3128 elevation: 4600
+azimuth: 3106 elevation: 4600
+azimuth: 3085 elevation: 4600
+azimuth: 3063 elevation: 4600
+azimuth: 3040 elevation: 4600
+azimuth: 3018 elevation: 4600
+azimuth: 2996 elevation: 4600
+azimuth: 2973 elevation: 4600
+azimuth: 2951 elevation: 4600
+azimuth: 2928 elevation: 4600
+azimuth: 2906 elevation: 4600
+azimuth: 2884 elevation: 4600
+azimuth: 2861 elevation: 4600
+azimuth: 2839 elevation: 4600
+azimuth: 2817 elevation: 4600
+azimuth: 2794 elevation: 4600
+azimuth: 2772 elevation: 4600
+azimuth: 2750 elevation: 4600
+azimuth: 2727 elevation: 4600
+azimuth: 2705 elevation: 4600
+azimuth: 2683 elevation: 4600
+azimuth: 2660 elevation: 4600
+azimuth: 2638 elevation: 4600
+azimuth: 2616 elevation: 4600
+azimuth: 2593 elevation: 4600
+azimuth: 2571 elevation: 4600
+azimuth: 2549 elevation: 4600
+azimuth: 2526 elevation: 4600
+azimuth: 2504 elevation: 4600
+azimuth: 2482 elevation: 4600
+azimuth: 2459 elevation: 4600
+azimuth: 2437 elevation: 4600
+azimuth: 2415 elevation: 4600
+azimuth: 2392 elevation: 4600
+azimuth: 2370 elevation: 4600
+azimuth: 2348 elevation: 4600
+azimuth: 2325 elevation: 4600
+azimuth: 2303 elevation: 4600
+azimuth: 2281 elevation: 4600
+azimuth: 2258 elevation: 4600
+azimuth: 2237 elevation: 4600
+azimuth: 2215 elevation: 4600
+azimuth: 2192 elevation: 4600
+azimuth: 2170 elevation: 4600
+azimuth: 2148 elevation: 4600
+azimuth: 2125 elevation: 4600
+azimuth: 2103 elevation: 4600
+azimuth: 2081 elevation: 4600
+azimuth: 2058 elevation: 4600
+azimuth: 2036 elevation: 4600
+azimuth: 2015 elevation: 4600
+azimuth: 1992 elevation: 4600
+azimuth: 1970 elevation: 4600
+azimuth: 1950 elevation: 4600
+azimuth: 1973 elevation: 4600
+azimuth: 1994 elevation: 4600
+azimuth: 2016 elevation: 4600
+azimuth: 2039 elevation: 4600
+azimuth: 2061 elevation: 4600
+azimuth: 2083 elevation: 4600
+azimuth: 2106 elevation: 4600
+azimuth: 2128 elevation: 4600
+azimuth: 2150 elevation: 4600
+azimuth: 2173 elevation: 4600
+azimuth: 2195 elevation: 4600
+azimuth: 2216 elevation: 4600
+azimuth: 2239 elevation: 4600
+azimuth: 2261 elevation: 4600
+azimuth: 2283 elevation: 4600
+azimuth: 2305 elevation: 4600
+azimuth: 2327 elevation: 4600
+azimuth: 2349 elevation: 4600
+azimuth: 2372 elevation: 4600
+azimuth: 2394 elevation: 4600
+azimuth: 2416 elevation: 4600
+azimuth: 2439 elevation: 4600
+azimuth: 2461 elevation: 4600
+azimuth: 2483 elevation: 4600
+azimuth: 2506 elevation: 4600
+azimuth: 2528 elevation: 4600
+azimuth: 2550 elevation: 4600
+azimuth: 2573 elevation: 4600
+azimuth: 2595 elevation: 4600
+azimuth: 2617 elevation: 4600
+azimuth: 2640 elevation: 4600
+azimuth: 2662 elevation: 4600
+azimuth: 2684 elevation: 4600
+azimuth: 2707 elevation: 4600
+azimuth: 2729 elevation: 4600
+azimuth: 2751 elevation: 4600
+azimuth: 2774 elevation: 4600
+azimuth: 2796 elevation: 4600
+azimuth: 2818 elevation: 4600
+azimuth: 2841 elevation: 4600
+azimuth: 2863 elevation: 4600
+azimuth: 2885 elevation: 4600
+azimuth: 2908 elevation: 4600
+azimuth: 2930 elevation: 4600
+azimuth: 2952 elevation: 4600
+azimuth: 2975 elevation: 4600
+azimuth: 2997 elevation: 4600
+azimuth: 3019 elevation: 4600
+azimuth: 3042 elevation: 4600
+azimuth: 3064 elevation: 4600
+azimuth: 3086 elevation: 4600
+azimuth: 3109 elevation: 4600
+azimuth: 3131 elevation: 4600
+azimuth: 3153 elevation: 4600
+azimuth: 3176 elevation: 4600
+azimuth: 3198 elevation: 4600
+azimuth: 3220 elevation: 4600
+azimuth: 3243 elevation: 4600
+azimuth: 3265 elevation: 4600
+azimuth: 3287 elevation: 4600
+azimuth: 3310 elevation: 4600
+azimuth: 3332 elevation: 4600
+azimuth: 3354 elevation: 4600
+azimuth: 3377 elevation: 4600
+azimuth: 3399 elevation: 4600
+azimuth: 3421 elevation: 4600
+azimuth: 3444 elevation: 4600
+azimuth: 3466 elevation: 4600
+azimuth: 3488 elevation: 4600
+azimuth: 3511 elevation: 4600
+azimuth: 3533 elevation: 4600
+azimuth: 3555 elevation: 4600
+azimuth: 3578 elevation: 4600
+azimuth: 3600 elevation: 4600
+azimuth: 3622 elevation: 4600
+azimuth: 3644 elevation: 4600
+azimuth: 3666 elevation: 4600
+azimuth: 3688 elevation: 4600
+azimuth: 3711 elevation: 4600
+azimuth: 3733 elevation: 4600
+azimuth: 3755 elevation: 4600
+azimuth: 3778 elevation: 4600
+azimuth: 3800 elevation: 4600
+azimuth: 3822 elevation: 4600
+azimuth: 3845 elevation: 4600
+azimuth: 3866 elevation: 4600
+azimuth: 3888 elevation: 4600
+azimuth: 3911 elevation: 4600
+azimuth: 3933 elevation: 4600
+azimuth: 3955 elevation: 4600
+azimuth: 3978 elevation: 4600
+azimuth: 4000 elevation: 4600
+azimuth: 4021 elevation: 4600
+azimuth: 4044 elevation: 4600
+azimuth: 4066 elevation: 4600
+azimuth: 4088 elevation: 4600
+azimuth: 4111 elevation: 4600
+azimuth: 4133 elevation: 4600
+azimuth: 4147 elevation: 4600
+azimuth: 4124 elevation: 4600
+azimuth: 4102 elevation: 4600
+azimuth: 4080 elevation: 4600
+azimuth: 4057 elevation: 4600
+azimuth: 4035 elevation: 4600
+azimuth: 4013 elevation: 4600
+azimuth: 3990 elevation: 4600
+azimuth: 3968 elevation: 4600
+azimuth: 3946 elevation: 4600
+azimuth: 3923 elevation: 4600
+azimuth: 3901 elevation: 4600
+azimuth: 3879 elevation: 4600
+azimuth: 3856 elevation: 4600
+azimuth: 3834 elevation: 4600
+azimuth: 3813 elevation: 4600
+azimuth: 3790 elevation: 4600
+azimuth: 3768 elevation: 4600
+azimuth: 3746 elevation: 4600
+azimuth: 3723 elevation: 4600
+azimuth: 3702 elevation: 4600
+azimuth: 3680 elevation: 4600
+azimuth: 3657 elevation: 4600
+azimuth: 3636 elevation: 4600
+azimuth: 3614 elevation: 4600
+azimuth: 3591 elevation: 4600
+azimuth: 3569 elevation: 4600
+azimuth: 3547 elevation: 4600
+azimuth: 3524 elevation: 4600
+azimuth: 3503 elevation: 4600
+azimuth: 3481 elevation: 4600
+azimuth: 3458 elevation: 4600
+azimuth: 3436 elevation: 4600
+azimuth: 3414 elevation: 4600
+azimuth: 3391 elevation: 4600
+azimuth: 3369 elevation: 4600
+azimuth: 3347 elevation: 4600
+azimuth: 3324 elevation: 4600
+azimuth: 3302 elevation: 4600
+azimuth: 3280 elevation: 4600
+azimuth: 3257 elevation: 4600
+azimuth: 3235 elevation: 4600
+azimuth: 3213 elevation: 4600
+azimuth: 3191 elevation: 4600
+azimuth: 3169 elevation: 4600
+azimuth: 3147 elevation: 4600
+azimuth: 3124 elevation: 4600
+azimuth: 3102 elevation: 4600
+azimuth: 3080 elevation: 4600
+azimuth: 3057 elevation: 4600
+azimuth: 3035 elevation: 4600
+azimuth: 3013 elevation: 4600
+azimuth: 2990 elevation: 4600
+azimuth: 2969 elevation: 4600
+azimuth: 2947 elevation: 4600
+azimuth: 2924 elevation: 4600
+azimuth: 2902 elevation: 4600
+azimuth: 2880 elevation: 4600
+azimuth: 2857 elevation: 4600
+azimuth: 2835 elevation: 4600
+azimuth: 2813 elevation: 4600
+azimuth: 2790 elevation: 4600
+azimuth: 2768 elevation: 4600
+azimuth: 2746 elevation: 4600
+azimuth: 2723 elevation: 4600
+azimuth: 2701 elevation: 4600
+azimuth: 2679 elevation: 4600
+azimuth: 2656 elevation: 4600
+azimuth: 2635 elevation: 4600
+azimuth: 2613 elevation: 4600
+azimuth: 2590 elevation: 4600
+azimuth: 2568 elevation: 4600
+azimuth: 2546 elevation: 4600
+azimuth: 2523 elevation: 4600
+azimuth: 2501 elevation: 4600
+azimuth: 2479 elevation: 4600
+azimuth: 2456 elevation: 4600
+azimuth: 2434 elevation: 4600
+azimuth: 2412 elevation: 4600
+azimuth: 2389 elevation: 4600
+azimuth: 2367 elevation: 4600
+azimuth: 2345 elevation: 4600
+azimuth: 2322 elevation: 4600
+azimuth: 2300 elevation: 4600
+azimuth: 2278 elevation: 4600
+azimuth: 2255 elevation: 4600
+azimuth: 2233 elevation: 4600
+azimuth: 2211 elevation: 4600
+azimuth: 2189 elevation: 4600
+azimuth: 2167 elevation: 4600
+azimuth: 2145 elevation: 4600
+azimuth: 2122 elevation: 4600
+azimuth: 2100 elevation: 4600
+azimuth: 2078 elevation: 4600
+azimuth: 2055 elevation: 4600
+azimuth: 2033 elevation: 4600
+azimuth: 2011 elevation: 4600
+azimuth: 1988 elevation: 4600
+azimuth: 1966 elevation: 4600
+azimuth: 1954 elevation: 4600
+azimuth: 1977 elevation: 4600
+azimuth: 1999 elevation: 4600
+azimuth: 2020 elevation: 4600
+azimuth: 2043 elevation: 4600
+azimuth: 2065 elevation: 4600
+azimuth: 2087 elevation: 4600
+azimuth: 2110 elevation: 4600
+azimuth: 2132 elevation: 4600
+azimuth: 2154 elevation: 4600
+azimuth: 2177 elevation: 4600
+azimuth: 2199 elevation: 4600
+azimuth: 2221 elevation: 4600
+azimuth: 2244 elevation: 4600
+azimuth: 2266 elevation: 4600
