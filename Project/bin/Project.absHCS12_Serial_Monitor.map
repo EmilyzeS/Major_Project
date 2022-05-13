@@ -54,7 +54,7 @@ Section Name                    Size  Type     From       To       Segment
 .rodata1                         207     R     0xC0F6     0xC1C4   ROM_C000
 NON_BANKED                      1481     R     0xC1C5     0xC78D   ROM_C000
 .copy                             26     R     0xC78E     0xC7A7   ROM_C000
-.text                           4184     R   0x308000   0x309057   PAGE_30
+.text                           4189     R   0x308000   0x30905C   PAGE_30
 .stack                          4096   R/W     0x1000     0x1FFF   RAM
 .data                             20   R/W     0x2000     0x2013   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
@@ -403,7 +403,7 @@ NON_BANKED                      1481     R     0xC1C5     0xC78D   ROM_C000
 .vectSeg342_vect                   2     R     0xFFFE     0xFFFF   .vectSeg342
 
 Summary of section sizes per section type:
-READ_ONLY (R):        1880 (dec:     6272)
+READ_ONLY (R):        1885 (dec:     6277)
 READ_WRITE (R/W):     1033 (dec:     4147)
 NO_INIT (N/I):         190 (dec:      400)
 
@@ -916,28 +916,28 @@ MODULE:                 -- simple_serial.c.o --
      SerialInitialise                        308E20      42      66       2   .text       
      SerialOutputChar                        308E62      11      17       4   .text       
      SerialOutputString                      308E73      19      25       4   .text       
-     SerialOutputBytes                       308E8C      20      32       8   .text       
-     SendAngleMsg                            308EAC      77     119       2   .text       
-     SendLidarMsg                            308F23      75     117       2   .text       
+     SerialOutputBytes                       308E8C      25      37       8   .text       
+     SendAngleMsg                            308EB1      77     119       2   .text       
+     SendLidarMsg                            308F28      75     117       2   .text       
 - VARIABLES:
      SCI1                                      2008       C      12       7   .data       
 MODULE:                 -- accelerometer.c.o --
 - PROCEDURES:
-     convertUnits                            308F98      5E      94       2   .text       
+     convertUnits                            308F9D      5E      94       2   .text       
 - VARIABLES:
 MODULE:                 -- servo.c.o --
 - PROCEDURES:
-     PWMinitialise                           308FF6      27      39       2   .text       
-     setServoPose                            30901D       8       8       4   .text       
-     Init_TC6                                309025      13      19       2   .text       
+     PWMinitialise                           308FFB      27      39       2   .text       
+     setServoPose                            309022       8       8       4   .text       
+     Init_TC6                                30902A      13      19       2   .text       
      TC6_ISR                                   C6E6      61      97       1   NON_BANKED  
 - VARIABLES:
      iterator_counter                          2021       4       4      11   .bss        
      toggle                                    2025       2       2       2   .bss        
 MODULE:                 -- laser.c.o --
 - PROCEDURES:
-     laserInit                               309038      13      19       2   .text       
-     GetLatestLaserSample                    30904B       D      13       2   .text       
+     laserInit                               30903D      13      19       2   .text       
+     GetLatestLaserSample                    309050       D      13       2   .text       
      TC1_ISR                                   C747      47      71       1   NON_BANKED  
 - VARIABLES:
      riseEdge                                  2027       4       4       7   .bss        
@@ -964,7 +964,7 @@ MODULE STATISTIC
   isr_vectors.c.o                              0     16    126
   l3g4200d.c.o                                 8    188      0
   iic.c.o                                      6    545      0
-  simple_serial.c.o                           12    376      0
+  simple_serial.c.o                           12    381      0
   accelerometer.c.o                            0     94      0
   servo.c.o                                    6    163      0
   laser.c.o                                   12    103      0
@@ -2147,15 +2147,15 @@ OBJECT LIST SORTED BY ADDRESS
      SerialInitialise                        308E20      42      66       2   .text       
      SerialOutputChar                        308E62      11      17       4   .text       
      SerialOutputString                      308E73      19      25       4   .text       
-     SerialOutputBytes                       308E8C      20      32       8   .text       
-     SendAngleMsg                            308EAC      77     119       2   .text       
-     SendLidarMsg                            308F23      75     117       2   .text       
-     convertUnits                            308F98      5E      94       2   .text       
-     PWMinitialise                           308FF6      27      39       2   .text       
-     setServoPose                            30901D       8       8       4   .text       
-     Init_TC6                                309025      13      19       2   .text       
-     laserInit                               309038      13      19       2   .text       
-     GetLatestLaserSample                    30904B       D      13       2   .text       
+     SerialOutputBytes                       308E8C      25      37       8   .text       
+     SendAngleMsg                            308EB1      77     119       2   .text       
+     SendLidarMsg                            308F28      75     117       2   .text       
+     convertUnits                            308F9D      5E      94       2   .text       
+     PWMinitialise                           308FFB      27      39       2   .text       
+     setServoPose                            309022       8       8       4   .text       
+     Init_TC6                                30902A      13      19       2   .text       
+     laserInit                               30903D      13      19       2   .text       
+     GetLatestLaserSample                    309050       D      13       2   .text       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -2177,7 +2177,7 @@ rtshc12.c.o (ansib.lib):
 iic.c.o:
   iicreceiveone 
 simple_serial.c.o:
-  SendGyroMsg SendButtonsMsg SendTextMsg 
+  SendAccelMsg SendMagMsg SendGyroMsg SendButtonsMsg SendTextMsg 
 NOT USED VARIABLES
 FANSI.C.o (ansib.lib):
   infinity errno 
@@ -2590,5 +2590,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 7
-Total size of all blocks to be downloaded: 6272
+Total size of all blocks to be downloaded: 6277
 

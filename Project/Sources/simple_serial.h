@@ -54,14 +54,22 @@ struct MSG_ANGLE{
   unsigned int time; 
 };
  
-//used for magnetic reading AND accelerometer
-//struct MSG_IMU{
-  //int sentinel;
-  //int x;
-  //int y;
-  //int z;
-  //int last_sample_time;  
-//}
+
+struct MSG_ACCEL{
+  int sentinel;
+  int x;
+  int y;
+  int z;
+  unsigned int time;  
+};
+
+struct MSG_MAG{
+  int sentinel;
+  int x;
+  int y;
+  int z;
+  unsigned int time;
+ };
 
 
 

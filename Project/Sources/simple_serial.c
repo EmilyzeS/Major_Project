@@ -84,6 +84,41 @@ void SendAngleMsg(int azimuth, int elevation){
   SerialOutputBytes((char*)&angle_message, sizeof(struct MSG_ANGLE), &SCI1);  
 }
 
+void SendAccelMsg(int x, int y, int z) {
+  struct MSG_HEADER accel_header = {0xABCD, "accel", 0, 0, 0xDCBA};
+  struct MSG_ACCEL accel_message = {0x2468, 0, 0, 0, 0};
+                             
+  accel_header.msg_size = sizeof(struct MSG_MAG);
+  
+  
+  accel_header.header_time = TCNT;
+  
+  accel_message.time = TCNT;
+  accel_message.x = x;
+  accel_message.y = y;
+  accel_message.z = z;
+  
+  SerialOutputBytes((char*)&accel_header, sizeof(struct MSG_HEADER), &SCI1);  
+  SerialOutputBytes((char*)&accel_message, sizeof(struct MSG_ACCEL), &SCI1); 
+}
+
+void SendMagMsg(int x, int y, int z) {
+  struct MSG_HEADER magnet_header = {0xABCD, "magnet", 0, 0, 0xDCBA};
+  struct MSG_MAG magnet_message = {0x1357, 0, 0, 0, 0};
+                             
+  magnet_header.msg_size = sizeof(struct MSG_MAG);
+  
+  
+  magnet_header.header_time = TCNT;
+  
+  magnet_message.time = TCNT;
+  magnet_message.x = x;
+  magnet_message.y = y;
+  magnet_message.z = z;
+  
+  SerialOutputBytes((char*)&magnet_header, sizeof(struct MSG_HEADER), &SCI1);  
+  SerialOutputBytes((char*)&magnet_message, sizeof(struct MSG_MAG), &SCI1); 
+}
 
 
 void SendGyroMsg(int rot_x, int rot_y, int rot_z) {

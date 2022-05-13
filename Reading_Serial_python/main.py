@@ -1,19 +1,21 @@
 # This is a Python script to parse the example messages from a file.
-
 import time
 import serial
 import struct
 import traceback
-import csv
-import pandas as pd
-import os
+import data_output as do
 
 MSG_HEADER_SIZE = 16
 MSG_HEADER_SUM = 100487
+GYRO_SENT = 39030
+ANGLE_SENT = 22136
+LIDAR_SENT = 4660
+MAG_SENT = 4951
+ACCEL_SENT = 9320
 
-def clear_file(path : str):
-    clear = open(path, 'w')
-    clear.close()
+
+
+
 
 def read_packet(f):
     header_bytes = f.read(MSG_HEADER_SIZE)
@@ -22,25 +24,17 @@ def read_packet(f):
         # must be out of messages
         return False
 
-
-
     header_data = struct.unpack(">H8sHHH", header_bytes)
-    
 
     #checksum on the header sentinels
     if(header_data[0] + header_data[4] != MSG_HEADER_SUM):
         print("Header Sentinels Do not add up.")
         return False
 
-
-
-
-
-
     message_type = header_data[1].split(b'\0', 1)[0]  # remove the null characters from the string
     print(message_type)
 
-
+    #find what type of message was recieved
     if message_type == b"text":
         text_bytes = f.read(header_data[2])
         print("text message: " + str(text_bytes))
@@ -50,14 +44,15 @@ def read_packet(f):
         gyro_data = struct.unpack(">hhhhH", gyro_bytes)
         
         #check if sentiniel is correct
-        if (gyro_data[0] != 39030):
+        if (gyro_data[0] != GYRO_SENT):
             print("Gyro data corrupted")
             return False
 
         #write to a csv file
-        g = open('gyrodata.txt', 'a', newline='')
-        g.writelines("gyro message: " + str(gyro_data[1]) + ", " + str(gyro_data[2]) + ", " + str(gyro_data[3]) + ", time=" + str(gyro_data[4]))
-        g.close()
+        info = [gyro_data[1], gyro_data[2], gyro_data[3]]
+
+        do.write_to_csv('gyro.csv', info)
+
     elif message_type == b"buttons":
         buttons_bytes = f.read(header_data[2])
         print("buttons message: " + str(hex(buttons_bytes[1])) + ", time=" + str(buttons_bytes[2]))
@@ -69,41 +64,54 @@ def read_packet(f):
         angle_data = struct.unpack(">hhhH", angle_bytes)
 
         #check sentinel
-        if(angle_data[0] != 22136):
+        if(angle_data[0] != ANGLE_SENT):
             print("Angle data corrupted")
             return False
 
         #write to a csv file
-        g = open('angledata.csv', 'a', newline='')
-        
-        writer = csv.writer(g)
-        
         info = [int(angle_data[1]), angle_data[2]]
-        
-        writer.writerow(info)
-        
-        g.close()
+
+        do.write_to_csv('angledata.csv', info)
+
 
     elif message_type == b"lidar":
         lidar_bytes = f.read(header_data[2])
         lidar_data = struct.unpack(">hIH", lidar_bytes)
 
-        if(lidar_data[0] != 4660):
+        if(lidar_data[0] != LIDAR_SENT):
             print("Lidar data corrupted")
             return False
 
         #write to a csv file
-        g = open('lidar.csv', 'a', newline='')
-        
-        writer = csv.writer(g)
-
         info = [lidar_data[1]]
 
-        writer.writerow(info)
+        do.write_to_csv('lidar.csv', info)
 
-        g.close()
+    elif message_type == b"magnet":
+        magnet_bytes = f.read(header_data[2])
+        magnet_data = struct.unpack(">hhhhH", magnet_bytes)
+
+        if(magnet_data[0] != MAG_SENT):
+            print("Magnet Data corrupted")
+            return False
 
 
+        info = [magnet_data[1], magnet_data[2], magnet_data[3]]
+
+        do.write_to_csv('mag.csv', info)
+
+    elif message_type == b"accel":
+        accel_bytes = f.read(header_data[2])
+        accel_data = struct.unpack(">hhhhH", accel_bytes)
+
+        if(accel_data[0] != ACCEL_SENT):
+            print("Acceleration Data corrupted")
+            return False
+
+
+        info = [accel_data[1], accel_data[2], accel_data[3]]
+
+        do.write_to_csv('accel.csv', info)       
 
 
 
@@ -143,47 +151,17 @@ def read_serial(com_port):
         else:
             time.sleep(0.05)
 
+        #checks if one revolution has been made
+        do.check_if_clear_ready('angledata.csv')
 
-        check_if_clear_ready('angledata.csv')
-
-#checks if the lidar has done one complete revolution and clears the written data if it has
-def check_if_clear_ready(path : str):
-    if(os.path.getsize(path) > 1):
-
-
-
-        f = open(path, 'r')
-        f_csv = csv.reader(f)
-
-        line_count = 0
-
-        #get the last line and line count
-        for row in f_csv:
-            if(line_count == 0):
-                first_line = row
-            line_count += 1
-            last_line = row
-
-
-    
-        #if the last read angle is smaller than the first read angle by 1% 
-        #if line count > 1000 then there was an for sure and error reading so it never cleared
-        # (might not need)
-        if(line_count > 100 and (float(first_line[0])*1.02 > float(last_line[0]) ) or line_count > 1000):
-            clear_file(path)
-            clear_file('lidar.csv')
-
-        f.close()
-
-        
 
 
 # main program entry point
 if __name__ == '__main__':
 
     #clear files
-    clear_file('angledata.csv')
-    clear_file('lidar.csv')
+    do.clear_file('angledata.csv')
+    do.clear_file('lidar.csv')
+    
     while(1):
-    #read_file('C:/Users/Stewart Worrall/Documents/data/test.hex')
         read_serial("COM4")
