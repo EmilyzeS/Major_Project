@@ -66,4 +66,6 @@ x = ranges .* cosd(azimuth);
 %convert the range and angle to the y coordinate via r*sin(t)
 y = ranges .* sind(azimuth);
 
+r = sqrt(x.^2 + y.^2);
+
 scatter(x,y,"*")
