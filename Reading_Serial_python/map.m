@@ -68,4 +68,4 @@ y = ranges .* sind(azimuth);
 
 r = sqrt(x.^2 + y.^2);
 
-scatter(x,y,"*")
+scatter(r,azimuth,"*")

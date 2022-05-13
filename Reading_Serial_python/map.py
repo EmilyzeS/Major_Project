@@ -23,22 +23,22 @@ def polarToRectangular(ranges, azimuths):
 
     return hits
 
+def map():
+    C = 299792458
 
-C = 299792458
-
-lidar_readings = pd.read_csv ('lidar.csv', header = None)
-ranges = C*lidar_readings*10**(-13)
-ranges.set_axis(["Ranges"], axis = 1, inplace = True)
+    lidar_readings = pd.read_csv ('lidar.csv', header = None)
+    ranges = C*lidar_readings*10**(-13)
+    ranges.set_axis(["Ranges"], axis = 1, inplace = True)
 
 
-servo_positions = pd.read_csv('angledata.csv',  header = None)
-servo_positions.set_axis(["Azimuth", "Elevation"], axis = 1, inplace = True)
+    servo_positions = pd.read_csv('angledata.csv',  header = None)
+    servo_positions.set_axis(["Azimuth", "Elevation"], axis = 1, inplace = True)
 
-azimuths = convertAngles(servo_positions)
-hits = polarToRectangular(ranges, azimuths)
+    azimuths = convertAngles(servo_positions)
+    hits = polarToRectangular(ranges, azimuths)
 
-plt.scatter(hits['X'], hits['Y'])
-plt.show()
+    plt.scatter(hits['X'], hits['Y'])
+    plt.show()
 
 
 

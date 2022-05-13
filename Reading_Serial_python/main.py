@@ -4,6 +4,7 @@ import serial
 import struct
 import traceback
 import data_output as do
+import map
 
 MSG_HEADER_SIZE = 16
 MSG_HEADER_SUM = 100487

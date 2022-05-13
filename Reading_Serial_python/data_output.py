@@ -1,5 +1,6 @@
 import csv
 import os
+import map
 
 def clear_file(path : str):
     clear = open(path, 'w')
@@ -34,11 +35,11 @@ def check_if_clear_ready(path : str):
             last_line = row
 
 
-    
         #if the last read angle is smaller than the first read angle by 1% 
         #if line count > 1000 then there was an for sure and error reading so it never cleared
         # (might not need)
         if(line_count > 100 and (float(first_line[0])*1.02 > float(last_line[0]) ) or line_count > 1000):
+            map.map()
             clear_file(path)
             clear_file('lidar.csv')
 
