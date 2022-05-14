@@ -14,10 +14,11 @@
 #include "gyro.h"
 
 // data structures containing the raw values
+//   note: can be put into their own module
 typedef struct MagRaw {
-  uint8_t x;
-  uint8_t y;
-  uint8_t z;
+  int x;
+  int y;
+  int z;
 } MagRaw;
 
 
@@ -35,7 +36,5 @@ IIC_ERRORS getRawDataMagnet(MagRaw *raw_data);
 
 // Get the raw gyro data from the sensor
 IIC_ERRORS getRawDataGyro(GyroRaw *raw_data);
-
-void getMod(MagRaw * raw_mag);
 
 #endif

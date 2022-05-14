@@ -135,15 +135,10 @@ void main(void) {
     }
     
     error_code = getRawDataMagnet(&read_magnet);
-    if (error_code != NO_ERROR) {
-      printErrorCode(error_code);   
-    
-      error_code = iicSensorInit();
-      printErrorCode(error_code); 
-    }
-    
+
     GetLatestLaserSample(&singleSample);
-    //IMPLEMENT ERROR CODE    
+    //IMPLEMENT ERROR CODE for lidar and magnet  
+      
     #else
     
     // inject some values for simulation
@@ -155,20 +150,21 @@ void main(void) {
 
     // convert the acceleration to a scaled value
     convertUnits(&read_accel, &scaled_accel);  
-      
+    
     
     // format the string of the sensor data to go the the serial    
-   // sprintf(buffer, "%lu, %d, %d, %d, %0.2f, %0.2f, %0.2f, %d, %d, %d, %i \r\n", singleSample, read_gyro.x, read_gyro.y, read_gyro.z, scaled_accel.x, scaled_accel.y, scaled_accel.z, read_magnet.x, read_magnet.y, read_magnet.z, PWMDTY67);
+    //sprintf(buffer, "%lu, %d, %d, %d, %0.2f, %0.2f, %0.2f, %d, %d, %d, %i \r\n", singleSample, read_gyro.x, read_gyro.y, read_gyro.z, scaled_accel.x, scaled_accel.y, scaled_accel.z, read_magnet.x, read_magnet.y, read_magnet.z, PWMDTY67);
+    //sprintf(buffer, "%d, %d, %d \r\n", read_magnet.x, read_magnet.y, read_magnet.z);
     
-    //SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
+    SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
     
-    SendLidarMsg(singleSample);
-    SendAngleMsg(PWMDTY67, PWMDTY45);
+    //SendLidarMsg(singleSample);
+    //SendAngleMsg(PWMDTY67, PWMDTY45);
     
 
     
     // output the data to serial
-   // SerialOutputString(buffer, &SCI1);
+    //SerialOutputString(buffer, &SCI1);
     
     
     
