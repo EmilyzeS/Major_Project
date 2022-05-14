@@ -156,10 +156,10 @@ void main(void) {
     //sprintf(buffer, "%lu, %d, %d, %d, %0.2f, %0.2f, %0.2f, %d, %d, %d, %i \r\n", singleSample, read_gyro.x, read_gyro.y, read_gyro.z, scaled_accel.x, scaled_accel.y, scaled_accel.z, read_magnet.x, read_magnet.y, read_magnet.z, PWMDTY67);
     //sprintf(buffer, "%d, %d, %d \r\n", read_magnet.x, read_magnet.y, read_magnet.z);
     
-    SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
+    //SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
     
-    //SendLidarMsg(singleSample);
-    //SendAngleMsg(PWMDTY67, PWMDTY45);
+    SendLidarMsg(singleSample);
+    SendAngleMsg(PWMDTY67, PWMDTY45);
     
 
     
