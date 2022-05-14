@@ -14,11 +14,10 @@
 #include "gyro.h"
 
 // data structures containing the raw values
-//   note: can be put into their own module
 typedef struct MagRaw {
-  int x;
-  int y;
-  int z;
+  uint8_t x;
+  uint8_t y;
+  uint8_t z;
 } MagRaw;
 
 

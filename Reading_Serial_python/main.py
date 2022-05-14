@@ -5,6 +5,7 @@ import struct
 import traceback
 import data_output as do
 import map
+import read_text
 
 MSG_HEADER_SIZE = 16
 MSG_HEADER_SUM = 100487
@@ -13,8 +14,6 @@ ANGLE_SENT = 22136
 LIDAR_SENT = 4660
 MAG_SENT = 4951
 ACCEL_SENT = 9320
-
-
 
 
 
@@ -30,6 +29,7 @@ def read_packet(f):
     #checksum on the header sentinels
     if(header_data[0] + header_data[4] != MSG_HEADER_SUM):
         print("Header Sentinels Do not add up.")
+        print(header_data)
         return False
 
     message_type = header_data[1].split(b'\0', 1)[0]  # remove the null characters from the string
@@ -38,6 +38,9 @@ def read_packet(f):
     #find what type of message was recieved
     if message_type == b"text":
         text_bytes = f.read(header_data[2])
+
+        read_text.read_string(str(text_bytes))
+
         print("text message: " + str(text_bytes))
     elif message_type == b"gyro":
 

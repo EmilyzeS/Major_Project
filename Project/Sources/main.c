@@ -16,6 +16,7 @@
 #include "gyro.h"
 
 
+
 void printErrorCode(IIC_ERRORS error_code) {
   char buffer[128];  
   switch (error_code) {
@@ -134,9 +135,15 @@ void main(void) {
     }
     
     error_code = getRawDataMagnet(&read_magnet);
+    if (error_code != NO_ERROR) {
+      printErrorCode(error_code);   
+    
+      error_code = iicSensorInit();
+      printErrorCode(error_code); 
+    }
     
     GetLatestLaserSample(&singleSample);
-        
+    //IMPLEMENT ERROR CODE    
     #else
     
     // inject some values for simulation
@@ -153,10 +160,13 @@ void main(void) {
     // format the string of the sensor data to go the the serial    
    // sprintf(buffer, "%lu, %d, %d, %d, %0.2f, %0.2f, %0.2f, %d, %d, %d, %i \r\n", singleSample, read_gyro.x, read_gyro.y, read_gyro.z, scaled_accel.x, scaled_accel.y, scaled_accel.z, read_magnet.x, read_magnet.y, read_magnet.z, PWMDTY67);
     
-    //SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.y);
-    //SendLidarMSG(singleSample);
+    //SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
+    
     SendLidarMsg(singleSample);
     SendAngleMsg(PWMDTY67, PWMDTY45);
+    
+
+    
     // output the data to serial
    // SerialOutputString(buffer, &SCI1);
     

@@ -169,6 +169,7 @@ void SendButtonsMsg() {
 
 
 void SendTextMsg(char* text_message) {
+
   struct MSG_HEADER text_header = {0xABCD, "text", 0, 0, 0xDCBA};
   text_header.msg_size = strlen(text_message);
   text_header.header_time = TCNT;
