@@ -3,3 +3,4 @@ bin/
 *_Data/
 .DS_Store
 venv/
+__pycache__
