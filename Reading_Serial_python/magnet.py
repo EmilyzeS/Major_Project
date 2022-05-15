@@ -43,9 +43,9 @@ for i in components:
 plt.figure()
 plt.xlabel('Time')
 plt.ylabel('Magnetic Field Strength')
-plt.plot(time,x,'r', label = 'x')
-plt.plot(time,y,'b', label = 'y')
-plt.plot(time,z,'g',label = 'z')
+plt.plot(time,x - means[0],'r', label = 'x')
+plt.plot(time,y - means[1],'b', label = 'y')
+plt.plot(time,z - means[2],'g',label = 'z')
 plt.legend()
 
 colors = ['b','g','r','purple']
