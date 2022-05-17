@@ -14,6 +14,7 @@
 #include "laser.h"
 
 #include "gyro.h"
+#include <string.h>
 
 
 
@@ -58,17 +59,28 @@ void printErrorCode(IIC_ERRORS error_code) {
 
 void main(void) {
 
+
   AccelRaw read_accel;
   AccelScaled scaled_accel;
+  
+  //char input[100];
 
   GyroRaw read_gyro;
+  GyroScaled scaled_gyro;
   MagRaw read_magnet;
   
   IIC_ERRORS error_code = NO_ERROR;
   
-  char buffer[128];  
+  char buffer[128]; 
+  
+
   
   unsigned long singleSample;
+  
+  //calibrate servos
+  
+ // float xyz[3];
+
   
   //assert(error_code != NO_ERROR);
 
@@ -87,6 +99,11 @@ void main(void) {
   // initialise the simple serial
   SerialInitialise(BAUD_9600, &SCI1);
   
+    
+//  CalibrateGyro();
+
+  
+
   #ifndef SIMULATION_TESTING
   
   // initialise the sensor suite
@@ -115,8 +132,6 @@ void main(void) {
     
   for(;;) {
   
-    #ifndef SIMULATION_TESTING
-  
     // read the raw values
     error_code = getRawDataGyro(&read_gyro);   
     if (error_code != NO_ERROR) {
@@ -135,60 +150,26 @@ void main(void) {
     }
     
     error_code = getRawDataMagnet(&read_magnet);
+    if (error_code != NO_ERROR) {
+      printErrorCode(error_code);   
+    
+      error_code = iicSensorInit();
+      printErrorCode(error_code); 
+    }    
 
     GetLatestLaserSample(&singleSample);
+    
+    
     //IMPLEMENT ERROR CODE for lidar and magnet  
-      
-    #else
-    
-    // inject some values for simulation
-    read_gyro.x = 123; read_gyro.y = 313; read_gyro.z = 1002;
-    read_accel.x = 124; read_accel.y = 312; read_accel.z = 2002;
-    read_magnet.x = 125; read_magnet.y = 311; read_magnet.z = 3002;
-    
-    #endif
 
-    // convert the acceleration to a scaled value
-    convertUnits(&read_accel, &scaled_accel);  
-    
-    
-    // format the string of the sensor data to go the the serial    
-    //sprintf(buffer, "%lu, %d, %d, %d, %0.2f, %0.2f, %0.2f, %d, %d, %d, %i \r\n", singleSample, read_gyro.x, read_gyro.y, read_gyro.z, scaled_accel.x, scaled_accel.y, scaled_accel.z, read_magnet.x, read_magnet.y, read_magnet.z, PWMDTY67);
-    
-    //sprintf(buffer, "%c, %c, %c \r\n", read_accel.x, read_accel.y, read_accel.z);
-    // sprintf(buffer, "%lu\r\n", singleSample);
-    //SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
-    
-    //SendLidarMsg(singleSample);
-    //SendAngleMsg(PWMDTY67, PWMDTY45);
-    //SerialOutputString(buffer, &SCI1);
-    
-    
-    SendAccelMsg(scaled_accel.x, scaled_accel.y, scaled_accel.z);
-    
-    //accel_init_test();
-    
-    //error_code = getRawDataAccel(&read_accel);
-    //if (error_code != NO_ERROR) {
-      //printErrorCode(error_code);   
-    
-      //error_code = iicSensorInit();
-      //printErrorCode(error_code); 
-    //}
-     
-    //SendAccelMsg(read_accel.x, read_accel.y, read_accel.z);
-    
+    //ConvertGyro(&read_gyro, &scaled_gyro);
 
+    SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
+    SendLidarMsg(singleSample);
     
-    // output the data to serial
+    //sprintf(buffer, "%d %d %d %i %i\r\n", read_gyro.x, read_gyro.y, read_gyro.z, sizeof(unsigned long), sizeof(float));
+    
     //SerialOutputString(buffer, &SCI1);
-    
-    //accel_init();
-    
-    //sprintf(buffer, "%i \r\n", sizeof(unsigned char));
-    //SerialOutputString(buffer, &SCI1);
-    
-    
     
     
     //_FEED_COP(); /* feeds the dog */

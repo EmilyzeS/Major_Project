@@ -117,5 +117,6 @@ void SendTextMsg(char* text_message);
 void SendLidarMsg(unsigned long laser_reading); 
 void SendAngleMsg(int azimuth, int elevation);
  
+int SerialRead(SerialPort *serial_port, char* buffer, int j);
  
 #endif

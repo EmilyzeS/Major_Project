@@ -124,7 +124,7 @@ void SendMagMsg(int x, int y, int z) {
 
 void SendGyroMsg(int rot_x, int rot_y, int rot_z) {
   struct MSG_HEADER gyro_header = {0xABCD, "gyro", 0, 0, 0xDCBA};
-  struct MSG_GYRO gyro_message = {0x9876, 0, 0, 0, 0};
+  struct MSG_GYRO gyro_message = {0x1358, 0, 0, 0, 0};
                              
   gyro_header.msg_size = sizeof(struct MSG_GYRO);
   
@@ -177,6 +177,19 @@ void SendTextMsg(char* text_message) {
   
   SerialOutputBytes((char*)&text_header, sizeof(struct MSG_HEADER), &SCI1);  
   SerialOutputBytes(text_message, text_header.msg_size, &SCI1);
+}
+
+
+int SerialRead(SerialPort *serial_port, char* buffer, int j) {
+
+  // Check if data is received by reading the RDRF flag
+  if (*(serial_port->StatusRegister) && 0x20 && j <2) {
+    // Looking for carraige return for end of sentance
+      buffer[j] = *(serial_port->DataRegister);
+      j += 1;
+      return j;
+
+  }
 }
 
 
