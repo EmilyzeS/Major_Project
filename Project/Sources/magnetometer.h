@@ -1,0 +1,5 @@
+#ifndef MAGNETOMETER_HEADER
+#define MAGNETOMETER_HEADER
+
+
+#endif

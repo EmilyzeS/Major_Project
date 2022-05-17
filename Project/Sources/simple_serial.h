@@ -54,6 +54,8 @@ struct MSG_ANGLE{
   unsigned int time; 
 };
  
+typedef unsigned char uint8_t;
+
 
 struct MSG_ACCEL{
   int sentinel;

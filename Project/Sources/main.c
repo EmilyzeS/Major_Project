@@ -154,17 +154,40 @@ void main(void) {
     
     // format the string of the sensor data to go the the serial    
     //sprintf(buffer, "%lu, %d, %d, %d, %0.2f, %0.2f, %0.2f, %d, %d, %d, %i \r\n", singleSample, read_gyro.x, read_gyro.y, read_gyro.z, scaled_accel.x, scaled_accel.y, scaled_accel.z, read_magnet.x, read_magnet.y, read_magnet.z, PWMDTY67);
-    //sprintf(buffer, "%d, %d, %d \r\n", read_magnet.x, read_magnet.y, read_magnet.z);
     
+    //sprintf(buffer, "%c, %c, %c \r\n", read_accel.x, read_accel.y, read_accel.z);
+    // sprintf(buffer, "%lu\r\n", singleSample);
     //SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
     
-    SendLidarMsg(singleSample);
-    SendAngleMsg(PWMDTY67, PWMDTY45);
+    //SendLidarMsg(singleSample);
+    //SendAngleMsg(PWMDTY67, PWMDTY45);
+    //SerialOutputString(buffer, &SCI1);
+    
+    
+    SendAccelMsg(scaled_accel.x, scaled_accel.y, scaled_accel.z);
+    
+    //accel_init_test();
+    
+    //error_code = getRawDataAccel(&read_accel);
+    //if (error_code != NO_ERROR) {
+      //printErrorCode(error_code);   
+    
+      //error_code = iicSensorInit();
+      //printErrorCode(error_code); 
+    //}
+     
+    //SendAccelMsg(read_accel.x, read_accel.y, read_accel.z);
     
 
     
     // output the data to serial
     //SerialOutputString(buffer, &SCI1);
+    
+    //accel_init();
+    
+    //sprintf(buffer, "%i \r\n", sizeof(unsigned char));
+    //SerialOutputString(buffer, &SCI1);
+    
     
     
     

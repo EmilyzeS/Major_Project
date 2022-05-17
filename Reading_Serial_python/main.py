@@ -106,7 +106,7 @@ def read_packet(f):
 
     elif message_type == b"accel":
         accel_bytes = f.read(header_data[2])
-        accel_data = struct.unpack(">hhhhH", accel_bytes)
+        accel_data = struct.unpack(">hefH", accel_bytes)
 
         if(accel_data[0] != ACCEL_SENT):
             print("Acceleration Data corrupted")
@@ -115,7 +115,7 @@ def read_packet(f):
 
         info = [accel_data[1], accel_data[2], accel_data[3]]
 
-        #do.write_to_csv('accel.csv', info)       
+        do.write_to_csv('accel.csv', info)       
 
 
 
@@ -156,7 +156,7 @@ def read_serial(com_port):
             time.sleep(0.05)
 
         #checks if one revolution has been made
-        #do.check_if_clear_ready('angledata.csv')
+        do.check_if_clear_ready('angledata.csv')
 
 
 

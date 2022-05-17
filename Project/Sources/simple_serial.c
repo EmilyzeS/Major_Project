@@ -84,6 +84,7 @@ void SendAngleMsg(int azimuth, int elevation){
   SerialOutputBytes((char*)&angle_message, sizeof(struct MSG_ANGLE), &SCI1);  
 }
 
+
 void SendAccelMsg(int x, int y, int z) {
   struct MSG_HEADER accel_header = {0xABCD, "accel", 0, 0, 0xDCBA};
   struct MSG_ACCEL accel_message = {0x2468, 0, 0, 0, 0};
