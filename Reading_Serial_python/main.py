@@ -156,7 +156,7 @@ def read_serial(com_port):
             time.sleep(0.05)
 
         #checks if one revolution has been made
-        #do.check_if_clear_ready('angledata.csv')
+        do.check_if_clear_ready('angledata.csv')
 
 
 
@@ -168,4 +168,4 @@ if __name__ == '__main__':
     do.clear_file('lidar.csv')
     
     while(1):
-        read_serial("COM4")
+        read_serial("COM5")
