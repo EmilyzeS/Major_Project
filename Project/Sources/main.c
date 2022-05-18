@@ -17,6 +17,8 @@
 #include <string.h>
 
 
+char inputs[128];
+
 
 void printErrorCode(IIC_ERRORS error_code) {
   char buffer[128];  
@@ -128,7 +130,7 @@ void main(void) {
   //COPCTL = 7;
   _DISABLE_COP();
   
-  CalibrateGyro() ;
+  //CalibrateGyro() ;
     
   for(;;) {
   
@@ -160,17 +162,15 @@ void main(void) {
     GetLatestLaserSample(&singleSample);
     
     
-    //IMPLEMENT ERROR CODE for lidar and magnet  
+    //IMPLEMENT ERROR CODE for lidar?  
 
     //ConvertGyro(&read_gyro, &scaled_gyro);
 
-    SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
-    SendLidarMsg(singleSample);
-    SendAngleMsg(PWMDTY67, PWMDTY45);
+    //SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
+    //SendLidarMsg(singleSample);
+    //SendAngleMsg(PWMDTY67, PWMDTY45);
     
-    //sprintf(buffer, "%d %d %d %i %i\r\n", read_gyro.x, read_gyro.y, read_gyro.z, sizeof(unsigned long), sizeof(float));
-    
-    //SerialOutputString(buffer, &SCI1);
+
     
     
     //_FEED_COP(); /* feeds the dog */
@@ -178,3 +178,4 @@ void main(void) {
   
   /* please make sure that you never leave main */
 }
+

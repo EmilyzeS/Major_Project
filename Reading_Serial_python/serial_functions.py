@@ -160,7 +160,7 @@ def read_serial(com_port):
         #do.check_if_clear_ready('angledata.csv')
 
 def serialOutputChar(com_port, char):
-    serialPort = serial.Serial(port=com_port, baudrate=9600)
+    serialPort = serial.Serial(port=com_port, baudrate=9600, bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
 
     serialPort.write(1)
 

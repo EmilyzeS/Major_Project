@@ -14,8 +14,8 @@ if __name__ == '__main__':
     
     while(1):
 
-        sf.read_serial("COM4")
-        #sendPoint(2,2)
+        #sf.read_serial("COM4")
+        sf.sendPoint(2,2)
 
     #sendPoint(2,2)
 

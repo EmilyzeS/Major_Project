@@ -118,5 +118,9 @@ void SendLidarMsg(unsigned long laser_reading);
 void SendAngleMsg(int azimuth, int elevation);
  
 int SerialRead(SerialPort *serial_port, char* buffer, int j);
- 
+
+
+__interrupt void Serial1ISR(void);
+
+
 #endif
