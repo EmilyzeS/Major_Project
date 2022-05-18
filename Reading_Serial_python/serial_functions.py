@@ -54,7 +54,7 @@ def read_packet(f):
 
         #write to a csv file
         #MAKE INTO SEPERATE CONVERT FUNCTION
-        info = [float(gyro_data[1])*250/ 2**15, float(gyro_data[1])*250/ 2**15, float(gyro_data[1])*250/ 2**15, gyro_data[4]]
+        info = [float(gyro_data[1])*250/ 2**15, float(gyro_data[2])*250/ 2**15, float(gyro_data[3])*250/ 2**15, gyro_data[4]]
 
         do.write_to_csv('gyro.csv', info)
 
@@ -157,7 +157,7 @@ def read_serial(com_port):
             time.sleep(0.05)
 
         #checks if one revolution has been made
-        do.check_if_clear_ready('angledata.csv')
+        #do.check_if_clear_ready('angledata.csv')
 
 def serialOutputChar(com_port, char):
     serialPort = serial.Serial(port=com_port, baudrate=9600)

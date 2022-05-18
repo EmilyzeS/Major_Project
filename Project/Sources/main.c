@@ -100,8 +100,6 @@ void main(void) {
   SerialInitialise(BAUD_9600, &SCI1);
   
     
-//  CalibrateGyro();
-
   
 
   #ifndef SIMULATION_TESTING
@@ -129,6 +127,8 @@ void main(void) {
 	EnableInterrupts;
   //COPCTL = 7;
   _DISABLE_COP();
+  
+  CalibrateGyro() ;
     
   for(;;) {
   
@@ -166,6 +166,7 @@ void main(void) {
 
     SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
     SendLidarMsg(singleSample);
+    SendAngleMsg(PWMDTY67, PWMDTY45);
     
     //sprintf(buffer, "%d %d %d %i %i\r\n", read_gyro.x, read_gyro.y, read_gyro.z, sizeof(unsigned long), sizeof(float));
     

@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include "iic.h"
 #include "simple_serial.h"
-#include "iic.h"
 #include "l3g4200d.h"
 
 
@@ -23,8 +22,9 @@ void ConvertGyro(GyroRaw *read_gyro, GyroScaled *scaled_gyro){
 
 
 void CalibrateGyro(){
- 
- 
+  
+  
+
   
   int i = 0, error_code;
    
@@ -32,6 +32,7 @@ void CalibrateGyro(){
   GyroRaw read_gyro;
   //GyroScaled scaled_gyro;                
   
+  DisableInterrupts;
 
   for(i = 0; i<100; i++){
   
@@ -50,6 +51,9 @@ void CalibrateGyro(){
 
    
   }
+  
+  EnableInterrupts;
+  
   
 
   
