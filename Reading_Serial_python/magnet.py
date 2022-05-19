@@ -14,9 +14,9 @@ with open('mag.csv', 'r') as csvfile:
     
     for row in read:
         #These scale factors are the standard deviation of the background noise
-        x.append(float(row[0])/605)
-        y.append(float(row[1])/771)
-        z.append(float(row[2])/479)
+        x.append(float(row[0]))#/605)
+        y.append(float(row[1]))#/771)
+        z.append(float(row[2]))#/479)
         t = t+1
 
 mod = []
