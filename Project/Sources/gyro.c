@@ -4,6 +4,9 @@
 #include <math.h>
 #include <stdlib.h>
 #include "iic.h"
+#include "simple_serial.h"
+#include "l3g4200d.h"
+
 
 
 // y is left to right
@@ -18,41 +21,40 @@ void ConvertGyro(GyroRaw *read_gyro, GyroScaled *scaled_gyro){
 } 
 
 
-void CalibrateGyro(float * xyz){
- 
- 
+void CalibrateGyro(){
   
-  int i, error_code;
+  
+
+  
+  int i = 0, error_code;
    
  
   GyroRaw read_gyro;
-  GyroScaled scaled_gyro;                
+  //GyroScaled scaled_gyro;                
   
+  DisableInterrupts;
 
   for(i = 0; i<100; i++){
   
    error_code = getRawDataGyro(&read_gyro);   
-   if (error_code != NO_ERROR) {
-     printErrorCode(error_code);   
+  // if (error_code != NO_ERROR) {
+    // printErrorCode(error_code);   
          
-     error_code = iicSensorInit();
-     printErrorCode(error_code);
+     //error_code = iicSensorInit();
+     //printErrorCode(error_code);
         
-   }
+   //}
    
    
    
-   ConvertGyro(&read_gyro, &scaled_gyro);
-   
-   xyz[0] += scaled_gyro.x;
-   xyz[1] += scaled_gyro.y;
-   xyz[2] += scaled_gyro.z;
+   SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
+
    
   }
   
-  for(i = 0; i <3; i++){ 
-    xyz[i] /=100;
-  }
+  EnableInterrupts;
+  
+  
 
   
   

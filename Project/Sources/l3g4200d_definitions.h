@@ -62,21 +62,6 @@
 #define L3G4200D_OUT_XYZ_CONT  0xA8
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #define L3G4200D_WHO_AM_I      0x0F
 
 #define L3G4200D_CTRL_REG1     0x20

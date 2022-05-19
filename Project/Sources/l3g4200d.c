@@ -152,3 +152,13 @@ IIC_ERRORS magnet_init(void)
 }
 
 
+ACCELEROMETER_CFG_STRUCT accelerometer_cfg_test = {ADXL345_POWER_CTL, 0x08, ADXL345_DATA_FORMAT, 0x08 + 0b10000000};
+IIC_ERRORS accel_init_test(void)
+{
+  return iic_send_data(accel_wr, (uint8_t*)&accelerometer_cfg_test, sizeof(ACCELEROMETER_CFG_STRUCT));
+}
+
+
+
+
+

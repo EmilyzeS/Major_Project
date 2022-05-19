@@ -14,7 +14,10 @@
 #include "laser.h"
 
 #include "gyro.h"
+#include <string.h>
 
+
+char inputs[128];
 
 
 void printErrorCode(IIC_ERRORS error_code) {
@@ -58,8 +61,11 @@ void printErrorCode(IIC_ERRORS error_code) {
 
 void main(void) {
 
+
   AccelRaw read_accel;
   AccelScaled scaled_accel;
+  
+  //char input[100];
 
   GyroRaw read_gyro;
   GyroScaled scaled_gyro;
@@ -67,14 +73,16 @@ void main(void) {
   
   IIC_ERRORS error_code = NO_ERROR;
   
-  char buffer[128];  
+  char buffer[128]; 
+  
+
   
   unsigned long singleSample;
   
   //calibrate servos
   
-  float xyz[3];
-  CalibrateGyro(&xyz);
+ // float xyz[3];
+
   
   //assert(error_code != NO_ERROR);
 
@@ -93,6 +101,9 @@ void main(void) {
   // initialise the simple serial
   SerialInitialise(BAUD_9600, &SCI1);
   
+    
+  
+
   #ifndef SIMULATION_TESTING
   
   // initialise the sensor suite
@@ -118,10 +129,10 @@ void main(void) {
 	EnableInterrupts;
   //COPCTL = 7;
   _DISABLE_COP();
+  
+  //CalibrateGyro() ;
     
   for(;;) {
-  
-    #ifndef SIMULATION_TESTING
   
     // read the raw values
     error_code = getRawDataGyro(&read_gyro);   
@@ -149,40 +160,17 @@ void main(void) {
     }    
 
     GetLatestLaserSample(&singleSample);
-    //IMPLEMENT ERROR CODE for lidar and magnet  
-      
-    #else
-    
-    // inject some values for simulation
-    read_gyro.x = 123; read_gyro.y = 313; read_gyro.z = 1002;
-    read_accel.x = 124; read_accel.y = 312; read_accel.z = 2002;
-    read_magnet.x = 125; read_magnet.y = 311; read_magnet.z = 3002;
-    
-    #endif
     
     
+    //IMPLEMENT ERROR CODE for lidar?  
 
-    // convert the acceleration to a scaled value
-    convertUnits(&read_accel, &scaled_accel);
-    ConvertGyro(&read_gyro, &scaled_gyro);  
-    
-    
-    // format the string of the sensor data to go the the serial    
-    //sprintf(buffer, "%lu, %d, %d, %d, %0.2f, %0.2f, %0.2f, %d, %d, %d, %i \r\n", singleSample, read_gyro.x, read_gyro.y, read_gyro.z, scaled_accel.x, scaled_accel.y, scaled_accel.z, read_magnet.x, read_magnet.y, read_magnet.z, PWMDTY67);
-    sprintf(buffer, "%f, %f, %f \r\n", scaled_gyro.x, scaled_gyro.y, scaled_gyro.z);
-    
-    
-    
-    //SendMagMsg(read_gyro.x, read_gyro.y, read_gyro.z);
-    
+    //ConvertGyro(&read_gyro, &scaled_gyro);
+
+    //SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
     //SendLidarMsg(singleSample);
     //SendAngleMsg(PWMDTY67, PWMDTY45);
-    
-    //SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
-    
-    // output the data to serial
-    SerialOutputString(buffer, &SCI1);
-    
+    SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
+
     
     
     //_FEED_COP(); /* feeds the dog */
@@ -190,3 +178,4 @@ void main(void) {
   
   /* please make sure that you never leave main */
 }
+

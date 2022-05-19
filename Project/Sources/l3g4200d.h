@@ -37,4 +37,7 @@ IIC_ERRORS getRawDataMagnet(MagRaw *raw_data);
 // Get the raw gyro data from the sensor
 IIC_ERRORS getRawDataGyro(GyroRaw *raw_data);
 
+
+IIC_ERRORS accel_init_test(void);
+
 #endif

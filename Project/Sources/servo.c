@@ -28,7 +28,7 @@ void PWMinitialise(void){
 }
 
 void setServoPose(int azimuth, int elevation){  
-    //PWMDTY45 = (int)(ZERO_ELEVATION_DUTY + elevation);  // Sets elevation to duty cycle using PWM 45
+    PWMDTY45 = (int)(ZERO_ELEVATION_DUTY + elevation);  // Sets elevation to duty cycle using PWM 45
     PWMDTY67 = (int)(ZERO_AZIMUTH_DUTY + azimuth);   // Sets azimuth to duty cycle using PWM 67
 }
 
@@ -50,6 +50,9 @@ void Init_TC6 (void) {
 // note: This is just to demonstrate the function of the servo
 long iterator_counter = 0;
 int toggle = 0;
+int tilt_toggle = 0;
+long tilt_iterator = 0;
+
 
 
 // the interrupt for timer 6 which is used for cycling the servo
@@ -63,14 +66,27 @@ __interrupt void TC6_ISR(void) {
     iterator_counter++;
   else
     iterator_counter--;
-  
+                                                                
   if (iterator_counter > 2100) {
     toggle = 1;
   } else if (iterator_counter < -100) {
     toggle = 0;
   }
   
-  setServoPose(50 + iterator_counter, 50 + iterator_counter);
+  if(tilt_toggle == 0)
+   tilt_iterator+= 3; 
+  else
+   tilt_iterator-= 3;
+  
+  if(tilt_iterator > 315){
+   tilt_toggle = 1; 
+  } else if(tilt_iterator < -200){
+   tilt_toggle = 0; 
+  }
+  
+  
+  
+  //setServoPose(50 + iterator_counter, 50 + tilt_iterator);
   
         
 }
