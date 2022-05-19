@@ -117,7 +117,7 @@ while i < len(x)-20:
         if object_detected != 0:
             #print(time[i])
             peak_duration = time[i] - mytime
-            print(f'Duration object is detected for is {peak_duration}\n')
+            print(f'Duration object is detected for is {peak_duration} time units\n')
             object_detected = 0
             mytime = time[i]
         
