@@ -1,9 +1,12 @@
-#include <mc9s12dp256.h>        /* derivative information */
-
+       /* derivative information */
+#include "derivative.h"
 #include "simple_serial.h"
 #include <hidef.h>
 #include <stdio.h> 
 #include <string.h>
+
+
+
 
 // instantiate the serial port parameters
 //   note: the complexity is hidden in the c file
@@ -184,7 +187,7 @@ void SendTextMsg(char* text_message) {
 int SerialRead(SerialPort *serial_port, char* buffer, int j) {
 
   // Check if data is received by reading the RDRF flag
-  if (*(serial_port->StatusRegister) && 0x20 && j <2) {
+  if (*(serial_port->StatusRegister) && 0x20) {
     // Looking for carraige return for end of sentance
       buffer[j] = *(serial_port->DataRegister);
       j += 1;
@@ -194,7 +197,7 @@ int SerialRead(SerialPort *serial_port, char* buffer, int j) {
 }
 
 int j = 0;
-extern inputs;
+extern char inputs[128];
 
 #pragma CODE_SEG __NEAR_SEG NON_BANKED /* Interrupt section for this module. Placement will be in NON_BANKED area. */
 __interrupt void Serial1ISR(void) {
