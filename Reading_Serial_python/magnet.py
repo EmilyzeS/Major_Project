@@ -37,7 +37,7 @@ components_names = ['x','y','z','Modulus']
 #Change the values based on ploting
 for i in components:
     
-    means.append(np.mean(i[400:500]))  
+    means.append(np.mean(i[500:600]))  
     stdvs.append(np.std(i[400:500]))
 
 plt.figure()
