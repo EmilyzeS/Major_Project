@@ -2,30 +2,29 @@ import numpy as np
 import matplotlib.pyplot as plt
 import csv
 
+#moving the magnet in the x direction
+
 x = []
 y = []
 z = []
 t = 0
 
-with open('mag.csv', 'r') as csvfile:
+with open('mag2.csv', 'r') as csvfile:
     
     read = csv.reader(csvfile)
     
     
     for row in read:
         #These scale factors are the standard deviation of the background noise
-        x.append(float(row[0]))#/605)
-        y.append(float(row[1]))#/771)
-        z.append(float(row[2]))#/479)
+        x.append(float(row[0]))#/605)#/605)
+        y.append(float(row[1]))#/771)#/771)
+        z.append(float(row[2]))#/479)#/479)
         t = t+1
 
 mod = []
 
 means = []
 stdvs = []
-
-#Use this line if unsure where data is static
-#means = [0, 0, 0, 0]
 
 time = np.arange(1,t+1)
 for i in time-1:
@@ -36,9 +35,20 @@ components_names = ['x','y','z','Modulus']
 
 #Change the values based on ploting
 for i in components:
+    k = 0
+    while (k < t-100):
+        if (i[k] - np.mean(i[k:k+100]) < 20):
+            static_min = k
+            break
+        else:
+            k = k+10
+
     
-    means.append(np.mean(i[500:600]))  
-    stdvs.append(np.std(i[400:500]))
+    means.append(np.mean(i[static_min:static_min + 100]))  
+    stdvs.append(np.std(i[static_min:static_min+ 100]))
+
+plt.figure()
+plt.plot(time[400:500], x[400:500]- means[0])
 
 plt.figure()
 plt.xlabel('Time')
@@ -51,8 +61,6 @@ plt.legend()
 colors = ['b','g','r','purple']
 i = 0
 while i < 4:
-    
-    
 
     plt.figure()
     plt.xlabel('Time')
@@ -67,4 +75,20 @@ while i < 4:
     
 
 plt.show()
+
+in_peak = 0
+i = 0
+mytime = 0
+while i < len(x):
+    #we want peak need to edit this 
+    if (abs(x[i]-means[0]) >40000) and in_peak == 0:
+        mytime = time[i]
+        object_detected = 1
+        print(f"object found {time[i]} {x[i]-means[0]}")
+        in_peak = 1
+    if abs(x[i]-means[0]) < 10000 and time[i] >mytime +100:
+        in_peak = 0
+        
+    i = i+1
+        
 
