@@ -5,7 +5,7 @@ import traceback
 import data_output as do
 import map
 import read_text
-import numpy as np
+import convertUnits as cu
 
 
 MSG_HEADER_SIZE = 16
@@ -53,9 +53,8 @@ def read_packet(f):
             print("Gyro data corrupted")
             return False
 
-        #write to a csv file
-        #MAKE INTO SEPERATE CONVERT FUNCTION
-        info = [float(gyro_data[1])*250/ 2**15 * np.pi/180, float(gyro_data[2])*250/ 2**15 * np.pi/180, float(gyro_data[3])*250/ 2**15 * np.pi/180, gyro_data[4]]
+        #convert units and write to a csv file
+        info = [cu.ConvertGyro(gyro_data[1]), cu.ConvertGyro(gyro_data[2]), cu.ConvertGyro(gyro_data[3]), gyro_data[4]]
 
         do.write_to_csv('gyro.csv', info)
 
@@ -63,8 +62,6 @@ def read_packet(f):
         buttons_bytes = f.read(header_data[2])
         print("buttons message: " + str(hex(buttons_bytes[1])) + ", time=" + str(buttons_bytes[2]))
     elif message_type == b"angle":
-
-
         #unpack
         angle_bytes = f.read(header_data[2])
         angle_data = struct.unpack(">hhhH", angle_bytes)
