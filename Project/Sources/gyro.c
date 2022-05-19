@@ -21,6 +21,23 @@ void ConvertGyro(GyroRaw *read_gyro, GyroScaled *scaled_gyro){
 } 
 
 
+int CheckGyroClear(GyroRaw * read_gyro){
+
+  GyroScaled scaled_gyro;
+  
+  
+  ConvertGyro(read_gyro, &scaled_gyro);
+  
+  if(scaled_gyro.x < 0){ 
+    return 0;
+  }
+  else{
+    return 1; 
+  }
+
+  
+}
+
 void CalibrateGyro(){
   
   

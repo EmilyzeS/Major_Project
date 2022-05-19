@@ -8,6 +8,8 @@
 #define ZERO_AZIMUTH_DUTY 2000
 
 
+
+
 void PWMinitialise(void){
     // set PP5 and PP7 for pwm output 
     PWMCLK = 0; // select clock A
@@ -44,6 +46,8 @@ void Init_TC6 (void) {
 
   TFLG1 |= TFLG1_C6F_MASK;
 }
+
+
 
 
 // variables to make the servo move back and forth

@@ -2,6 +2,13 @@ import csv
 import os
 import map
 
+def clear_all_files():
+    #clear files
+    clear_file('angledata.csv')
+    clear_file('lidar.csv')
+    clear_file('mag.csv')
+    clear_file('gyro.csv')
+
 def clear_file(path : str):
     clear = open(path, 'w')
     clear.close()

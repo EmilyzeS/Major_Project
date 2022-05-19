@@ -74,7 +74,8 @@ void main(void) {
   IIC_ERRORS error_code = NO_ERROR;
   
   char buffer[128]; 
-  
+    
+  int checkClear =0;
 
   
   unsigned long singleSample;
@@ -166,10 +167,26 @@ void main(void) {
 
     //ConvertGyro(&read_gyro, &scaled_gyro);
 
-    //SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
-    //SendLidarMsg(singleSample);
-    //SendAngleMsg(PWMDTY67, PWMDTY45);
+   // SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
+   // SendLidarMsg(singleSample);
+   // SendAngleMsg(PWMDTY67, PWMDTY45);
     SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
+    
+    if((checkClear %2 == 0) && CheckGyroClear(&read_gyro)){
+      checkClear += CheckGyroClear(&read_gyro);
+    }
+    if((checkClear %2 == 1) && !CheckGyroClear(&read_gyro)){
+      checkClear += 1; 
+    }
+    
+    if(checkClear >= 3*2){
+      
+      checkClear = 0;
+      setServoPose(100,100);
+      
+      SendTextMsg("clear");
+       
+    }
 
     
     

@@ -3,9 +3,8 @@ import data_output as do
 
 def read_string(text):
     if(text == "b\'clear\'"):
-        #map.map()
-        do.clear_file('lidar.csv')
-        do.clear_file('angledata.csv')
+        map.map()
+        do.clear_all_files()
         return
 
     print("Error reading string ")

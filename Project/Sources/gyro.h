@@ -22,4 +22,8 @@ void CalibrateGyro();
 //       scaled values. Also, calibration and removing the bias is
 //       needed
 
+
+int CheckGyroClear(GyroRaw * read_gyro);
+
+
 #endif

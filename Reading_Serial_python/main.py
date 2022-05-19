@@ -8,9 +8,9 @@ if __name__ == '__main__':
     #clear files
     #do.clear_file('angledata.csv')
     #do.clear_file('lidar.csv')
-    do.clear_file('mag.csv')
+    #do.clear_file('mag.csv')
     #do.clear_file('gyro.csv')
-
+    do.clear_all_files()
     
     while(1):
 
