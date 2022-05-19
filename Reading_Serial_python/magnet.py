@@ -23,18 +23,12 @@ def read_data(filename):
         time = np.arange(1,t+1)
     return x, y, z, time
 
-x,y,z,time = read_data('mag2.csv')
-
 def find_modulus(x,y,z,time):
     
     mod = []
     for i in time-1:
         mod.append(np.sqrt((x[i])**2+(y[i])**2+(z[i])**2))
     return mod
-
-mod = find_modulus(x,y,z,time)
-components = [x,y,z,mod]
-components_names = ['x','y','z','Modulus']
 
 def find_means_stdvs(components):
     
@@ -54,7 +48,16 @@ def find_means_stdvs(components):
         stdvs.append(np.std(i[static_min:static_min+ 100]))
     return means, stdvs
 
+
+
+x,y,z,time = read_data('mag2.csv')
+mod = find_modulus(x,y,z,time)
+components = [x,y,z,mod]
+components_names = ['x','y','z','Modulus']
+
 means, stdvs = find_means_stdvs(components)
+
+
 
 #************************************************************
 #******************Testing stuff*****************************
