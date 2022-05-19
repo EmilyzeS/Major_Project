@@ -5,6 +5,7 @@ import traceback
 import data_output as do
 import map
 import read_text
+import numpy as np
 
 
 MSG_HEADER_SIZE = 16
@@ -54,7 +55,7 @@ def read_packet(f):
 
         #write to a csv file
         #MAKE INTO SEPERATE CONVERT FUNCTION
-        info = [float(gyro_data[1])*250/ 2**15, float(gyro_data[2])*250/ 2**15, float(gyro_data[3])*250/ 2**15, gyro_data[4]]
+        info = [float(gyro_data[1])*250/ 2**15 * np.pi/180, float(gyro_data[2])*250/ 2**15 * np.pi/180, float(gyro_data[3])*250/ 2**15 * np.pi/180, gyro_data[4]]
 
         do.write_to_csv('gyro.csv', info)
 

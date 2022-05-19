@@ -74,11 +74,11 @@ __interrupt void TC6_ISR(void) {
   }
   
   if(tilt_toggle == 0)
-   tilt_iterator++; 
+   tilt_iterator+= 3; 
   else
-   tilt_iterator--;
+   tilt_iterator-= 3;
   
-  if(tilt_iterator > 630){
+  if(tilt_iterator > 315){
    tilt_toggle = 1; 
   } else if(tilt_iterator < -200){
    tilt_toggle = 0; 

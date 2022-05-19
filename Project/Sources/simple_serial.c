@@ -7,6 +7,9 @@
 
 
 
+int j = 0;
+extern char inputs[128];
+
 
 // instantiate the serial port parameters
 //   note: the complexity is hidden in the c file
@@ -196,8 +199,6 @@ int SerialRead(SerialPort *serial_port, char* buffer, int j) {
   }
 }
 
-int j = 0;
-extern char inputs[128];
 
 #pragma CODE_SEG __NEAR_SEG NON_BANKED /* Interrupt section for this module. Placement will be in NON_BANKED area. */
 __interrupt void Serial1ISR(void) {

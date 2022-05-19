@@ -166,9 +166,9 @@ void main(void) {
 
     //ConvertGyro(&read_gyro, &scaled_gyro);
 
-    //SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
-    //SendLidarMsg(singleSample);
-    //SendAngleMsg(PWMDTY67, PWMDTY45);
+    SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
+    SendLidarMsg(singleSample);
+    SendAngleMsg(PWMDTY67, PWMDTY45);
     
 
     

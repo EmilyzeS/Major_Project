@@ -29,7 +29,7 @@ def convertAngles(servo_positions):
     difference = maxVal - minVal
     servo_positions['Elevation'] -= minVal
     servo_positions['Elevation'] /= difference/100
-    servo_positions['Elevation'] *= 0.30
+    servo_positions['Elevation'] *= 0.20
 
     return servo_positions
 
