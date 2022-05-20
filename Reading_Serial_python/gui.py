@@ -38,6 +38,6 @@ def updateImage():
     mygui.after(1, updateImage)
 
 
-# mygui.after(1, updateImage)
+mygui.after(1, updateImage)
 mygui.mainloop()
 
