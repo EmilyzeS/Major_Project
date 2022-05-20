@@ -85,7 +85,7 @@ def map():
     ax.set_ylabel('Y Label')
     ax.set_zlabel('Z Label')
     plt.savefig('image.png')
-    plt.show()
+    #plt.show()
 
 
 

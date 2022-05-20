@@ -1,7 +1,6 @@
 # This is a Python script to parse the example messages from a file.
 import data_output as do
 import serial_functions as sf
-import gui
 
 # main program entry point
 if __name__ == '__main__':
