@@ -122,5 +122,8 @@ int SerialRead(SerialPort *serial_port, char* buffer, int j);
 
 __interrupt void Serial1ISR(void);
 
+void interpretSerial(char * buffer);
+
+void detectMsgType(char * msg);
 
 #endif

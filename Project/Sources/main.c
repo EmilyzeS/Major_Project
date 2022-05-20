@@ -15,9 +15,10 @@
 
 #include "gyro.h"
 #include <string.h>
+#include "magnetometer.h"
 
 
-char inputs[128];
+//char inputs[128];
 
 
 void printErrorCode(IIC_ERRORS error_code) {
@@ -170,7 +171,7 @@ void main(void) {
    // SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
    // SendLidarMsg(singleSample);
    // SendAngleMsg(PWMDTY67, PWMDTY45);
-    SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
+   // SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
     
     if((checkClear %2 == 0) && CheckGyroClear(&read_gyro)){
       checkClear += CheckGyroClear(&read_gyro);

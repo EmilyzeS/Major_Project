@@ -4,11 +4,16 @@
 #include <hidef.h>
 #include <stdio.h> 
 #include <string.h>
+#include "python_responses.h"
 
 
+#include "servo.h"
+
+#define CARRAIGE_RETURN 0x0D
+ 
 
 int j = 0;
-extern char inputs[128];
+char inputs[1024];
 
 
 // instantiate the serial port parameters
@@ -46,10 +51,11 @@ void SerialInitialise(int baudRate, SerialPort *serial_port) {
 	  break;
   }
   
-  *(serial_port->ControlRegister2) = SCI1CR2_RE_MASK | SCI1CR2_TE_MASK;
+  *(serial_port->ControlRegister2) = 0x2C;
   *(serial_port->ControlRegister1) = 0x00;
 }
     
+//SCI1CR2_RE_MASK | SCI1CR2_TE_MASK | SCI1CR2_SCTIE_MASK
         
 void SerialOutputChar(char data, SerialPort *serial_port) {  
   while((*(serial_port->StatusRegister) & SCI1SR1_TDRE_MASK) == 0){
@@ -185,23 +191,48 @@ void SendTextMsg(char* text_message) {
   SerialOutputBytes(text_message, text_header.msg_size, &SCI1);
 }
 
+void detectMsgType(char * msg){
+  if(!strncmp(msg,"object",5)){
+     objectDetected(&msg[8]);
+  }
+}
+
+
+void interpretSerial(char * buffer){
+  if(buffer[0] + buffer[8] == 12 + 14){  //checksum on header
+    detectMsgType(&buffer[2]);
+  }
+}
 
 
 int SerialRead(SerialPort *serial_port, char* buffer, int j) {
 
+
   // Check if data is received by reading the RDRF flag
   if (*(serial_port->StatusRegister) && 0x20) {
-    // Looking for carraige return for end of sentance
-      buffer[j] = *(serial_port->DataRegister);
-      j += 1;
-      return j;
-
+  
+  
+  //looking for carriage return (end of data) or if the input buffer will overflow
+    if (*(serial_port->DataRegister) == CARRAIGE_RETURN) {
+        interpretSerial(buffer);
+        return 0;
+    } 
+    else if(j >= 1023){
+        return 0; 
+    }
+    else{
+        buffer[j] = *(serial_port->DataRegister);
+        j += 1;
+        return j;
+    }
   }
+  
+    
 }
 
 
 #pragma CODE_SEG __NEAR_SEG NON_BANKED /* Interrupt section for this module. Placement will be in NON_BANKED area. */
 __interrupt void Serial1ISR(void) {
-  j = SerialRead(&SCI1, &inputs, j);
+  j = SerialRead(&SCI1, inputs, j);
 }
 

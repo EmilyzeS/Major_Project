@@ -12,14 +12,8 @@
 #include "iic.h"
 #include "accelerometer.h"
 #include "gyro.h"
+#include "magnetometer.h"
 
-// data structures containing the raw values
-//   note: can be put into their own module
-typedef struct MagRaw {
-  int x;
-  int y;
-  int z;
-} MagRaw;
 
 
 // Initialise each sensor
