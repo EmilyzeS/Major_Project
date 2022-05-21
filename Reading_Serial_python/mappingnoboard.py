@@ -4,6 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
 
+#pretend x, y offset exist
+
 def convertAnglesGyro(gyro_velocities):
     servo_positions = pd.DataFrame(columns = ['Azimuth', 'Elevation'])
     servo_positions['Azimuth'] = np.zeros(len(gyro_velocities))
@@ -74,6 +76,8 @@ ranges.set_axis(["Ranges"], axis = 1, inplace = True)
 
 gyro_velocities = pd.read_csv('gyro.csv',  header = None)
 gyro_velocities.set_axis(["xvel", "yvel","zvel","time"], axis = 1, inplace = True)
+gyro_velocities['xvel'] -= x_offset
+gyro_velocities['yvel'] -= y_offset
 
 servo_angles = convertAnglesGyro(gyro_velocities) 
 
@@ -85,10 +89,6 @@ ax.set_xlabel('X Label')
 ax.set_ylabel('Y Label')
 ax.set_zlabel('Z Label')
 plt.show()
-
-
-
-
 
 
 
