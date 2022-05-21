@@ -86,12 +86,11 @@ def plot_summary(components, time):
         plt.ylabel("Magnetic Strength")
         plt.title(f'{components_names[i]}')
         plt.plot(time,(components[i]), c = colors[i])
-        print(f'Mean {components_names[i]}: {means[i]}')
-        print(f'Standard Deviations {components_names[i]}: {stdvs[i]}\n')
+        plt.savefig(f'magnet_data_{components_names[i]}')
         i = i+1
         
     
-    plt.show()
+    #plt.show()
 
 def detect_objects(mod, time, min_magnet_value, max_noise_value, minimum_scan_time):
 
@@ -112,7 +111,8 @@ def detect_objects(mod, time, min_magnet_value, max_noise_value, minimum_scan_ti
             plt.title(f'Object Detected Time {time[i]}')
             plt.xlabel('Time')
             plt.ylabel('Magnetic Strength')
-            plt.show()
+            plt.savefig(f'magnet_data_peak_{time[i]}')
+            #plt.show()
             
             max_peak = max(mod[i:i+minimum_scan_time])
             
