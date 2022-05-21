@@ -1,8 +1,9 @@
-from re import S
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits import mplot3d
+from sklearn.cluster import DBSCAN
+from sklearn.cluster import KMeans
+
 
 #pretend x, y offset exist
 
@@ -82,6 +83,31 @@ gyro_velocities['yvel'] -= y_offset
 servo_angles = convertAnglesGyro(gyro_velocities) 
 
 hits = polarToRectangularGyro(ranges, servo_angles)
+
+
+model = DBSCAN(eps = 0.1, min_samples = 30).fit(hits[['X','Y']])
+colors = model.labels_
+
+numClusters = len(np.unique(colors))
+if -1 in colors:
+    numClusters -= 1
+
+cluster = pd.DataFrame(hits)[model.labels_ == 0]
+kmeans = KMeans(n_clusters= numClusters, random_state=0).fit(cluster)
+print(kmeans.cluster_centers_)
+
+plt.figure("Data")
+plt.scatter(hits['X'], hits['Y'], c=colors, marker='o')
+
+plt.figure("Filtered data")
+plt.scatter(cluster['X'], cluster['Y'], marker='o')
+plt.scatter(kmeans.cluster_centers_[0][0], kmeans.cluster_centers_[0][1])
+plt.xlim([0, 1.4])
+plt.ylim([-0.75, 1.25])
+plt.legend(['Hits', 'Centroid'])
+plt.show()
+
+
 fig = plt.figure(figsize=(12, 12))
 ax = fig.add_subplot(projection='3d')
 ax.scatter(hits['X'], hits['Y'],hits['Z'])
