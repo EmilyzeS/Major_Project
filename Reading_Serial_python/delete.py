@@ -15,7 +15,7 @@ def serialOutputChar(com_port, header, message):
     serialPort.close()
     
  
-point_message = struct.pack('< h h h', 56, 1, 2)
+point_message = struct.pack('<hhh', 56, 1, 2)
 
 header_message = struct.pack('<h6sh',12,b"object",14)
 
