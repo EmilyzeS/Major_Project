@@ -3,6 +3,11 @@ import matplotlib.pyplot as plt
 import csv
 
 #moving the magnet in the x direction
+#25cm away from imu
+#slowish 
+#scan round flat face perpendicular to ground
+#scan large with longest edge facing IMU and face where they're stuck together perpendicular to ground
+
 
 def read_data(filename):
     
@@ -97,7 +102,7 @@ def detect_objects(mod, time, min_magnet_value, max_noise_value, minimum_scan_ti
     object_detected = 0
     
     objects = []
-    
+    times = []    
     while i <len(mod) - buffer:
         if abs(mod[i]) > min_magnet_value and in_peak == 0:
             time_in_peak = time[i]
@@ -113,6 +118,7 @@ def detect_objects(mod, time, min_magnet_value, max_noise_value, minimum_scan_ti
             
             in_peak = 1
             objects.append(max_peak)
+            times.append(time_in_peak)
             
             print(f"Object found at time {time[i]} with value {round(max_peak)}")
         
@@ -121,15 +127,70 @@ def detect_objects(mod, time, min_magnet_value, max_noise_value, minimum_scan_ti
             
         i = i+1
     
-    return objects
+    return objects, times
 
-def print_object_summary(objects):
-    print(f'\nFound {len(objects)} objects with max values:')
-    for i in objects:
-        if i == objects[-1]:
+def print_means_stdvs(means, stdvs):
+    i = 0
+    while i < 4:
+        print(f'Mean {components_names[i]}: {means[i]}')
+        print(f'Standard Deviations {components_names[i]}: {stdvs[i]}\n')
+        i = i+1
+
+def print_object_summary(object_peaks):
+    print(f'\nFound {len(object_peaks)} objects with max values:')
+    for i in object_peaks:
+        if i == object_peaks[-1]:
             print(round(i))
         else:
-            print(f'{round(i)}, ', end = '')        
+            print(f'{round(i)}, ', end = '')   
+    
+
+def write_object_summary_file(objects,num_objects, names, peak_times):
+    f = open("summary.txt", 'w')
+    f.write("Summary of Objects Scanned\n\n")
+    f.write(f'Found {len(objects)} Items:\n')
+    i = 0
+    while i < len(num_objects):
+        if num_objects[i] == 1:
+            
+            f.write(f'Object {names[i]} : {num_objects[i]} item\n')
+        else:
+            f.write(f'Object {names[i]} : {num_objects[i]} items\n')
+        i = i+1
+    i= 0 
+    f.write('\nScanning Data:')
+    while i < len(objects):
+        f.write(f'Object {names[objects[i]]} found at time stamp {peak_times[i]}\n')
+        i = i+1
+    f.close()
+        
+        
+
+def classify_objects(object_peaks):
+    objects = []
+    num_objects = [0, 0, 0]
+    for i in object_peaks:
+        #small = 1 small round = 1500 - 8000 Allbran  0
+        #medium = 2 small round = 8000 - 1700 ish weetBix  1
+        #large = 1800+ Cheerios  2
+        
+        if i < 8000:
+            objects.append(0)
+        elif i < 17000:
+            objects.append(1)
+        elif i > 17000:
+            objects.append(2)
+    
+    for i in objects:
+        num_objects[i] = num_objects[i] + 1
+            
+    return objects, num_objects
+            
+            
+        
+
+
+    
 
 x,y,z,time = read_data('mag.csv')
 mod = find_modulus(x,y,z,time)
@@ -145,12 +206,28 @@ x, y, z, mod = components[0], components[1], components[2], components[3]
 #Plotting
 plot_summary(components, time)
 
+print_means_stdvs(means, stdvs)
+
 min_magnet_value = 5000
 max_noise_value = 5000
 minimum_scan_time = 200
 #Detect objects
-objects = detect_objects(mod, time, min_magnet_value, max_noise_value, minimum_scan_time)
+object_peaks, peak_times = detect_objects(mod, time, min_magnet_value, max_noise_value, minimum_scan_time)
+
+objects, num_objects = classify_objects(object_peaks)
+
+names = ['Allbran', 'weetBix', 'Cheerios']
+
+print_object_summary( object_peaks)
+
+write_object_summary_file(objects, num_objects, names, peak_times)
 
 
-print_object_summary(objects)
+
+    
+
+
+
+#When object has been scanned display on lcd and beep
+
     
