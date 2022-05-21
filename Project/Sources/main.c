@@ -174,18 +174,18 @@ void main(void) {
     //SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
     
     if((checkClear %2 == 0) && CheckGyroClear(&read_gyro)){
-      checkClear += CheckGyroClear(&read_gyro);
+      checkClear += 1;
     }
     if((checkClear %2 == 1) && !CheckGyroClear(&read_gyro)){
       checkClear += 1; 
     }
     
-    if(checkClear >= 3*2){
+    if(checkClear >= 3*2-1){
       
       checkClear = 0;
-      //setServoPose(100,100);
+      setServoPose(100,100);
       
-      //SendTextMsg("clear");
+      SendTextMsg("clear");
        
     }
 

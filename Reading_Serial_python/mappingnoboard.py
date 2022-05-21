@@ -1,3 +1,4 @@
+from re import S
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -58,7 +59,13 @@ def polarToRectangularGyro(ranges, servo_angles):
     hits['Z'] = ranges["Ranges"] * sinVals
     hits['D'] = ranges["Ranges"] * cosVals
   
-    
+    max_az = max(servo_angles['Azimuth'])
+    min_az = min(servo_angles['Azimuth'])
+    diff = max_az- min_az
+
+    servo_angles['Azimuth'] += max_az + (np.pi - diff)/2
+
+    print(max(servo_angles['Azimuth'] * 180/np.pi), min(servo_angles['Azimuth'] * 180/np.pi))
 
     cosVals = np.cos(servo_angles['Azimuth'])
     sinVals = np.sin(servo_angles['Azimuth'])
@@ -103,8 +110,7 @@ for cluster in range(numClusters):
 
 plt.figure("Data")
 plt.scatter(hits['X'], hits['Y'], c=colors, marker='o')
-plt.xlim([0, 1.4])
-plt.ylim([-0.75, 1.25])
+
 
 for cluster in range(numClusters):
     plt.figure("Filtered data")

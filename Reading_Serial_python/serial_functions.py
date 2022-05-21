@@ -40,7 +40,7 @@ def read_packet(f):
     if message_type == b"text":
         text_bytes = f.read(header_data[2])
 
-        [x_offset,y_offset] = read_text.read_string(str(text_bytes))
+        read_text.read_string(str(text_bytes))
 
         print("text message: " + str(text_bytes))
     elif message_type == b"gyro":

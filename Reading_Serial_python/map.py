@@ -80,9 +80,9 @@ def map():
     servo_angles = convertAnglesGyro(gyro_velocities) 
 
     hits = polarToRectangularGyro(ranges, servo_angles)
+    hits.dropna()
 
-
-    model = DBSCAN(eps = 0.1, min_samples = 30).fit(hits[['X','Y']])
+    model = DBSCAN(eps = 0.1, min_samples = 20).fit(hits[['X','Y']])
     colors = model.labels_
 
     numClusters = len(np.unique(colors))
@@ -100,8 +100,7 @@ def map():
 
     plt.figure("Data")
     plt.scatter(hits['X'], hits['Y'], c=colors, marker='o')
-    plt.xlim([0, 1.4])
-    plt.ylim([-0.75, 1.25])
+
 
     for cluster in range(numClusters):
         plt.figure("Filtered data")
@@ -119,7 +118,4 @@ def map():
     plt.show()
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 1ddbad4 (filter)

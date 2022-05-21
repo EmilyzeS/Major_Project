@@ -5,13 +5,13 @@ import data_output as do
 def read_string(text):
     if(text == "b\'clear\'"):
         #map.map(x_offset, y_offset)
-        #map.map()
+        map.map()
         do.clear_all_files()
         return
     elif(text == "b\'calibrategyro\'"):
         #[x,y] = cal.CalibrateGyro()
         do.clear_all_files()
-        return [x,y]
+        #return [x,y]
 
 
 
