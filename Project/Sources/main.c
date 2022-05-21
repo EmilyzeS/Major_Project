@@ -168,8 +168,8 @@ void main(void) {
 
     //ConvertGyro(&read_gyro, &scaled_gyro);
 
-   // SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
-   // SendLidarMsg(singleSample);
+    SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
+    SendLidarMsg(singleSample);
    // SendAngleMsg(PWMDTY67, PWMDTY45);
    // SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
     

@@ -34,7 +34,7 @@ def read_packet(f):
         return False
 
     message_type = header_data[1].split(b'\0', 1)[0]  # remove the null characters from the string
-    print(message_type)
+    #print(message_type)
 
     #find what type of message was recieved
     if message_type == b"text":
