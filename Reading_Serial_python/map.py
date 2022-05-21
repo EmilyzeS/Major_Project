@@ -118,5 +118,3 @@ def map():
     #plt.show()
 
 
-
-map()

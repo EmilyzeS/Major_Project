@@ -131,7 +131,7 @@ def print_object_summary(objects):
         else:
             print(f'{round(i)}, ', end = '')        
 
-x,y,z,time = read_data('mag2.csv')
+x,y,z,time = read_data('mag.csv')
 mod = find_modulus(x,y,z,time)
 
 components = [x,y,z,mod]

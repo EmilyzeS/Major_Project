@@ -34,7 +34,7 @@ def read_packet(f):
         return False
 
     message_type = header_data[1].split(b'\0', 1)[0]  # remove the null characters from the string
-    #print(message_type)
+    print(message_type)
 
     #find what type of message was recieved
     if message_type == b"text":
@@ -75,8 +75,6 @@ def read_packet(f):
         info = [int(angle_data[1]), angle_data[2]]
 
         do.write_to_csv('angledata.csv', info)
-
-
     elif message_type == b"lidar":
         lidar_bytes = f.read(header_data[2])
         lidar_data = struct.unpack(">hIH", lidar_bytes)
@@ -111,7 +109,6 @@ def read_packet(f):
             print("Acceleration Data corrupted")
             return False
 
-
         info = [accel_data[1], accel_data[2], accel_data[3]]
 
         do.write_to_csv('accel.csv', info)       
@@ -121,22 +118,10 @@ def read_packet(f):
     return True
 
 
-def read_file(file_name):
-    # open the file
-    with open(file_name, "rb") as f:
-        while True:
-            try:
-                if not read_packet(f):
-                    break
-            except Exception as e:
-                print(traceback.format_exc())
-                break
-                # Logs the error appropriately. 
     
 
 def read_serial(com_port):
     serialPort = serial.Serial(port=com_port, baudrate=9600, bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
-    serialString = ""  # Used to hold data coming over UART
 
     while True:
 
@@ -154,8 +139,7 @@ def read_serial(com_port):
         else:
             time.sleep(0.05)
 
-        #checks if one revolution has been made
-        #do.check_if_clear_ready('angledata.csv')
+
 
 def serialOutputChar(com_port, char):
     serialPort = serial.Serial(port=com_port, baudrate=9600, bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
