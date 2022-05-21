@@ -48,82 +48,109 @@ def find_means_stdvs(components):
         stdvs.append(np.std(i[static_min:static_min+ 100]))
     return means, stdvs
 
+def shift_data(components, means):
+    i = 0
+    new_components = []
+    while i < len(components):
+        new_components_list = []
+        new_components.append(new_components_list)
+        j = 0
+        while j < len(components[i]):
+            new_components_list.append(components[i][j] - means[i])
+            j = j+1
 
+        i = i+1
+        
+    return new_components
+
+def plot_summary(components, time):
+    plt.figure()
+    plt.xlabel('Time')
+    plt.ylabel('Magnetic Field Strength')
+    plt.plot(time,x,'r', label = 'x')
+    plt.plot(time,y,'b', label = 'y')
+    plt.plot(time,z,'g',label = 'z')
+    plt.legend()
+    
+    colors = ['b','g','r','purple']
+    i = 0
+    while i < 4:
+    
+        plt.figure()
+        plt.xlabel('Time')
+        plt.ylabel("Magnetic Strength")
+        plt.title(f'{components_names[i]}')
+        plt.plot(time,(components[i]), c = colors[i])
+        print(f'Mean {components_names[i]}: {means[i]}')
+        print(f'Standard Deviations {components_names[i]}: {stdvs[i]}\n')
+        i = i+1
+        
+    
+    plt.show()
+
+def detect_objects(mod, time, min_magnet_value, max_noise_value, minimum_scan_time):
+
+    buffer = 20
+    in_peak = 0
+    i = 0
+    time_in_peak = 0
+    object_detected = 0
+    
+    objects = []
+    
+    while i <len(mod) - buffer:
+        if abs(mod[i]) > min_magnet_value and in_peak == 0:
+            time_in_peak = time[i]
+            object_detected = object_detected + 1
+            
+            plt.plot(time[i:i+minimum_scan_time], mod[i:i+minimum_scan_time])
+            plt.title(f'Object Detected Time {time[i]}')
+            plt.xlabel('Time')
+            plt.ylabel('Magnetic Strength')
+            plt.show()
+            
+            max_peak = max(mod[i:i+minimum_scan_time])
+            
+            in_peak = 1
+            objects.append(max_peak)
+            
+            print(f"Object found at time {time[i]} with value {round(max_peak)}")
+        
+        if abs(mod[i]) < max_noise_value and abs(mod[i+2]) < max_noise_value and time[i] > time_in_peak + 200:
+            in_peak = 0
+            
+        i = i+1
+    
+    return objects
+
+def print_object_summary(objects):
+    print(f'\nFound {len(objects)} objects with max values:')
+    for i in objects:
+        if i == objects[-1]:
+            print(round(i))
+        else:
+            print(f'{round(i)}, ', end = '')        
 
 x,y,z,time = read_data('mag2.csv')
 mod = find_modulus(x,y,z,time)
+
 components = [x,y,z,mod]
 components_names = ['x','y','z','Modulus']
 
+#Update components by subtracting mean
 means, stdvs = find_means_stdvs(components)
-
-
-
-#************************************************************
-#******************Testing stuff*****************************
-plt.figure()
-plt.plot(time[1086:1300], x[1086:1300]- means[0])
-#*******************************************************
-#*******************************************************
-
+components = shift_data(components, means)
+x, y, z, mod = components[0], components[1], components[2], components[3]
 
 #Plotting
-plt.figure()
-plt.xlabel('Time')
-plt.ylabel('Magnetic Field Strength')
-plt.plot(time,x - means[0],'r', label = 'x')
-plt.plot(time,y - means[1],'b', label = 'y')
-plt.plot(time,z - means[2],'g',label = 'z')
-plt.legend()
+plot_summary(components, time)
 
-colors = ['b','g','r','purple']
-i = 0
-while i < 4:
+min_magnet_value = 5000
+max_noise_value = 5000
+minimum_scan_time = 200
+#Detect objects
+objects = detect_objects(mod, time, min_magnet_value, max_noise_value, minimum_scan_time)
 
-    plt.figure()
-    plt.xlabel('Time')
-    plt.ylabel("Magnetic Strength")
-    plt.title(f'{components_names[i]}')
-    plt.plot(time,(components[i]- means[i]), c = colors[i])
 
-    #plt.plot(time,(components[i]- means[i])/stdvs[i], c = colors[i])
-    print(f'Mean {components_names[i]}: {means[i]}')
-    print(f'Standard Deviations {components_names[i]}: {stdvs[i]}')
-    i = i+1
+print_object_summary(objects)
     
-
-plt.show()
-print('\n')
-
-#*******************************************************
-#*******************************************************
-#****************WORK IN PROGRESS***********************
-in_peak = 0
-i = 0
-mytime = 0
-object_detected = 0
-peaks = []
-
-while i < len(x)-20:
-    if (abs(x[i]-means[0]) >30000) and in_peak == 0:
-        mytime = time[i]
-        object_detected = object_detected + 1
-        #I will edit this so it is the peak value
-        print(f"Object found at time {time[i]} with value {round(abs(x[i]-means[0]))}")
-        in_peak = 1
-    if (abs(x[i]-means[0]) >30000) and in_peak == 1:
-        object_detected = object_detected + 1
-        peaks.append(abs(x[i]-means[0]))
-        
-    if abs(x[i]-means[0]) < 10000 and abs(x[i+1]-means[0]) < 10000 and time[i] > mytime + 50:
-        in_peak = 0
-        if object_detected != 0:
-            #print(time[i])
-            peak_duration = time[i] - mytime
-            print(f'Duration object is detected for is {peak_duration} time units\n')
-            object_detected = 0
-            mytime = time[i]
-        
-    i = i+1
-        
-
