@@ -77,8 +77,8 @@ ranges.set_axis(["Ranges"], axis = 1, inplace = True)
 
 gyro_velocities = pd.read_csv('gyro.csv',  header = None)
 gyro_velocities.set_axis(["xvel", "yvel","zvel","time"], axis = 1, inplace = True)
-gyro_velocities['xvel'] -= x_offset
-gyro_velocities['yvel'] -= y_offset
+# gyro_velocities['xvel'] -= x_offset
+# gyro_velocities['yvel'] -= y_offset
 
 servo_angles = convertAnglesGyro(gyro_velocities) 
 
@@ -92,20 +92,25 @@ numClusters = len(np.unique(colors))
 if -1 in colors:
     numClusters -= 1
 
-cluster = pd.DataFrame(hits)[model.labels_ == 0]
-kmeans = KMeans(n_clusters= numClusters, random_state=0).fit(cluster)
-print(kmeans.cluster_centers_)
+clusters = []
+
+for cluster in range(numClusters):
+    cluster_hits = pd.DataFrame(hits)[model.labels_ == cluster]
+    kmeans = KMeans(n_clusters= 1, random_state=0).fit(cluster_hits)
+    clusters.append((cluster_hits, kmeans.cluster_centers_))
+    print(kmeans.cluster_centers_)
+
 
 plt.figure("Data")
 plt.scatter(hits['X'], hits['Y'], c=colors, marker='o')
-
-plt.figure("Filtered data")
-plt.scatter(cluster['X'], cluster['Y'], marker='o')
-plt.scatter(kmeans.cluster_centers_[0][0], kmeans.cluster_centers_[0][1])
 plt.xlim([0, 1.4])
 plt.ylim([-0.75, 1.25])
-plt.legend(['Hits', 'Centroid'])
-plt.show()
+
+for cluster in range(numClusters):
+    plt.figure("Filtered data")
+    print(clusters[cluster])
+    plt.scatter(clusters[cluster][0]['X'], clusters[cluster][0]['Y'], marker='o')
+    plt.scatter(clusters[cluster][1][0][0], clusters[cluster][1][0][1],marker = 'o')
 
 
 fig = plt.figure(figsize=(12, 12))

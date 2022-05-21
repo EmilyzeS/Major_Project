@@ -82,7 +82,6 @@ def map():
     hits = polarToRectangularGyro(ranges, servo_angles)
 
 
-
     model = DBSCAN(eps = 0.1, min_samples = 30).fit(hits[['X','Y']])
     colors = model.labels_
 
@@ -90,22 +89,25 @@ def map():
     if -1 in colors:
         numClusters -= 1
 
-    cluster = pd.DataFrame(hits)[model.labels_ == 0]
-    kmeans = KMeans(n_clusters= numClusters, random_state=0).fit(cluster)
-    print(kmeans.cluster_centers_)
+    clusters = []
+
+    for cluster in range(numClusters):
+        cluster_hits = pd.DataFrame(hits)[model.labels_ == cluster]
+        kmeans = KMeans(n_clusters= 1, random_state=0).fit(cluster_hits)
+        clusters.append((cluster_hits, kmeans.cluster_centers_))
+        print(kmeans.cluster_centers_)
+
 
     plt.figure("Data")
     plt.scatter(hits['X'], hits['Y'], c=colors, marker='o')
-
-    plt.figure("Filtered data")
-    plt.scatter(cluster['X'], cluster['Y'], marker='o')
-    plt.scatter(kmeans.cluster_centers_[0][0], kmeans.cluster_centers_[0][1])
     plt.xlim([0, 1.4])
     plt.ylim([-0.75, 1.25])
-    plt.legend(['Hits', 'Centroid'])
-    plt.show()
 
-
+    for cluster in range(numClusters):
+        plt.figure("Filtered data")
+        print(clusters[cluster])
+        plt.scatter(clusters[cluster][0]['X'], clusters[cluster][0]['Y'], marker='o')
+        plt.scatter(clusters[cluster][1][0][0], clusters[cluster][1][0][1],marker = 'o')
 
 
     fig = plt.figure(figsize=(12, 12))
@@ -114,7 +116,10 @@ def map():
     ax.set_xlabel('X Label')
     ax.set_ylabel('Y Label')
     ax.set_zlabel('Z Label')
-    plt.savefig('image.png')
-    #plt.show()
+    plt.show()
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ddbad4 (filter)
