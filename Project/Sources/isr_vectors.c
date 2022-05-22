@@ -6,6 +6,7 @@
 #include "laser.h"
 #include "servo.h"
 #include "simple_serial.h"
+#include "buttons.h"
 
 
 #pragma CODE_SEG __NEAR_SEG NON_BANKED /* Interrupt section for this module. Placement will be in NON_BANKED area. */
@@ -70,7 +71,7 @@ const tIsrFunc _vect[] @0xFF80 = {     /* Interrupt table */
         UnimplementedISR,                 /* vector 0x1C */
         UnimplementedISR,                 /* vector 0x1B */
         UnimplementedISR,                 /* vector 0x1A */
-        UnimplementedISR,                 /* vector 0x19 (PORT H) */
+        detectMode,                 /* vector 0x19 (PORT H) */
         UnimplementedISR,                 /* vector 0x18 (PORT J) */
         UnimplementedISR,                 /* vector 0x17 (ATD1) */
         UnimplementedISR,                 /* vector 0x16 (ATD0) */

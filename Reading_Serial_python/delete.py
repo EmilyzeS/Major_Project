@@ -17,10 +17,9 @@ def serialOutputChar(com_port, header, message):
  
 point_message = struct.pack('<hhh', 56, 1, 2)
 
-header_message = struct.pack('<h6sh',12,b"object",14)
+header_message = struct.pack('<h b 8s b h',12,0, b"object",0,14)
 
 
-while True:
-    serialOutputChar('COM4', header_message, point_message)
+serialOutputChar('COM4', header_message, point_message)
     
-    #time.sleep(0.05)
+#time.sleep(0.05)

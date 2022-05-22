@@ -9,11 +9,14 @@
 
 #include "servo.h"
 
+
+#define BUFFER 128
+
 #define CARRAIGE_RETURN 0x0D
  
 
 int j = 0;
-char inputs[1024];
+char inputs[BUFFER];
 
 
 // instantiate the serial port parameters
@@ -191,17 +194,46 @@ void SendTextMsg(char* text_message) {
   SerialOutputBytes(text_message, text_header.msg_size, &SCI1);
 }
 
-void detectMsgType(char * msg){
-  if(!strncmp(msg,"object",5)){
-     objectDetected(&msg[8]);
-  }
-}
 
 
 void interpretSerial(char * buffer){
-  if(buffer[0] + buffer[8] == 12 + 14){  //checksum on header
-    detectMsgType(&buffer[2]);
+  
+  struct READ_HEADER MsgHeader;
+  char * token;
+  int i = 0;
+  
+  DisableInterrupts;
+  
+  //memcpy(token, inputs, BUFFER);
+  token = strtok(buffer, 0);
+  
+  while(token != NULL){
+    
+    if( i == 0){
+      MsgHeader.sentinel = (*token);
+    } 
+    else if (i == 1) {
+      
+      strncpy(MsgHeader.msg_type, token, 8);
+    } 
+    else if (i == 2){
+      
+      MsgHeader.end_sentinel = (*token);
+    }
+    
+    i++;
+    
+    token = strtok(NULL, 0);
+    
+     
+
   }
+  
+  detectMsgType(&buffer[11], &MsgHeader);
+
+
+  EnableInterrupts;
+
 }
 
 
@@ -217,12 +249,12 @@ int SerialRead(SerialPort *serial_port, char* buffer, int j) {
         interpretSerial(buffer);
         return 0;
     } 
-    else if(j >= 1023){
+    else if(j >= BUFFER){//making sure no overflow 
         return 0; 
     }
     else{
         buffer[j] = *(serial_port->DataRegister);
-        j += 1;
+        j ++;
         return j;
     }
   }

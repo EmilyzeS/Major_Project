@@ -15,7 +15,9 @@ typedef struct GyroScaled {
 
 void ConvertGyro(GyroRaw * read_gyro, GyroScaled * scaled_gyro);
 
-void CalibrateGyro();
+void CalibrateGyro(GyroScaled * gyro_noise);
+float returnGyroUnits(int reading);
+
 
 
 // NOTE: some function is required to convert between raw and 
@@ -23,7 +25,7 @@ void CalibrateGyro();
 //       needed
 
 
-int CheckGyroClear(GyroRaw * read_gyro);
+int gyroDirection(float azimuthSpeed, float gyro_noise);
 
 
 #endif

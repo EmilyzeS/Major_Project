@@ -73,6 +73,11 @@ struct MSG_MAG{
   unsigned int time;
  };
 
+struct READ_HEADER{
+  int sentinel;
+  char * msg_type;
+  int end_sentinel;
+};
 
 
 // make two instances of the serial port (they are extern because
@@ -124,6 +129,5 @@ __interrupt void Serial1ISR(void);
 
 void interpretSerial(char * buffer);
 
-void detectMsgType(char * msg);
 
 #endif

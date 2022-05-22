@@ -17,4 +17,4 @@ Command < attributes CACHESIZE 1000
 bckcolor 50331647
 font 'Courier New' 9 BLACK
 AUTOSIZE on
-ACTIVATE "Command" "Procedure" "Data:1" "Register" "Assembly" "Memory" "Data:2" "Source"
+ACTIVATE "Command" "Data:1" "Register" "Assembly" "Memory" "Data:2" "Procedure" "Source"

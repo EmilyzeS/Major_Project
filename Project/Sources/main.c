@@ -16,9 +16,13 @@
 #include "gyro.h"
 #include <string.h>
 #include "magnetometer.h"
+#include "buttons.h"
 
+#define BUFFER 128
 
-//char inputs[128];
+//Operation Modes
+int scan_mode = 0;
+int magnet_mode = -1;
 
 
 void printErrorCode(IIC_ERRORS error_code) {
@@ -62,21 +66,21 @@ void printErrorCode(IIC_ERRORS error_code) {
 
 void main(void) {
 
-
   AccelRaw read_accel;
   AccelScaled scaled_accel;
   
   //char input[100];
 
   GyroRaw read_gyro;
-  GyroScaled scaled_gyro;
+  GyroScaled scaled_gyro, gyro_noise;
   MagRaw read_magnet;
+  MagScaled scaled_mag, mag_noise;
   
   IIC_ERRORS error_code = NO_ERROR;
   
-  char buffer[128]; 
+  char buffer[BUFFER]; 
     
-  int checkClear =0;
+  int turnCount[1] = {0};
 
   
   unsigned long singleSample;
@@ -97,11 +101,14 @@ void main(void) {
   // initialise PWM
   PWMinitialise();
   setServoPose(100, 100);
+  initialiseButtons();
 
   #endif
   
   // initialise the simple serial
   SerialInitialise(BAUD_9600, &SCI1);
+
+
   
     
   
@@ -127,10 +134,15 @@ void main(void) {
   #endif
 
   Init_TC6();
+  CalibrateGyro(&gyro_noise);
+  CalibrateMagnetometer(&mag_noise);
+  getModulus(&mag_noise);
 
 	EnableInterrupts;
   //COPCTL = 7;
   _DISABLE_COP();
+  
+  
   
   //CalibrateGyro() ;
     
@@ -164,33 +176,39 @@ void main(void) {
     GetLatestLaserSample(&singleSample);
     
     
-    //IMPLEMENT ERROR CODE for lidar?  
-
-    //ConvertGyro(&read_gyro, &scaled_gyro);
-
-    SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
-    SendLidarMsg(singleSample);
-   // SendAngleMsg(PWMDTY67, PWMDTY45);
-    //SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
+    if(scan_mode == 1){
     
-    if((checkClear %2 == 0) && CheckGyroClear(&read_gyro)){
-      checkClear += 1;
-    }
-    if((checkClear %2 == 1) && !CheckGyroClear(&read_gyro)){
-      checkClear += 1; 
-    }
+      ConvertGyro(&read_gyro, &scaled_gyro);
+      
+      servoSpinCount(turnCount, scaled_gyro.x, gyro_noise.x);
+      
+      SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
+      SendLidarMsg(singleSample);
     
-    if(checkClear >= 3*2-1){
+      if(*turnCount > 2){
+        scan_mode = 0;
+        (*turnCount) = 0;
+        SendTextMsg("clear");
+      }
       
-      checkClear = 0;
-      setServoPose(100,100);
+    } 
+    else if( magnet_mode == 1){
+    
+      scaleMagUnits(&read_magnet, &scaled_mag);
       
-      SendTextMsg("clear");
+      SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
+      
+      
+      
+      
+      
        
     }
-
     
-    
+   // sprintf(buffer, "%f\r\n", scaled_gyro.x);
+   // SerialOutputString(buffer, &SCI1);
+      
+      
     //_FEED_COP(); /* feeds the dog */
   } /* loop forever */
   

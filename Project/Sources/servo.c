@@ -2,12 +2,35 @@
 #include "derivative.h"
 #include <math.h> 
 #include "servo.h"
+#include "gyro.h"
 
 
 #define ZERO_ELEVATION_DUTY 4600
 #define ZERO_AZIMUTH_DUTY 2000
 
+// variables to make the servo move back and forth
+volatile long pan_iterator = 0;
+volatile int pan_toggle = 0;
+volatile int tilt_toggle = 0;
+volatile long tilt_iterator = 0;
 
+extern int scan_mode;
+
+
+
+void servoSpinCount(int * turnCount, float azimuthSpeed, float azimuth_noise){
+
+  //negative values mean its turning right
+  //Starts by turning right, so every even turnCount value checks if it is coming
+  //back
+  if((*turnCount) % 2 == 0  && !gyroDirection(azimuthSpeed, azimuth_noise)){
+    (*turnCount)++; 
+  } 
+  else if((*turnCount) %2 == 1 && gyroDirection(azimuthSpeed, azimuth_noise)){
+    (*turnCount)++;
+  }
+  
+}
 
 
 void PWMinitialise(void){
@@ -50,37 +73,41 @@ void Init_TC6 (void) {
 
 
 
-// variables to make the servo move back and forth
-// note: This is just to demonstrate the function of the servo
-long iterator_counter = 0;
-int toggle = 0;
-int tilt_toggle = 0;
-long tilt_iterator = 0;
 
 
 
 // the interrupt for timer 6 which is used for cycling the servo
 #pragma CODE_SEG __NEAR_SEG NON_BANKED /* Interrupt section for this module. Placement will be in NON_BANKED area. */
 __interrupt void TC6_ISR(void) { 
+
    
   TC6 = TCNT + 64000;   // interrupt delay depends on the prescaler
   TFLG1 |= TFLG1_C6F_MASK;
+  
+  if(scan_mode == 0){
+    pan_iterator = 0;
+    pan_toggle = 0;
+    tilt_toggle = 0;
+    tilt_iterator = 0; 
+    return;   
+  }
+  
 
-  if (toggle == 0)
-    iterator_counter++;
+  if (pan_toggle == 0)
+    pan_iterator++;
   else
-    iterator_counter--;
+    pan_iterator--;
                                                                 
-  if (iterator_counter > 2100) {
-    toggle = 1;
-  } else if (iterator_counter < -100) {
-    toggle = 0;
+  if (pan_iterator > 2100) {
+    pan_toggle = 1;
+  } else if (pan_iterator < -100) {
+    pan_toggle = 0;
   }
   
   if(tilt_toggle == 0)
-   tilt_iterator+= 3; 
+   tilt_iterator += 3; 
   else
-   tilt_iterator-= 3;
+   tilt_iterator -= 3;
   
   if(tilt_iterator > 315){
    tilt_toggle = 1; 
@@ -89,9 +116,9 @@ __interrupt void TC6_ISR(void) {
   }
   
   
-  
-  setServoPose(50 + iterator_counter, 50 + tilt_iterator);
-  
+
+  setServoPose(50 + pan_iterator, 50 + tilt_iterator);
+
         
 }
 
