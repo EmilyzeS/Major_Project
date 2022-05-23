@@ -58,7 +58,11 @@ def polarToRectangularGyro(ranges, servo_angles):
     hits['Z'] = ranges["Ranges"] * sinVals
     hits['D'] = ranges["Ranges"] * cosVals
   
-    
+    max_az = max(servo_angles['Azimuth'])
+    min_az = min(servo_angles['Azimuth'])
+    diff = max_az- min_az
+
+    servo_angles['Azimuth'] += np.pi/2 - ( max_az - (np.pi - diff)/2)
 
     cosVals = np.cos(servo_angles['Azimuth'])
     sinVals = np.sin(servo_angles['Azimuth'])

@@ -3,7 +3,6 @@ import serial
 import struct
 import traceback
 import data_output as do
-import map
 import read_text
 import convertUnits as cu
 import calibration as ca

@@ -100,7 +100,6 @@ void main(void) {
 
   // initialise PWM
   PWMinitialise();
-  setServoPose(100, 100);
   initialiseButtons();
 
   #endif
@@ -137,6 +136,8 @@ void main(void) {
   CalibrateGyro(&gyro_noise);
   CalibrateMagnetometer(&mag_noise);
   getModulus(&mag_noise);
+  setServoPose(100, 100);
+
 
 	EnableInterrupts;
   //COPCTL = 7;
@@ -185,7 +186,7 @@ void main(void) {
       SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
       SendLidarMsg(singleSample);
     
-      if(*turnCount > 2){
+      if(*turnCount > 4){
         scan_mode = 0;
         (*turnCount) = 0;
         SendTextMsg("clear");

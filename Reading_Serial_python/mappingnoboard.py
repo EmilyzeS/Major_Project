@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import delete
 from sklearn.cluster import DBSCAN
 from sklearn.cluster import KMeans
+import struct
 
 
 #pretend x, y offset exist
@@ -60,11 +61,13 @@ def polarToRectangularGyro(ranges, servo_angles):
     hits['Z'] = ranges["Ranges"] * sinVals
     hits['D'] = ranges["Ranges"] * cosVals
   
+    print(max(servo_angles['Azimuth'] * 180/np.pi), min(servo_angles['Azimuth'] * 180/np.pi))
+    
     max_az = max(servo_angles['Azimuth'])
     min_az = min(servo_angles['Azimuth'])
     diff = max_az- min_az
 
-    servo_angles['Azimuth'] += max_az + (np.pi - diff)/2
+    servo_angles['Azimuth'] += np.pi/2 - ( max_az - (np.pi - diff)/2)
 
     print(max(servo_angles['Azimuth'] * 180/np.pi), min(servo_angles['Azimuth'] * 180/np.pi))
 
@@ -138,11 +141,13 @@ def prepareData(data):
         message += "Object " + str(i) + ": (" + str(round(hit[0]*100)) + ", " + str(round(hit[1]*100)) + ") "
         i += 1
     print(message)
+    message = bytes(message, 'utf-8')
     return message
 
         
 message = prepareData(hits_xy)
-#delete.sendData(message)
+header = struct.pack('<3s7s3s',b"12", b"object",b"14")
+delete.serialOutputChar("COM4", header, message)
 
 
 

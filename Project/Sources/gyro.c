@@ -57,7 +57,7 @@ void CalibrateGyro(GyroScaled * gyro_noise){
   
   SendTextMsg("CalibrateGyros");
 
-  for(i = 0; i<100; i++){
+  for(i = 0; i<1000; i++){
   
   error_code = getRawDataGyro(&read_gyro);   
   //if (error_code != NO_ERROR) {
@@ -84,9 +84,9 @@ void CalibrateGyro(GyroScaled * gyro_noise){
    
   }
   
-  gyro_noise->x /= 100;
-  gyro_noise->y /= 100;
-  gyro_noise->z /= 100;
+  gyro_noise->x /= 1000;
+  gyro_noise->y /= 1000;
+  gyro_noise->z /= 1000;
   
   EnableInterrupts;
   
