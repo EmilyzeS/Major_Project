@@ -5,6 +5,8 @@
 #include <stdio.h> 
 #include <string.h>
 #include "python_responses.h"
+#include <stdlib.h>
+
 
 
 #include "servo.h"
@@ -199,35 +201,41 @@ void SendTextMsg(char* text_message) {
 void interpretSerial(char * buffer){
   
   struct READ_HEADER MsgHeader;
-  char * token;
-  int i = 0;
+  char msg[3][8];
+  int i = 0, numberElements = 0, start = 0, end;
   
   DisableInterrupts;
   
   //memcpy(token, inputs, BUFFER);
-  token = strtok(buffer, 0);
+
+  for(i = 0; i < BUFFER; i++){
   
-  while(token != NULL){
     
-    if( i == 0){
-      MsgHeader.sentinel = (*token);
-    } 
-    else if (i == 1) {
-      
-      strncpy(MsgHeader.msg_type, token, 8);
-    } 
-    else if (i == 2){
-      
-      MsgHeader.end_sentinel = (*token);
-    }
-    
-    i++;
-    
-    token = strtok(NULL, 0);
+  
+     if(buffer[i] == 0){
+        end = i;
+        
+        strncpy(msg[numberElements], &buffer[start], end-start);
+                
+        start = i +1;
+        
+        numberElements++;
+     }
+     
+     if(numberElements >= 3){
+        break;
+     }
     
      
-
   }
+  
+    
+  MsgHeader.sentinel = atoi(msg[0]);
+  strncpy(MsgHeader.msg_type, msg[1], 6);
+  MsgHeader.end_sentinel = atoi(msg[2]);
+  
+  
+
   
   detectMsgType(&buffer[11], &MsgHeader);
 

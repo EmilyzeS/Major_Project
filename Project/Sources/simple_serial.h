@@ -75,7 +75,7 @@ struct MSG_MAG{
 
 struct READ_HEADER{
   int sentinel;
-  char * msg_type;
+  char msg_type[8];
   int end_sentinel;
 };
 

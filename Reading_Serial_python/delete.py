@@ -17,7 +17,7 @@ def serialOutputChar(com_port, header, message):
  
 point_message = struct.pack('<hhh', 56, 1, 2)
 
-header_message = struct.pack('<h b 8s b h',12,0, b"object",0,14)
+header_message = struct.pack('<3s7s3s',b"12", b"object",b"14")
 
 
 serialOutputChar('COM4', header_message, point_message)
