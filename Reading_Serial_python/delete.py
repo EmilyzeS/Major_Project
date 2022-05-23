@@ -15,8 +15,8 @@ def serialOutputChar(com_port, header, message):
     serialPort.close()
     
 
-def sendData(data):
-    point_message = struct.pack('<3s3s', "123", data)
+def sendData(data, format):
+    point_message = struct.pack(format, "123", data)
     header_message = struct.pack('<3s7s3s',b"12", b"object",b"14")
 
 #time.sleep(0.05)

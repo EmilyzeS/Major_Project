@@ -153,7 +153,9 @@ def prepareData(data):
         message += "Object " + str(i) + ": (" + str(round(hit[0]*100)) + ", " + str(round(hit[1]*100)) + ") "
         i += 1
     print(message)
-    return message
+    format = '<3s' + len(message) + 's'
+    message = bytes(message, 'utf-8')
+    return message, format
 
 
 
