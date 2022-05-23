@@ -2,6 +2,7 @@ from re import S
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import delete
 from sklearn.cluster import DBSCAN
 from sklearn.cluster import KMeans
 
@@ -111,12 +112,14 @@ for cluster in range(numClusters):
 plt.figure("Data")
 plt.scatter(hits['X'], hits['Y'], c=colors, marker='o')
 
-
+hits_xy = []
 for cluster in range(numClusters):
-    plt.figure("Filtered data")
-    print(clusters[cluster])
-    plt.scatter(clusters[cluster][0]['X'], clusters[cluster][0]['Y'], marker='o')
-    plt.scatter(clusters[cluster][1][0][0], clusters[cluster][1][0][1],marker = 'o')
+        plt.figure("Filtered data")
+        print(clusters[cluster])
+        point = (clusters[cluster][1][0][0], clusters[cluster][1][0][1])
+        hits_xy.append(point)
+        plt.scatter(clusters[cluster][0]['X'], clusters[cluster][0]['Y'], marker='o')
+        plt.scatter(point[0], point[1] ,marker = 'o')
 
 
 fig = plt.figure(figsize=(12, 12))
@@ -126,6 +129,21 @@ ax.set_xlabel('X Label')
 ax.set_ylabel('Y Label')
 ax.set_zlabel('Z Label')
 plt.show()
+
+
+def prepareData(data):
+    message = ""
+    i = 1
+    for hit in data:
+        message += "Object " + str(i) + ": (" + str(round(hit[0]*100)) + ", " + str(round(hit[1]*100)) + ") "
+        i += 1
+    print(message)
+    return message
+
+        
+message = prepareData(hits_xy)
+#delete.sendData(message)
+
 
 
 

@@ -2,6 +2,7 @@ from re import S
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import delete
 from mpl_toolkits import mplot3d
 from sklearn.cluster import DBSCAN
 from sklearn.cluster import KMeans
@@ -119,20 +120,29 @@ def map():
     ax.set_ylabel('Y Label')
     ax.set_zlabel('Z Label')
     plt.show()
+    message = prepareData(hits_xy)
+    delete.sendData(message)
 
-    return hits_xy
+
+# def prepareData(data):
+#     messages = []
+#     for hit in data:
+#         x = data[0]*100
+#         x = x.zfill(3)
+
+#         y = data[1]*100
+#         y  y.zfill(3)
+#         messages.append((x, y))
+#     return messages
 
 def prepareData(data):
-    messages = []
+    message = ""
+    i = 1
     for hit in data:
-        x = data[0]*100
-        x = x.zfill(3)
-
-        y = data[1]*100
-        y  y.zfill(3)
-        message =  x + y
-        messages.append(message)
-
+        message += "Object " + str(i) + ": (" + str(round(hit[0]*100)) + ", " + str(round(hit[1]*100)) + ") "
+        i += 1
+    print(message)
+    return message
 
 
 
