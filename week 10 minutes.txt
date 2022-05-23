@@ -1,0 +1,40 @@
+Week 10 Minutes
+
+Group Members:
+Emily
+Tom 
+Luke O
+Luke L
+
+Agenda:
+Decide on the project
+
+
+
+
+Notes:
+Planning project:
+
+
+Final idea:
+1. stock verification mode
+  	Our system will count every item that gets delivered to verify the stock received is correct.
+	uses magnometer - consider 3 different items, 3 different sized magnetic 'barcodes' (just different sized magnets) to determine which item
+	
+2. Object detection/mapping mode
+	As a user chucks items from a truck into a pit, our system will scan the setting using a lidar and send coordinates of the objects to an 
+	external robotic arm to collect
+   
+
+	
+A button will switch between modes
+
+
+Action items:
+Try running stewart's code/breaking stuff into modules
+Get the lidar and servos scanning in 2D and convert to correct data
+Use the servo position to calculate azimuth
+
+
+
+Minutes taken by Luke
