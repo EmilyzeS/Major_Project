@@ -15,6 +15,7 @@
 
 
 #define BUFFER 128
+#define NUMBERSPINS 4
 
 //Operation Modes
 int scan_mode = 0;
@@ -180,7 +181,7 @@ void main(void) {
       SendLidarMsg(singleSample);
     
       //after 4 turns 
-      if(*turnCount > 4){
+      if(*turnCount > NUMBERSPINS){
         //stop scanning and start picking up the item
         scan_mode = 0;
         displayLCD("Robotic arm", "in operation");

@@ -42,13 +42,6 @@ void objectDetected(char * msg){
   //display the location of the found objects
   displayLCD("Objects: ", &msg[i]);
 
-    
-    //initialiseTimers();
-    //makeBeep();
-    //TIOS = disable_timer;
-    //TSCR1 = disable_timer;
-    //PORTB = 0x00;
-    
-    //TSCR1_TEN = 1;
+
 }
 
