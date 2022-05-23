@@ -59,15 +59,31 @@ void CalibrateMagnetometer(MagScaled * mag_noise){
   
   EnableInterrupts;
   
+  
+  
 }
 
 void objectBeep(MagScaled * values,MagScaled * mag_noise ){
+  int i = 0;
+  int length;
+  length = sizeof(values)/sizeof(values[0]);
+  while (i < length) {
+    if (values[i]->mod > mag_noise[i]->mod){
+      makeBeep();
+      i = i + 150;
+    }
+    i++;
+  }
+  
+ 
   //if data is greater than magnoise + some more
   //beep
   //wait 200 iterations? 
-  makeBeep();
+ 
   
 }
+
+
 
 
 
