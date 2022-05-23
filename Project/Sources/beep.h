@@ -12,10 +12,9 @@
 #define output_compare 0x20
 
 
-#include "isr_vectors.c"
 
 
-int period;
+
 void initialiseTimers();
 void makeBeep();
 

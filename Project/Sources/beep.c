@@ -3,7 +3,7 @@
 #include "derivative.h"
 #include "beep.h"
 
-
+int period;
 
 void initialiseTimers() {
     // Enable timer and fast flag clear
@@ -19,7 +19,7 @@ void initialiseTimers() {
 
 
 #pragma CODE_SEG __NEAR_SEG NON_BANKED
-__interrupt void speakerISR(){
+__interrupt void speakerISR(void){
   
 	TC5 = TC5 + period;
 	
