@@ -2,7 +2,7 @@
 #include "math.h"
 #include <hidef.h>
 #include "derivative.h"
-
+#include "beep.h"
 
 
 //idk about *16/pow(2,16)
@@ -11,13 +11,11 @@ float returnMagnetometerUnits(int raw_mag){
 }
 
 
-
 void  scaleMagUnits(MagRaw * read_mag, MagScaled * scaled_mag){
    
    scaled_mag->x = returnMagnetometerUnits(read_mag->x);
    scaled_mag->y = returnMagnetometerUnits(read_mag->y);
-   scaled_mag->z = returnMagnetometerUnits(read_mag->z);
-   
+   scaled_mag->z = returnMagnetometerUnits(read_mag->z);   
 
 }
 
@@ -62,6 +60,15 @@ void CalibrateMagnetometer(MagScaled * mag_noise){
   EnableInterrupts;
   
 }
+
+void objectBeep(MagScaled * values,MagScaled * mag_noise ){
+  //if data is greater than magnoise + some more
+  //beep
+  //wait 200 iterations? 
+  makeBeep();
+  
+}
+
 
 
 //void detectObject(
