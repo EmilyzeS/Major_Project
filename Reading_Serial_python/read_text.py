@@ -1,6 +1,7 @@
 import map
 import data_output as do
 import calibration as cal
+
 x_offset = 0
 y_offset = 0
 
@@ -15,8 +16,6 @@ def read_string(text):
         do.clear_all_files()
         return
     elif(text == "b\'calibrate\'"):
-        global x_offset
-        global y_offset
         [x_offset,y_offset] = cal.CalibrateGyro()
         do.clear_all_files() 
 

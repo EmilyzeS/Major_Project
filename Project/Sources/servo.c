@@ -100,7 +100,7 @@ __interrupt void TC6_ISR(void) {
                                                                 
   if (pan_iterator > 2100) {
     pan_toggle = 1;
-  } else if (pan_iterator < -100) {
+  } else if (pan_iterator < -150) {
     pan_toggle = 0;
   }
   

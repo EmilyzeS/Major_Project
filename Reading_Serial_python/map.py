@@ -131,8 +131,8 @@ def map(x_offset,y_offset):
     ax.set_ylabel('Y Label')
     ax.set_zlabel('Z Label')
     plt.show()
-    message = prepareData(hits_xy)
-    delete.sendData(message)
+    #message = prepareData(hits_xy)
+    #delete.sendData(message)
 
 
 # def prepareData(data):
