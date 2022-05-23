@@ -1,0 +1,2 @@
+Data:1 < ADDXPR ONLY_ADD_IF_NEW "Project.absHCS12_Serial_Monitor.abs::SCI1"
+Data:2 < ADDXPR ONLY_ADD_IF_NEW ":interpretSerial:MsgHeader.msg_type"

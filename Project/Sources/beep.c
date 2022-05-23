@@ -9,7 +9,7 @@ void initialiseTimers() {
     // Enable timer and fast flag clear
   	TSCR1 = enable_timer; 
     // Set prescaler to 8
-    TSCR2 = prescaler_8;
+    TSCR2 = 0x00;
     // Choose output compare for channel 5
     TIOS = output_compare;
     // Toggle upon successful output compare 
@@ -32,7 +32,7 @@ void makeBeep(){
 
 	
   unsigned int beep[] = {E6,ZZ};
-  unsigned int beep_dur[] = {1000,100};
+  unsigned int beep_dur[] = {1000,10};
                                 
 
   //initialise timer for sound playing

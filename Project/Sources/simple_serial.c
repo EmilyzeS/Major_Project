@@ -24,7 +24,7 @@ char inputs[BUFFER];
 // instantiate the serial port parameters
 //   note: the complexity is hidden in the c file
 SerialPort SCI1 = {&SCI1BDH, &SCI1BDL, &SCI1CR1, &SCI1CR2, &SCI1DRL, &SCI1SR1};
-SerialPort SCI0 = {&SCI0BDH, &SCI0BDL, &SCI0CR1, &SCI0CR2, &SCI0DRL, &SCI0SR1};
+//SerialPort SCI0 = {&SCI0BDH, &SCI0BDL, &SCI0CR1, &SCI0CR2, &SCI0DRL, &SCI0SR1};
 
 
 
@@ -204,7 +204,6 @@ void interpretSerial(char * buffer){
   char msg[3][8];
   int i = 0, numberElements = 0, start = 0, end;
   
-  DisableInterrupts;
   
   for(i = 0; i < BUFFER; i++){
   
@@ -242,7 +241,6 @@ void interpretSerial(char * buffer){
   detectMsgType(&buffer[11], &MsgHeader);
 
 
-  EnableInterrupts;
 
 }
 
@@ -256,7 +254,6 @@ int SerialRead(SerialPort *serial_port, char* buffer, int j) {
   
   //looking for carriage return (end of data) or if the input buffer will overflow
     if (*(serial_port->DataRegister) == CARRAIGE_RETURN) {
-        interpretSerial(buffer);
         return 0;
     } 
     else if(j >= BUFFER){//making sure no overflow 

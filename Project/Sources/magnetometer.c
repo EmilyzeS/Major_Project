@@ -38,7 +38,7 @@ void CalibrateMagnetometer(MagScaled * mag_noise){
   mag_noise->z = 0;
   
   DisableInterrupts;
-  for(i =0; i <100; i++){
+  for(i =0; i <1000; i++){
     error_code = getRawDataMagnet(&read_mag);   
   //if (error_code != NO_ERROR) {
     //printErrorCode(error_code);   
@@ -56,9 +56,9 @@ void CalibrateMagnetometer(MagScaled * mag_noise){
     
   }
   
-  mag_noise->x /= 100;
-  mag_noise->y /= 100;
-  mag_noise->z /= 100;
+  mag_noise->x /= 1000;
+  mag_noise->y /= 1000;
+  mag_noise->z /= 1000;
   
   
   EnableInterrupts;
@@ -67,28 +67,6 @@ void CalibrateMagnetometer(MagScaled * mag_noise){
   
 }
 
-void objectBeep(float * values, MagScaled * mag_noise, int length ){
-  int i = 0;
-  
-  
-  
-  
-  
-  while (i < length) {
-    if (values[i] > mag_noise->mod){
-      makeBeep();
-      i = i + 150;
-    }
-    i++;
-  }
-  
- 
-  //if data is greater than magnoise + some more
-  //beep
-  //wait 200 iterations? 
- 
-  
-}
 
 
 

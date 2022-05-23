@@ -18,11 +18,13 @@
 #include "magnetometer.h"
 #include "buttons.h"
 
+
 #define BUFFER 128
 
 //Operation Modes
 int scan_mode = 0;
 int magnet_mode = -1;
+
 
 
 void printErrorCode(IIC_ERRORS error_code) {
@@ -84,6 +86,8 @@ void main(void) {
   int i =0;
     
   int turnCount[1] = {0};
+  
+  extern char inputs[BUFFER]; 
 
   
   unsigned long singleSample;
@@ -109,7 +113,6 @@ void main(void) {
   
   // initialise the simple serial
   SerialInitialise(BAUD_9600, &SCI1);
-
 
   
     
@@ -161,13 +164,6 @@ void main(void) {
       printErrorCode(error_code);   
     }
     
-    error_code = getRawDataAccel(&read_accel);
-    if (error_code != NO_ERROR) {
-      printErrorCode(error_code);   
-    
-      error_code = iicSensorInit();
-      printErrorCode(error_code); 
-    }
     
     error_code = getRawDataMagnet(&read_magnet);
     if (error_code != NO_ERROR) {
@@ -196,6 +192,7 @@ void main(void) {
       }
       
     } 
+    
     else if( magnet_mode == 1){
     
       if(i >= BUFFER){
@@ -205,7 +202,7 @@ void main(void) {
       
       mag_mods[i] = scaled_mag.mod;
       
-	    objectBeep(mag_mods,&mag_noise, BUFFER );
+      
       
       SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
       
@@ -215,6 +212,15 @@ void main(void) {
       
        
     }
+    
+    if(!strcmp(inputs, "12")){
+     interpretSerial(inputs); 
+     inputs[0] = '\0';
+     //memset(inputs, 0, BUFFER);
+    }
+    
+    
+
     
    // sprintf(buffer, "%f\r\n", scaled_gyro.x);
    // SerialOutputString(buffer, &SCI1);

@@ -3,6 +3,7 @@
 
 
 #include "simple_serial.h"
+#include "LCD.h"
 
 typedef struct ObjectLocations{
   int sentinel;
@@ -13,7 +14,7 @@ typedef struct ObjectLocations{
 
 void detectMsgType(char * msg, struct READ_HEADER * header);
 
-void objectDetected(char * objectLocation);
+void objectDetected(char * msg);
 
 
 #endif
