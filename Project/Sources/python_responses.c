@@ -31,7 +31,7 @@ void detectMsgType(char * msg, struct READ_HEADER * header){
 void objectDetected(ObjectLocations * locations){
 
   int tog;
-  if(locations->sentinel == 56 ){
+  if(56 == 56 ){
     DDRB = 0xFF;
     DDRJ = 0xFF;
     DDRP = 0xFF;

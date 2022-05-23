@@ -206,8 +206,6 @@ void interpretSerial(char * buffer){
   
   DisableInterrupts;
   
-  //memcpy(token, inputs, BUFFER);
-
   for(i = 0; i < BUFFER; i++){
   
     
@@ -216,6 +214,10 @@ void interpretSerial(char * buffer){
         end = i;
         
         strncpy(msg[numberElements], &buffer[start], end-start);
+        
+        msg[numberElements][end-start] = '\0';
+        
+        
                 
         start = i +1;
         
@@ -231,7 +233,7 @@ void interpretSerial(char * buffer){
   
     
   MsgHeader.sentinel = atoi(msg[0]);
-  strncpy(MsgHeader.msg_type, msg[1], 6);
+  strncpy(MsgHeader.msg_type, msg[1], 8);
   MsgHeader.end_sentinel = atoi(msg[2]);
   
   
