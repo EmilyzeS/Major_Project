@@ -6,6 +6,7 @@ import data_output as do
 import map
 import read_text
 import convertUnits as cu
+import calibration as ca
 
 
 MSG_HEADER_SIZE = 16
@@ -43,6 +44,7 @@ def read_packet(f):
         read_text.read_string(str(text_bytes))
 
         print("text message: " + str(text_bytes))
+
     elif message_type == b"gyro":
 
         gyro_bytes = f.read(header_data[2])
@@ -61,20 +63,7 @@ def read_packet(f):
     elif message_type == b"buttons":
         buttons_bytes = f.read(header_data[2])
         print("buttons message: " + str(hex(buttons_bytes[1])) + ", time=" + str(buttons_bytes[2]))
-    elif message_type == b"angle":
-        #unpack
-        angle_bytes = f.read(header_data[2])
-        angle_data = struct.unpack(">hhhH", angle_bytes)
-
-        #check sentinel
-        if(angle_data[0] != ANGLE_SENT):
-            print("Angle data corrupted")
-            return False
-
-        #write to a csv file
-        info = [int(angle_data[1]), angle_data[2]]
-
-        do.write_to_csv('angledata.csv', info)
+    
     elif message_type == b"lidar":
         lidar_bytes = f.read(header_data[2])
         lidar_data = struct.unpack(">hIH", lidar_bytes)
@@ -101,44 +90,7 @@ def read_packet(f):
 
         do.write_to_csv('mag.csv', info)
 
-    elif message_type == b"accel":
-        accel_bytes = f.read(header_data[2])
-        accel_data = struct.unpack(">hefH", accel_bytes)
-
-        if(accel_data[0] != ACCEL_SENT):
-            print("Acceleration Data corrupted")
-            return False
-
-        info = [accel_data[1], accel_data[2], accel_data[3]]
-
-        do.write_to_csv('accel.csv', info)       
-
-
-
     return True
-
-
-    
-
-def read_serial(com_port):
-    serialPort = serial.Serial(port=com_port, baudrate=9600, bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
-
-    while True:
-
-        # Wait until there is data waiting in the serial buffer
-        if serialPort.in_waiting > 0:
-
-            try:
-                if not read_packet(serialPort):
-                    break
-            except Exception as e:
-                # Logs the error appropriately. 
-                print(traceback.format_exc())
-                break
-       
-        else:
-            time.sleep(0.05)
-
 
 
 def serialOutputChar(com_port, char):

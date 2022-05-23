@@ -70,13 +70,15 @@ def polarToRectangularGyro(ranges, servo_angles):
 
 
 
-def map():
+def map(x_offset,y_offset):
     lidar_readings = pd.read_csv ('lidar.csv', header = None)
     ranges = lidar_readings/(24*10**(3))
     ranges.set_axis(["Ranges"], axis = 1, inplace = True)
 
     gyro_velocities = pd.read_csv('gyro.csv',  header = None)
     gyro_velocities.set_axis(["xvel", "yvel","zvel","time"], axis = 1, inplace = True)
+    gyro_velocities['xvel'] -= x_offset
+    gyro_velocities['yvel'] -= y_offset
 
     servo_angles = convertAnglesGyro(gyro_velocities) 
 

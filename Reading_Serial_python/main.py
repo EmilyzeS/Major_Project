@@ -1,6 +1,10 @@
 # This is a Python script to parse the example messages from a file.
-import data_output as do
 import serial_functions as sf
+import time
+import serial
+import traceback
+import data_output as do
+
 
 # main program entry point
 if __name__ == '__main__':
@@ -13,9 +17,25 @@ if __name__ == '__main__':
     #do.clear_file('gyro.csv')
     do.clear_all_files()
     
-    while(1):
+    serialPort = serial.Serial(port="COM4", baudrate=9600, bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
+    
+    # constantly checking if there is data in the serial port
+    while True:
 
-        sf.read_serial("COM4")
+        # Wait until there is data waiting in the serial buffer
+        if serialPort.in_waiting > 0:
+
+            try:
+                if not sf.read_packet(serialPort):
+                    break
+            except Exception as e:
+                # Logs the error appropriately. 
+                print(traceback.format_exc())
+                break
+        
+        else:
+            time.sleep(0.05)
+        # sf.read_serial("COM4")
         #sf.sendPoint(2,2)
 
     #sendPoint(2,2)

@@ -1,20 +1,24 @@
 import map
 import data_output as do
-#import calibration as cal
+import calibration as cal
+x_offset = 0
+y_offset = 0
+
 
 def read_string(text):
+    
+
     if(text == "b\'clear\'"):
-        #map.map(x_offset, y_offset)
-        map.map()
+        global x_offset
+        global y_offset
+        map.map(x_offset, y_offset)
         do.clear_all_files()
         return
-    elif(text == "b\'calibrategyro\'"):
-        #[x,y] = cal.CalibrateGyro()
-        do.clear_all_files()
-        #return [x,y]
-
-
-
+    elif(text == "b\'calibrate\'"):
+        global x_offset
+        global y_offset
+        [x_offset,y_offset] = cal.CalibrateGyro()
+        do.clear_all_files() 
 
 
             

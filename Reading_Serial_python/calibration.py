@@ -1,6 +1,7 @@
 from re import S
 import pandas as pd
 import numpy as np
+import data_output as do
 
 def CalibrateGyro():
     gyro_calibration_velocities = pd.read_csv('gyro.csv',  header = None)
@@ -11,6 +12,3 @@ def CalibrateGyro():
     return x_offset, y_offset
 
 
-x_offset, y_offset = CalibrateGyro()
-print(x_offset)
-print(y_offset)
