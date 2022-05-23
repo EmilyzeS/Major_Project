@@ -101,12 +101,15 @@ def map():
     plt.figure("Data")
     plt.scatter(hits['X'], hits['Y'], c=colors, marker='o')
 
+    hits_xy = []
 
     for cluster in range(numClusters):
         plt.figure("Filtered data")
         print(clusters[cluster])
+        point = (clusters[cluster][1][0][0], clusters[cluster][1][0][1])
+        hits_xy.append(point)
         plt.scatter(clusters[cluster][0]['X'], clusters[cluster][0]['Y'], marker='o')
-        plt.scatter(clusters[cluster][1][0][0], clusters[cluster][1][0][1],marker = 'o')
+        plt.scatter(point[0], point[1] ,marker = 'o')
 
 
     fig = plt.figure(figsize=(12, 12))
@@ -116,6 +119,26 @@ def map():
     ax.set_ylabel('Y Label')
     ax.set_zlabel('Z Label')
     plt.show()
+
+    return hits_xy
+
+def prepareData(data):
+    messages = []
+    for hit in data:
+        x = data[0]*100
+        x = x.zfill(3)
+
+        y = data[1]*100
+        y  y.zfill(3)
+        message =  x + y
+        messages.append(message)
+
+
+
+
+
+
+    
 
 
 
