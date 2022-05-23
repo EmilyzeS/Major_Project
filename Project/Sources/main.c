@@ -196,6 +196,7 @@ void main(void) {
     else if( magnet_mode == 1){
     
       scaleMagUnits(&read_magnet, &scaled_mag);
+	objectBeep(&scaled_mag,&mag_noise );
       
       SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
       
