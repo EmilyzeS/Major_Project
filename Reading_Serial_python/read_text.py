@@ -1,6 +1,7 @@
 import map
 import data_output as do
 import calibration as cal
+import magnet
 
 x_offset = 0
 y_offset = 0
@@ -18,7 +19,7 @@ def read_string(text):
     elif(text == "b\'calibrate\'"):
         [x_offset,y_offset] = cal.CalibrateGyro()
         do.clear_all_files() 
-
-
-            
-    
+    elif(text == "b\'MagClr\'"):
+        magnet.analyse_magnets()
+        
+        do.clear_all_files()

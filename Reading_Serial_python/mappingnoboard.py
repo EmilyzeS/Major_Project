@@ -88,8 +88,8 @@ ranges.set_axis(["Ranges"], axis = 1, inplace = True)
 
 gyro_velocities = pd.read_csv('gyro.csv',  header = None)
 gyro_velocities.set_axis(["xvel", "yvel","zvel","time"], axis = 1, inplace = True)
-# gyro_velocities['xvel'] -= x_offset
-# gyro_velocities['yvel'] -= y_offset
+#gyro_velocities['xvel'] -= x_offset
+#gyro_velocities['yvel'] -= y_offset
 
 servo_angles = convertAnglesGyro(gyro_velocities) 
 

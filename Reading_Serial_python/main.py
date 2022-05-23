@@ -4,6 +4,7 @@ import time
 import serial
 import traceback
 import data_output as do
+import initialise_serial
 
 
 # main program entry point
@@ -17,16 +18,17 @@ if __name__ == '__main__':
     #do.clear_file('gyro.csv')
     do.clear_all_files()
     
-    serialPort = serial.Serial(port="COM4", baudrate=9600, bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
+    initialise_serial.serialinit()
+    
     while True:
         # constantly checking if there is data in the serial port
         while True:
 
             # Wait until there is data waiting in the serial buffer
-            if serialPort.in_waiting > 0:
+            if initialise_serial.serialPort.in_waiting > 0:
 
                 try:
-                    if not sf.read_packet(serialPort):
+                    if not sf.read_packet(initialise_serial.serialPort):
                         break
                 except Exception as e:
                     # Logs the error appropriately. 

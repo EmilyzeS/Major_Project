@@ -57,18 +57,27 @@ def polarToRectangularGyro(ranges, servo_angles):
     sinVals = np.sin(servo_angles['Elevation'])
     hits['Z'] = ranges["Ranges"] * sinVals
     hits['D'] = ranges["Ranges"] * cosVals
-  
+    print('old')
+    print(max(servo_angles['Azimuth'] * 180/np.pi), min(servo_angles['Azimuth'] * 180/np.pi))
+    
     max_az = max(servo_angles['Azimuth'])
     min_az = min(servo_angles['Azimuth'])
     diff = max_az- min_az
+    middle = max_az - diff/2
+    increase = np.pi/2 - middle
 
-    servo_angles['Azimuth'] += np.pi/2 - ( max_az - (np.pi - diff)/2)
+    servo_angles['Azimuth'] += increase
+    print('new')
+    print(max(servo_angles['Azimuth'] * 180/np.pi), min(servo_angles['Azimuth'] * 180/np.pi))
 
     cosVals = np.cos(servo_angles['Azimuth'])
     sinVals = np.sin(servo_angles['Azimuth'])
     hits['X'] = hits['D'] * cosVals
     hits['Y'] = hits['D'] * sinVals
 
+
+    # hits = hits[hits['Y'] < 1.5]
+    # hits = hits[hits['Y'] > 0.5]
     return hits
 
 
@@ -81,16 +90,16 @@ def map(x_offset,y_offset):
 
     gyro_velocities = pd.read_csv('gyro.csv',  header = None)
     gyro_velocities.set_axis(["xvel", "yvel","zvel","time"], axis = 1, inplace = True)
-    gyro_velocities['xvel'] -= x_offset
-    gyro_velocities['yvel'] -= y_offset
+    #gyro_velocities['xvel'] -= x_offset
+    #gyro_velocities['yvel'] -= y_offset
 
     servo_angles = convertAnglesGyro(gyro_velocities) 
 
     hits = polarToRectangularGyro(ranges, servo_angles)
     hits.dropna()
 
-    hits = hits[hits['Y'] > 0.5]
-    hits = hits[hits['Y'] < 1.5]
+    #hits = hits[hits['Y'] > 0.5]
+    #hits = hits[hits['Y'] < 1.5]
 
 
 
@@ -122,6 +131,7 @@ def map(x_offset,y_offset):
         hits_xy.append(point)
         plt.scatter(clusters[cluster][0]['X'], clusters[cluster][0]['Y'], marker='o')
         plt.scatter(point[0], point[1] ,marker = 'o')
+    
 
 
     fig = plt.figure(figsize=(12, 12))
@@ -130,9 +140,8 @@ def map(x_offset,y_offset):
     ax.set_xlabel('X Label')
     ax.set_ylabel('Y Label')
     ax.set_zlabel('Z Label')
-    plt.show()
-    #message = prepareData(hits_xy)
-    #delete.sendData(message)
+    message, format = prepareData(hits_xy)
+    delete.sendData(message, format, "object")
 
 
 # def prepareData(data):
@@ -150,10 +159,11 @@ def prepareData(data):
     message = ""
     i = 1
     for hit in data:
-        message += "Object " + str(i) + ": (" + str(round(hit[0]*100)) + ", " + str(round(hit[1]*100)) + ") "
+        message += "(" + str(round(hit[0]*100)) + ", " + str(round(hit[1]*100)) + ")"
         i += 1
     print(message)
-    format = '<3s' + len(message) + 's'
+    format = '<' + str(len(message)) + 's'
+    print(format)
     message = bytes(message, 'utf-8')
     return message, format
 
