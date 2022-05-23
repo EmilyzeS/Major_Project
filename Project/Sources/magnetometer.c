@@ -5,7 +5,7 @@
 #include "beep.h"
 
 
-//idk about *16/pow(2,16)
+
 float returnMagnetometerUnits(int raw_mag){
    return ((float)raw_mag * 16)/pow(2,16);
 }
@@ -13,6 +13,7 @@ float returnMagnetometerUnits(int raw_mag){
 
 void  scaleMagUnits(MagRaw * read_mag, MagScaled * scaled_mag){
    
+
    scaled_mag->x = returnMagnetometerUnits(read_mag->x);
    scaled_mag->y = returnMagnetometerUnits(read_mag->y);
    scaled_mag->z = returnMagnetometerUnits(read_mag->z);
@@ -37,16 +38,13 @@ void CalibrateMagnetometer(MagScaled * mag_noise){
   mag_noise->y = 0;
   mag_noise->z = 0;
   
+
   DisableInterrupts;
+
+  //get average of 1000 noisy magnetometer readings
   for(i =0; i <1000; i++){
     error_code = getRawDataMagnet(&read_mag);   
-  //if (error_code != NO_ERROR) {
-    //printErrorCode(error_code);   
-         
-    //error_code = iicSensorInit();
-    //printErrorCode(error_code);
-        
-  //}
+
   
     scaleMagUnits(&read_mag, &scaled_mag);
     

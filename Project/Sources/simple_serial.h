@@ -47,12 +47,6 @@ struct MSG_LIDAR{
   
 };
 
-struct MSG_ANGLE{
-  int sentinel;
-  int azimuth;
-  int elevation;
-  unsigned int time; 
-};
  
 typedef unsigned char uint8_t;
 
@@ -120,7 +114,6 @@ void SendButtonsMsg();
 void SendTextMsg(char* text_message); 
 
 void SendLidarMsg(unsigned long laser_reading); 
-void SendAngleMsg(int azimuth, int elevation);
  
 int SerialRead(SerialPort *serial_port, char* buffer, int j);
 

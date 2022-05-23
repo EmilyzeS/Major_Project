@@ -58,10 +58,6 @@ def read_packet(f):
         info = [cu.ConvertGyro(gyro_data[1]), cu.ConvertGyro(gyro_data[2]), cu.ConvertGyro(gyro_data[3]), gyro_data[4]]
 
         do.write_to_csv('gyro.csv', info)
-
-    elif message_type == b"buttons":
-        buttons_bytes = f.read(header_data[2])
-        print("buttons message: " + str(hex(buttons_bytes[1])) + ", time=" + str(buttons_bytes[2]))
     
     elif message_type == b"lidar":
         lidar_bytes = f.read(header_data[2])

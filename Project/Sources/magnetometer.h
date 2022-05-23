@@ -25,13 +25,8 @@ typedef struct MagScaled {
 
 
 void getModulus(MagScaled * values);
-
-
-
 float returnMagnetometerUnits(int raw_mag);
-
 void  scaleMagUnits(MagRaw * read_mag, MagScaled * scaled_mag);
-
 void CalibrateMagnetometer(MagScaled * mag_noise);
 
 

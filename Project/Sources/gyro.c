@@ -17,6 +17,7 @@ float returnGyroUnits(int reading){
   return ((float)reading*250/pow(2,15)); 
 }
 
+
 void ConvertGyro(GyroRaw *read_gyro, GyroScaled *scaled_gyro){
  scaled_gyro->x = returnGyroUnits(read_gyro->x);
  scaled_gyro->y = returnGyroUnits(read_gyro->y);
@@ -26,7 +27,7 @@ void ConvertGyro(GyroRaw *read_gyro, GyroScaled *scaled_gyro){
 
 int gyroDirection(float azimuthSpeed, float azimuth_noise){
 
-  //returns 0 if the servo is spinning right and 1 if it is panning left
+  //returns 0 if the servo is spinning right and 1 if it is spinning left
   if(azimuthSpeed < -fabs(azimuth_noise)){  //if turning right
     return 0;
   }
@@ -57,6 +58,8 @@ void CalibrateGyro(GyroScaled * gyro_noise){
   
   SendTextMsg("CalibrateGyros");
 
+
+  //take average of 1000 stationary noise readings
   for(i = 0; i<1000; i++){
   
   error_code = getRawDataGyro(&read_gyro);   

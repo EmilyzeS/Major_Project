@@ -14,6 +14,7 @@ volatile int pan_toggle = 0;
 volatile int tilt_toggle = 0;
 volatile long tilt_iterator = 0;
 
+//variable to see if the servo needs to be spinning
 extern int scan_mode;
 
 
@@ -84,6 +85,8 @@ __interrupt void TC6_ISR(void) {
   TC6 = TCNT + 64000;   // interrupt delay depends on the prescaler
   TFLG1 |= TFLG1_C6F_MASK;
   
+
+  //if not scanning reset everything to 0 and just return
   if(scan_mode == 0){
     pan_iterator = 0;
     pan_toggle = 0;
@@ -93,6 +96,7 @@ __interrupt void TC6_ISR(void) {
   }
   
 
+  //control the pan to turn roughly around 70 degrees
   if (pan_toggle == 0)
     pan_iterator++;
   else
@@ -104,6 +108,7 @@ __interrupt void TC6_ISR(void) {
     pan_toggle = 0;
   }
   
+  //control the tilt to be 3x faster and go roughly 20 degrees
   if(tilt_toggle == 0)
    tilt_iterator += 3; 
   else

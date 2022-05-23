@@ -56,6 +56,7 @@ void SerialInitialise(int baudRate, SerialPort *serial_port) {
 	  break;
   }
   
+  //enable read and write
   *(serial_port->ControlRegister2) = 0x2C;
   *(serial_port->ControlRegister1) = 0x00;
 }
@@ -86,39 +87,25 @@ void SerialOutputBytes(char *pt, int size, SerialPort *serial_port) {
   }            
 }
 
-void SendAngleMsg(int azimuth, int elevation){
-  struct MSG_HEADER angle_header = {0xABCD, "angle", 0, 0, 0xDCBA};
-  struct MSG_ANGLE angle_message = {0x5678, 0, 0, 0};
-  
-  angle_header.msg_size = sizeof(struct MSG_ANGLE);
-  angle_header.header_time = TCNT;
-  
-  angle_message.azimuth = azimuth;
-  angle_message.elevation = elevation;
-  angle_message.time = TCNT;
-  
-  SerialOutputBytes((char*)&angle_header, sizeof(struct MSG_HEADER), &SCI1);
-  SerialOutputBytes((char*)&angle_message, sizeof(struct MSG_ANGLE), &SCI1);  
-}
 
 
-void SendAccelMsg(int x, int y, int z) {
-  struct MSG_HEADER accel_header = {0xABCD, "accel", 0, 0, 0xDCBA};
-  struct MSG_ACCEL accel_message = {0x2468, 0, 0, 0, 0};
+// void SendAccelMsg(int x, int y, int z) {
+//   struct MSG_HEADER accel_header = {0xABCD, "accel", 0, 0, 0xDCBA};
+//   struct MSG_ACCEL accel_message = {0x2468, 0, 0, 0, 0};
                              
-  accel_header.msg_size = sizeof(struct MSG_MAG);
+//   accel_header.msg_size = sizeof(struct MSG_MAG);
   
   
-  accel_header.header_time = TCNT;
+//   accel_header.header_time = TCNT;
   
-  accel_message.time = TCNT;
-  accel_message.x = x;
-  accel_message.y = y;
-  accel_message.z = z;
+//   accel_message.time = TCNT;
+//   accel_message.x = x;
+//   accel_message.y = y;
+//   accel_message.z = z;
   
-  SerialOutputBytes((char*)&accel_header, sizeof(struct MSG_HEADER), &SCI1);  
-  SerialOutputBytes((char*)&accel_message, sizeof(struct MSG_ACCEL), &SCI1); 
-}
+//   SerialOutputBytes((char*)&accel_header, sizeof(struct MSG_HEADER), &SCI1);  
+//   SerialOutputBytes((char*)&accel_message, sizeof(struct MSG_ACCEL), &SCI1); 
+// }
 
 void SendMagMsg(int x, int y, int z) {
 
@@ -137,6 +124,8 @@ void SendMagMsg(int x, int y, int z) {
   magnet_message.x = x;
   magnet_message.y = y;
   magnet_message.z = z;
+
+  //disable interrupts because if scanning mode is suddenly exited data will be corrupted 
   DisableInterrupts;
   SerialOutputBytes((char*)&magnet_header, sizeof(struct MSG_HEADER), &SCI1);  
   SerialOutputBytes((char*)&magnet_message, sizeof(struct MSG_MAG), &SCI1);
@@ -145,6 +134,7 @@ void SendMagMsg(int x, int y, int z) {
 
 
 void SendGyroMsg(int rot_x, int rot_y, int rot_z) {
+
   struct MSG_HEADER gyro_header = {0xABCD, "gyro", 0, 0, 0xDCBA};
   struct MSG_GYRO gyro_message = {0x1358, 0, 0, 0, 0};
                              
@@ -177,18 +167,6 @@ void SendLidarMsg(unsigned long laser_reading){
   SerialOutputBytes((char*)&laser_message, sizeof(struct MSG_LIDAR), &SCI1);
 }
 
-void SendButtonsMsg() {
-  struct MSG_HEADER button_header = {0xABCD, "buttons", 0, 0, 0xDCBA};
-  struct MSG_BUTTONS button_message = {0x4321, 0x0A, 0};
-                             
-  button_header.msg_size = sizeof(struct MSG_BUTTONS);
-  button_header.header_time = TCNT;
-  
-  button_message.last_press_time = TCNT;
-  
-  SerialOutputBytes((char*)&button_header, sizeof(struct MSG_HEADER), &SCI1);  
-  SerialOutputBytes((char*)&button_message, sizeof(struct MSG_BUTTONS), &SCI1);   
-}
 
 
 void SendTextMsg(char* text_message) {
@@ -209,16 +187,18 @@ void interpretSerial(char * buffer){
   char msg[3][8];
   int i = 0, numberElements = 0, start = 0, end;
   
-  
+  //loop through the entire array recieved 
   for(i = 0; i < BUFFER; i++){
   
     
-  
+    //the message is padded by zeros, look for these zeros and then decipher the message
      if(buffer[i] == 0){
         end = i;
         
+        //copy the info into a matrix of strings
         strncpy(msg[numberElements], &buffer[start], end-start);
         
+        //add the null terminator
         msg[numberElements][end-start] = '\0';
         
         
@@ -235,8 +215,9 @@ void interpretSerial(char * buffer){
      
   }
   
-    
+  //delegate the information into the appropriate struct
   MsgHeader.sentinel = atoi(msg[0]);
+  //to prevent overflow only copy 8 digits
   strncpy(MsgHeader.msg_type, msg[1], 8);
   MsgHeader.end_sentinel = atoi(msg[2]);
   
@@ -274,7 +255,7 @@ int SerialRead(SerialPort *serial_port, char* buffer, int j) {
     
 }
 
-
+//interrupt for message recieved
 #pragma CODE_SEG __NEAR_SEG NON_BANKED /* Interrupt section for this module. Placement will be in NON_BANKED area. */
 __interrupt void Serial1ISR(void) {
   j = SerialRead(&SCI1, inputs, j);

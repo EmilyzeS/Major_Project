@@ -20,11 +20,6 @@ float returnGyroUnits(int reading);
 
 
 
-// NOTE: some function is required to convert between raw and 
-//       scaled values. Also, calibration and removing the bias is
-//       needed
-
-
 int gyroDirection(float azimuthSpeed, float gyro_noise);
 
 
