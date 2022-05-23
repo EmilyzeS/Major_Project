@@ -121,8 +121,12 @@ void SendAccelMsg(int x, int y, int z) {
 }
 
 void SendMagMsg(int x, int y, int z) {
+
+
   struct MSG_HEADER magnet_header = {0xABCD, "magnet", 0, 0, 0xDCBA};
   struct MSG_MAG magnet_message = {0x1357, 0, 0, 0, 0};
+                             
+                             
                              
   magnet_header.msg_size = sizeof(struct MSG_MAG);
   
@@ -133,9 +137,10 @@ void SendMagMsg(int x, int y, int z) {
   magnet_message.x = x;
   magnet_message.y = y;
   magnet_message.z = z;
-  
+  DisableInterrupts;
   SerialOutputBytes((char*)&magnet_header, sizeof(struct MSG_HEADER), &SCI1);  
-  SerialOutputBytes((char*)&magnet_message, sizeof(struct MSG_MAG), &SCI1); 
+  SerialOutputBytes((char*)&magnet_message, sizeof(struct MSG_MAG), &SCI1);
+  EnableInterrupts; 
 }
 
 
@@ -238,7 +243,7 @@ void interpretSerial(char * buffer){
   
 
   
-  detectMsgType(&buffer[11], &MsgHeader);
+  //detectMsgType(&buffer[11], &MsgHeader);
 
 
 

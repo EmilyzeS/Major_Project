@@ -117,7 +117,7 @@ __interrupt void TC6_ISR(void) {
   
   
 
-  setServoPose(50 + pan_iterator, 50 + tilt_iterator);
+  setServoPose(50 + pan_iterator, 50+tilt_iterator);
 
         
 }

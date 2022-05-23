@@ -225,7 +225,7 @@ void iicswrcv(void) {
 IIC_ERRORS iicreceive(uint8_t *buffer) {
     setAlarm(IIC_TIMEOUT_ITERATIONS);
     
-    while ((IBSR & 0x2) == 0 && !alarmSignaled) {};
+    while (((IBSR & 0x2) == 0 && !alarmSignaled)) {};
     if (alarmSignaled) {
         return RECEIVE_TIMEOUT;
     }

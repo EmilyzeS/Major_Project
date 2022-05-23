@@ -21,13 +21,10 @@ void detectMsgType(char * msg, struct READ_HEADER * header){
   
 
   if(!strncmp(header->msg_type,"object",8)){
-     
-     //locations.sentinel = msg[2];
-     //locations.x = msg[4];
-     //locations.y = msg[5];
-      
      objectDetected(msg);
-  }
+     
+  } 
+
 }
 
 void objectDetected(char * msg){
@@ -41,7 +38,7 @@ void objectDetected(char * msg){
   }
 
   displayLCD("Objects: ", &msg[i]);
-  delay(100);
+
     
     //initialiseTimers();
     //makeBeep();
@@ -51,3 +48,4 @@ void objectDetected(char * msg){
     
     //TSCR1_TEN = 1;
 }
+

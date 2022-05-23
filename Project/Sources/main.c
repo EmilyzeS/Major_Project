@@ -17,6 +17,7 @@
 #include <string.h>
 #include "magnetometer.h"
 #include "buttons.h"
+#include "LCD.h"
 
 
 #define BUFFER 128
@@ -139,10 +140,13 @@ void main(void) {
   #endif
 
   Init_TC6();
+  displayLCD(" "," ");
+  displayLCD("Calibrating", " ");
   CalibrateGyro(&gyro_noise);
   CalibrateMagnetometer(&mag_noise);
   getModulus(&mag_noise);
   setServoPose(100, 100);
+  displayLCD("Standby"," ");
 
 
 	EnableInterrupts;
@@ -187,6 +191,11 @@ void main(void) {
     
       if(*turnCount > 4){
         scan_mode = 0;
+        displayLCD("Robotic arm", "in operation");
+        DisableInterrupts;
+        EnableInterrupts;
+        makeBeep();
+        
         (*turnCount) = 0;
         SendTextMsg("clear");
       }
@@ -205,8 +214,7 @@ void main(void) {
       
       
       SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
-      
-      
+          
       
       i++; 
       
