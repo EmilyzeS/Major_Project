@@ -15,7 +15,11 @@ void  scaleMagUnits(MagRaw * read_mag, MagScaled * scaled_mag){
    
    scaled_mag->x = returnMagnetometerUnits(read_mag->x);
    scaled_mag->y = returnMagnetometerUnits(read_mag->y);
-   scaled_mag->z = returnMagnetometerUnits(read_mag->z);   
+   scaled_mag->z = returnMagnetometerUnits(read_mag->z);
+   
+   
+   getModulus(scaled_mag);
+   scaled_mag->mod = scaled_mag->mod;   
 
 }
 
@@ -63,12 +67,15 @@ void CalibrateMagnetometer(MagScaled * mag_noise){
   
 }
 
-void objectBeep(MagScaled * values,MagScaled * mag_noise ){
+void objectBeep(float * values, MagScaled * mag_noise, int length ){
   int i = 0;
-  int length;
-  length = sizeof(values)/sizeof(values[0]);
+  
+  
+  
+  
+  
   while (i < length) {
-    if (values[i]->mod > mag_noise[i]->mod){
+    if (values[i] > mag_noise->mod){
       makeBeep();
       i = i + 150;
     }

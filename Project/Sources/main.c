@@ -69,6 +69,7 @@ void main(void) {
   AccelRaw read_accel;
   AccelScaled scaled_accel;
   
+  
   //char input[100];
 
   GyroRaw read_gyro;
@@ -79,6 +80,8 @@ void main(void) {
   IIC_ERRORS error_code = NO_ERROR;
   
   char buffer[BUFFER]; 
+  float mag_mods[BUFFER];
+  int i =0;
     
   int turnCount[1] = {0};
 
@@ -195,14 +198,20 @@ void main(void) {
     } 
     else if( magnet_mode == 1){
     
+      if(i >= BUFFER){
+       i =0; 
+      }
       scaleMagUnits(&read_magnet, &scaled_mag);
-	objectBeep(&scaled_mag,&mag_noise );
+      
+      mag_mods[i] = scaled_mag.mod;
+      
+	    objectBeep(mag_mods,&mag_noise, BUFFER );
       
       SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
       
       
       
-      
+      i++; 
       
        
     }

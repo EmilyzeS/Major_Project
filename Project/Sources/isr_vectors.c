@@ -7,6 +7,7 @@
 #include "servo.h"
 #include "simple_serial.h"
 #include "buttons.h"
+#include "beep.h"
 
 
 #pragma CODE_SEG __NEAR_SEG NON_BANKED /* Interrupt section for this module. Placement will be in NON_BANKED area. */
@@ -83,7 +84,7 @@ const tIsrFunc _vect[] @0xFF80 = {     /* Interrupt table */
         UnimplementedISR,                 /* vector 0x10 (TOF) */
         TC7_ISR,                          /* vector 0x0F (TIE, C7I)  */
         TC6_ISR,                 /* vector 0x0E (TIE, C6I)  */
-        UnimplementedISR,                 /* vector 0x0C (TIE, C5I)  */
+        speakerISR,                 /* vector 0x0D (TIE, C5I)  */
         UnimplementedISR,                 /* vector 0x0C (TIE, C4I)  */
         UnimplementedISR,                 /* vector 0x0B (TIE, C3I)  */
         UnimplementedISR,                 /* vector 0x0A (TIE, C2I)  */

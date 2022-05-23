@@ -34,8 +34,7 @@ void  scaleMagUnits(MagRaw * read_mag, MagScaled * scaled_mag);
 
 void CalibrateMagnetometer(MagScaled * mag_noise);
 
-void objectBeep(MagScaled * values,MagScaled * mag_noise );
-
+void objectBeep(float * values,MagScaled * mag_noise, int length );
 
 
 

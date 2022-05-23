@@ -4,6 +4,7 @@
 #include "beep.h"
 
 
+
 void initialiseTimers() {
     // Enable timer and fast flag clear
   	TSCR1 = enable_timer; 
@@ -16,9 +17,12 @@ void initialiseTimers() {
 }
 
 
-interrupt 13 void speakerISR(){
+
+#pragma CODE_SEG __NEAR_SEG NON_BANKED
+__interrupt void speakerISR(){
   
 	TC5 = TC5 + period;
+	
 }
 
 

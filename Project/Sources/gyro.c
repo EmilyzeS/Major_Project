@@ -11,7 +11,7 @@
 
 // y is left to right
 // x is up down
-// 
+
 
 float returnGyroUnits(int reading){
   return ((float)reading*250/pow(2,15)); 
