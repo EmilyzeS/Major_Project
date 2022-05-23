@@ -48,3 +48,10 @@ void makeBeep(){
 
 }
 
+void delay(unsigned int time){
+    int j = 0;
+    int i = 0;
+    for(i=0;i<time;i++)
+      for(j=0;j<4000;j++);
+}
+

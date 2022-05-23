@@ -14,7 +14,7 @@
 
 
 
-
+void delay(unsigned int time);
 void initialiseTimers();
 void makeBeep();
 
