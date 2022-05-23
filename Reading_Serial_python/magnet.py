@@ -145,20 +145,22 @@ def print_object_summary(object_peaks):
             print(f'{round(i)}, ', end = '')   
     
 
-def write_object_summary_file(objects,num_objects, names, peak_times):
+def write_object_summary_file(objects,num_objects, names, peak_times, costs):
     f = open("summary.txt", 'w')
     f.write("Summary of Objects Scanned\n\n")
-    f.write(f'Found {len(objects)} Items:\n')
+    f.write(f'Found {len(objects)} Items:\n\n')
     i = 0
     while i < len(num_objects):
         if num_objects[i] == 1:
             
-            f.write(f'Object {names[i]} : {num_objects[i]} item\n')
+            f.write(f'Object {names[i]} : {num_objects[i]} item, ')
         else:
-            f.write(f'Object {names[i]} : {num_objects[i]} items\n')
+            f.write(f'Object {names[i]} : {num_objects[i]} items, ')
+        f.write(f'Cost: ${costs[i]}\n')
         i = i+1
     i= 0 
-    f.write('\nScanning Data:')
+    f.write(f'\nTotal cost: ${costs[3]}\n')
+    f.write('\nScanning Data:\n')
     while i < len(objects):
         f.write(f'Object {names[objects[i]]} found at time stamp {peak_times[i]}\n')
         i = i+1
@@ -187,7 +189,17 @@ def classify_objects(object_peaks):
     return objects, num_objects
             
             
-        
+def find_cost(prices, num_objects):
+   total_cost = 0
+   costs = []
+   i = 0
+   while i < len(num_objects):
+       total_cost = total_cost + num_objects[i] * prices[i]
+       costs.append(num_objects[i] * prices[i])
+       i = i+1
+    
+   costs.append(total_cost)
+   return costs       
 
 
     
@@ -220,7 +232,12 @@ names = ['Allbran', 'weetBix', 'Cheerios']
 
 print_object_summary( object_peaks)
 
-write_object_summary_file(objects, num_objects, names, peak_times)
+prices = [9,7,15]
+
+costs = find_cost(prices, num_objects)
+write_object_summary_file(objects, num_objects, names, peak_times, costs)
+#Total count and total cost on lcd
+#point_message = struct.pack('<hhhh', 88, num_objects[0], num_objects[1], num_objects[2])
 
 
 
