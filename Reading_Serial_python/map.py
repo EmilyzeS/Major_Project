@@ -89,6 +89,11 @@ def map(x_offset,y_offset):
     hits = polarToRectangularGyro(ranges, servo_angles)
     hits.dropna()
 
+    hits = hits[hits['Y'] > 0.5]
+    hits = hits[hits['Y'] < 1.5]
+
+
+
     model = DBSCAN(eps = 0.1, min_samples = 20).fit(hits[['X','Y']])
     colors = model.labels_
 
