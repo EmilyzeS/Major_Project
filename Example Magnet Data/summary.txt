@@ -1,0 +1,14 @@
+Summary of Objects Scanned
+
+Found 3 Items:
+
+Object Allbran : 1 item, Cost: $9
+Object weetBix : 1 item, Cost: $7
+Object Cheerios : 1 item, Cost: $15
+
+Total cost: $31
+
+Scanning Data:
+Object Cheerios found at time stamp 336
+Object Allbran found at time stamp 805
+Object weetBix found at time stamp 1180
