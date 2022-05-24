@@ -176,11 +176,11 @@ def classify_objects(object_peaks):
         #medium = 2 small round = 8000 - 1700 ish weetBix  1
         #large = 1800+ Cheerios  2
        
-        if i < 8000:
+        if i < 7000:
             objects.append(0)
-        elif i < 17000:
+        elif i < 15000:
             objects.append(1)
-        elif i > 17000:
+        elif i > 15000:
             objects.append(2)
    
     for i in objects:
@@ -220,8 +220,8 @@ def analyse_magnets():
    
     print_means_stdvs(means, stdvs, components_names)
    
-    min_magnet_value = 5000
-    max_noise_value = 5000
+    min_magnet_value = 4000
+    max_noise_value = 4000
     minimum_scan_time = 200
     #Detect objects
     object_peaks, peak_times = detect_objects(mod, time, min_magnet_value, max_noise_value, minimum_scan_time)
@@ -238,5 +238,5 @@ def analyse_magnets():
     write_object_summary_file(objects, num_objects, names, peak_times, costs)
 #Total count and total cost on lcd
 #point_message = struct.pack('<hhhh', 88, num_objects[0], num_objects[1], num_objects[2])
-
-analyse_magnets()
+#For testing this file
+$#analyse_magnets()
