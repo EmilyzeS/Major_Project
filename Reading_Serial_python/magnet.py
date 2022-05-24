@@ -89,6 +89,8 @@ def plot_summary(components,components_names, time):
         plt.title(f'{components_names[i]}')
         plt.plot(time,(components[i]), c = colors[i])
         plt.savefig(f'magnet_data_{components_names[i]}')
+        #For demonstration purposes:
+        #plt.show()
         i = i+1
        
    
