@@ -1,12 +1,18 @@
 #include <hidef.h>      /* common defines and macros */
 #include <assert.h>
 #include "derivative.h"      /* derivative-specific definitions */
+
+// need this for string functions
 #include <stdio.h>
+
 #include "pll.h"
 #include "simple_serial.h"
+
 #include "l3g4200d.h"
+
 #include "servo.h"
 #include "laser.h"
+
 #include "gyro.h"
 #include <string.h>
 #include "magnetometer.h"
@@ -15,7 +21,7 @@
 
 
 #define BUFFER 128
-#define NUMBERSPINS 4
+#define SPINCOUNT 4
 
 //Operation Modes
 int scan_mode = 0;
@@ -63,6 +69,12 @@ void printErrorCode(IIC_ERRORS error_code) {
 }
 
 void main(void) {
+
+  AccelRaw read_accel;
+  AccelScaled scaled_accel;
+  
+  
+  //char input[100];
 
   GyroRaw read_gyro;
   GyroScaled scaled_gyro, gyro_noise;
@@ -124,16 +136,17 @@ void main(void) {
   #endif
 
   Init_TC6();
-
+  //initialise LCD
   displayLCD(" "," ");
+  
+  //updae LCD and begin calibration
   displayLCD("Calibrating", " ");
-
-  //calibrate
   CalibrateGyro(&gyro_noise);
   CalibrateMagnetometer(&mag_noise);
   getModulus(&mag_noise);
-
   
+  //let python know the calibration has been completed
+  SendTextMsg("calibrate");
   setServoPose(100, 100);
   displayLCD("Standby"," ");
 
@@ -143,7 +156,8 @@ void main(void) {
   _DISABLE_COP();
   
   
-
+  
+  //calibrateGyro() ;
     
   for(;;) {
   
@@ -167,50 +181,54 @@ void main(void) {
 
     GetLatestLaserSample(&singleSample);
     
-    //detecting objects using mapping 
+    //if searching for objects
     if(scan_mode == 1){
     
-      //convert gyrounits
+      
       ConvertGyro(&read_gyro, &scaled_gyro);
-
-      //count 4 spins 
+      
+      //count the number of times the gyro has been spun
       servoSpinCount(turnCount, scaled_gyro.x, gyro_noise.x);
       
-      //send gyro to pythons
+      
+      //send info for python mapping
       SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
       SendLidarMsg(singleSample);
     
-      //after 4 turns 
-      if(*turnCount > NUMBERSPINS){
-        //stop scanning and start picking up the item
+    
+    //if it has finished mapping
+      if(*turnCount > SPINCOUNT){
         scan_mode = 0;
-        displayLCD("Robotic arm", "in operation");
 
-        //tell python to clear and start scanning
+        
         (*turnCount) = 0;
         SendTextMsg("clear");
-
-        DisableInterrupts;
-        EnableInterrupts;
-        makeBeep();
-
       }
       
     } 
     
+    //stocktake mode
     else if( magnet_mode == 1){
     
-   
+     // if(i >= BUFFER){
+     //  i =0; 
+     // }
+      
+     // scaleMagUnits(&read_magnet, &scaled_mag);
+      
+     // mag_mods[i] = scaled_mag.mod;
+      
+      
       //send magnet message to python
       SendMagMsg(read_magnet.x, read_magnet.y, read_magnet.z);
           
-
+      
+     // i++; 
       
        
     }
     
-
-    //poll if a message has been recieved from python
+    //poll when  a message has been recieved
     if(!strcmp(inputs, "12")){
      interpretSerial(inputs); 
      inputs[0] = '\0';
@@ -219,7 +237,9 @@ void main(void) {
     
     
 
-  
+    
+   // sprintf(buffer, "%f\r\n", scaled_gyro.x);
+   // SerialOutputString(buffer, &SCI1);
       
       
     //_FEED_COP(); /* feeds the dog */

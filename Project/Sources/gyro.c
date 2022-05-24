@@ -59,8 +59,8 @@ void CalibrateGyro(GyroScaled * gyro_noise){
   SendTextMsg("CalibrateGyros");
 
 
-  //take average of 1000 stationary noise readings
-  for(i = 0; i<1000; i++){
+  //take average of 100 stationary noise readings
+  for(i = 0; i<100; i++){
   
   error_code = getRawDataGyro(&read_gyro);   
   //if (error_code != NO_ERROR) {
@@ -82,14 +82,15 @@ void CalibrateGyro(GyroScaled * gyro_noise){
   
   
   //for python to initialise 
-  //SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
+  SendGyroMsg(read_gyro.x, read_gyro.y, read_gyro.z);
 
    
   }
   
-  gyro_noise->x /= 1000;
-  gyro_noise->y /= 1000;
-  gyro_noise->z /= 1000;
+  gyro_noise->x /= 100;
+  gyro_noise->y /= 100;
+  gyro_noise->z /= 100;
+  
   
   EnableInterrupts;
   

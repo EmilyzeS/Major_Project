@@ -10,17 +10,15 @@
 
 #include "LCD.h"
 
-
 void detectMsgType(char * msg, struct READ_HEADER * header){
 
-
-  //checksum on header sentinels
+  //checksum on header
   if(header->sentinel + header->end_sentinel != HEADER_SENT){
     return; 
   }
   
   
-  //if an object message has been recieved
+  //if an object was detected
   if(!strncmp(header->msg_type,"object",8)){
      objectDetected(msg);
      
@@ -32,15 +30,16 @@ void objectDetected(char * msg){
 
   int i;
 
-  //look for the start of the message denoted by the char '('
+//find the start of the message denoted by '('
   for(i = 0;i < BUFFER;i++){
    if(msg[i] == '('){
      break;
    }
   }
 
-  //display the location of the found objects
+//display sent message
   displayLCD("Objects: ", &msg[i]);
+ 
 
 
 }

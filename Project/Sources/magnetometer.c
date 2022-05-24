@@ -18,7 +18,7 @@ void  scaleMagUnits(MagRaw * read_mag, MagScaled * scaled_mag){
    scaled_mag->y = returnMagnetometerUnits(read_mag->y);
    scaled_mag->z = returnMagnetometerUnits(read_mag->z);
    
-   
+   //calculate the modulus
    getModulus(scaled_mag);
    scaled_mag->mod = scaled_mag->mod;   
 
