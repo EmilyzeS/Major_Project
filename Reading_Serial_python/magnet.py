@@ -2,14 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import csv
 
-#moving the magnet in the x direction
-#25cm away from imu
-#slowish
-#scan round flat face perpendicular to ground
-#scan large with longest edge facing IMU and face where they're stuck together perpendicular to ground
-
+#Instructions for use:
+#Lower the box with the magnet facing the IMU slowly down and lift back up
+#20cm away from imu
 
 def read_data(filename):
+    #Reads file into x,y,z,time data from the IMU
    
     x = []
     y = []
@@ -36,6 +34,9 @@ def find_modulus(x,y,z,time):
     return mod
 
 def find_means_stdvs(components):
+    
+    #Calculates the mean and standard deviations of the backround noise to be
+    #used to calibrate the data
     static_min = 0
     means = []
     stdvs = []
@@ -54,6 +55,7 @@ def find_means_stdvs(components):
     return means, stdvs
 
 def shift_data(components, means):
+    #Subtract the mean of the noise from all the data
     i = 0
     new_components = []
     while i < len(components):
@@ -93,6 +95,8 @@ def plot_summary(components,components_names, time):
     #plt.show()
 
 def detect_objects(mod, time, min_magnet_value, max_noise_value, minimum_scan_time):
+    #Detect if there is a peak in magnet data
+    #Calculate the maximum of this peak and return it as the value of the scan
 
     buffer = 20
     in_peak = 0
@@ -111,7 +115,7 @@ def detect_objects(mod, time, min_magnet_value, max_noise_value, minimum_scan_ti
             plt.title(f'Object Detected Time {time[i]}')
             plt.xlabel('Time')
             plt.ylabel('Magnetic Strength')
-            plt.savefig(f'magnet_data_peak_{time[i]}')
+            plt.savefig(f'magnet_data_peak')
             #plt.show()
            
             max_peak = max(mod[i:i+minimum_scan_time])
@@ -169,12 +173,13 @@ def write_object_summary_file(objects,num_objects, names, peak_times, costs):
        
 
 def classify_objects(object_peaks):
+    #Compare to values from testing data
     objects = []
     num_objects = [0, 0, 0]
     for i in object_peaks:
-        #small = 1 small round = 1500 - 8000 Allbran  0
-        #medium = 2 small round = 8000 - 1700 ish weetBix  1
-        #large = 1800+ Cheerios  2
+        #small = 1 small round magnet= 1500 - 7000 Allbran ,object 0
+        #medium = 2 small round magnets= 7000 - 15000 ish weetBix, object 1
+        #large = 15000+ Cheerios, object 2
        
         if i < 7000:
             objects.append(0)
@@ -235,8 +240,10 @@ def analyse_magnets():
     prices = [9,7,15]
    
     costs = find_cost(prices, num_objects)
+    
+    #Summary text file for manager of store:
     write_object_summary_file(objects, num_objects, names, peak_times, costs)
 #Total count and total cost on lcd
 #point_message = struct.pack('<hhhh', 88, num_objects[0], num_objects[1], num_objects[2])
 #For testing this file
-$#analyse_magnets()
+#analyse_magnets()
